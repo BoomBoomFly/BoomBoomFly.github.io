@@ -92,11 +92,15 @@ roslaunch vision_to_mavros t265_tf_to_mavros.launch
 roslaunch atart_all start_all.launch
 ```
 
-> 请注意\
+> 请注意
+> 
 > `roslaunch mavros acfly.launch fcu_url:=/dev/ttyUSB0:57600`
-> 中的 `fcu_url` 请修改为对应 mavlink 输出串口及波特率（也可以直接在launch文件中修改）
+> 
+> 其中的 `fcu_url` 请修改为对应 mavlink 输出串口及波特率（也可以直接在launch文件中修改）
 
 ## 其他 使用指南
-> acfly-mavros 作者提供了使用指南及二次开发指南\
+> acfly-mavros 作者提供了使用指南及二次开发指南
+> 
 > [使用指南](https://github.com/LauZanMo/acfly-mavros/blob/acfly-develop/acfly-mavros%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.md)  
+> 
 > [二次开发指南](https://github.com/LauZanMo/acfly-mavros/blob/acfly-develop/acfly-mavros%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)

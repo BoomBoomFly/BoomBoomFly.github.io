@@ -345,35 +345,40 @@
 <li>IMU&#x578B;&#x53F7;&#x4E3A; BMI-055<h2 id="sdk">SDK</h2>
 &#x4ECE; <code>Intel&#xAE; RealSense&#x2122; SDK 2.0 (v2.54.1)</code> &#x4E2D;&#x5DF2;&#x7ECF;&#x660E;&#x786E;&#x8BF4;&#x660E;&#x7248;&#x672C;&#x4E0D;&#x518D;&#x652F;&#x6301;T265 &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x7684;&#x7248;&#x672C;&#x4E3A; <a href="https://github.com/IntelRealSense/librealsense/releases/tag/v2.50.0" target="_blank">v2.50.0</a>&#xFF0C;&#x800C;&#x671F;&#x95F4;&#x7684;&#x51E0;&#x4E2A;&#x7248;&#x672C;&#x867D;&#x7136;&#x652F;&#x6301;T265&#x4F46;&#x5B98;&#x65B9;&#x8BF4;&#x660E;&#x4E0D;&#x5728;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x3002;<h3 id="&#x5B89;&#x88C5;&#x65B9;&#x5F0F;">&#x5B89;&#x88C5;&#x65B9;&#x5F0F;</h3>
 <blockquote>
-<p>&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x6D4B;&#x8BD5;&#x53EF;&#x7528;
-```bash
-mkdir ~/releases-2.50.0
-cd ~/releases-2.50.0</p>
+<p>&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x6D4B;&#x8BD5;&#x53EF;&#x7528;</p>
 </blockquote>
 </li>
 </ul>
-<h1 id="&#x514B;&#x9686;&#x4ED3;&#x5E93;&#x5E76;&#x8FDB;&#x5165;&#x5206;&#x652F;">&#x514B;&#x9686;&#x4ED3;&#x5E93;&#x5E76;&#x8FDB;&#x5165;&#x5206;&#x652F;</h1>
-<p>git clone <a href="https://github.com/IntelRealSense/realsense-ros.git" target="_blank">https://github.com/IntelRealSense/realsense-ros.git</a>
-cd realsense-ros/
-git checkout <code>git tag | sort -V | grep -P &quot;^2.\d+\.\d+&quot; | tail -1</code></p>
-<h1 id="&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FDB;&#x5165;&#x4ED3;&#x5E93;&#x4E0B;&#x8F7D;&#x6E90;&#x7801;">&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FDB;&#x5165;&#x4ED3;&#x5E93;&#x4E0B;&#x8F7D;&#x6E90;&#x7801;</h1>
-<h1 id="&#x7F16;&#x8BD1;">&#x7F16;&#x8BD1;</h1>
-<p>mkdir build
-cd build
+<pre><code class="lang-bash">mkdir ~/releases-2.50.0
+<span class="hljs-built_in">cd</span> ~/releases-2.50.0
+
+<span class="hljs-comment"># &#x514B;&#x9686;&#x4ED3;&#x5E93;&#x5E76;&#x8FDB;&#x5165;&#x5206;&#x652F;</span>
+git <span class="hljs-built_in">clone</span> https://github.com/IntelRealSense/realsense-ros.git
+<span class="hljs-built_in">cd</span> realsense-ros/
+git checkout `git tag | sort -V | grep -P <span class="hljs-string">&quot;^2.\d+\.\d+&quot;</span> | tail -1`
+<span class="hljs-comment"># &#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FDB;&#x5165;&#x4ED3;&#x5E93;&#x4E0B;&#x8F7D;&#x6E90;&#x7801;</span>
+
+<span class="hljs-comment"># &#x7F16;&#x8BD1;</span>
+mkdir build
+<span class="hljs-built_in">cd</span> build
 cmake ..
 make
-make install</p>
-<pre><code>### SDK&#x542F;&#x52A8;
-```bash
-realsense-viewer
-</code></pre><h2 id="realsense2">Realsense2</h2>
+make install
+</code></pre>
+<h3 id="sdk&#x542F;&#x52A8;">SDK&#x542F;&#x52A8;</h3>
+<pre><code class="lang-bash">realsense-viewer
+</code></pre>
+<h2 id="realsense2">Realsense2</h2>
 <blockquote>
 <p>&#x6B64;&#x5E93;&#x4E3A;&#x53CC;&#x76EE;&#x63D0;&#x4F9B;&#x9A71;&#x52A8;&#xFF0C;&#x5305;&#x62EC; T265 D400&#x7CFB;&#x5217;&#x7B49;</p>
+</blockquote>
 <h3 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h3>
 <pre><code class="lang-bash">sudo apt-get install ros-<span class="hljs-variable">$ROS_DISTRO</span>-realsense2-camera
 </code></pre>
-<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B89;&#x88C5;&#x540E;&#x5E93;&#x4F1A;&#x5B58;&#x5728;&#x4E8E; <code>/opt/ros/noetic/share/realsense2_camera</code> (&#x4E0E;ros&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x6709;&#x5173;)
-&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6E90;&#x7801;&#x5B89;&#x88C5;&#xFF0C;&#x653E;&#x7F6E;&#x5728;&#x81EA;&#x5DF1;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E0B;</p>
+<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B89;&#x88C5;&#x540E;&#x5E93;&#x4F1A;&#x5B58;&#x5728;&#x4E8E; <code>/opt/ros/noetic/share/realsense2_camera</code> (&#x4E0E;ros&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x6709;&#x5173;)</p>
+<blockquote>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6E90;&#x7801;&#x5B89;&#x88C5;&#xFF0C;&#x653E;&#x7F6E;&#x5728;&#x81EA;&#x5DF1;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E0B;</p>
+</blockquote>
 <h3 id="&#x90E8;&#x5206;&#x5E38;&#x7528;launch">&#x90E8;&#x5206;&#x5E38;&#x7528;launch</h3>
 <h4 id="&#x542F;&#x52A8;t265">&#x542F;&#x52A8;T265</h4>
 <pre><code class="lang-bash">roslaunch realsense2_camera rs_t265.launch
@@ -399,17 +404,16 @@ realsense-viewer
 /tf
 /tf_static
 </code></pre>
-<p><strong>&#x5E38;&#x7528;&#x7684;&#x6709;</strong>\
-&#x91CC;&#x7A0B;&#x8BA1;&#x53D1;&#x5E03; 
+<p><strong>&#x5E38;&#x7528;&#x7684;&#x6709;</strong></p>
+<p>&#x91CC;&#x7A0B;&#x8BA1;&#x53D1;&#x5E03; 
 <code>/camera/odom/sample</code></p>
-</blockquote>
-<p>IMU&#x53D1;&#x5E03;\
-&#x9640;&#x87BA;&#x4EEA; <code>/camera/accel/sample</code> 200Hz\
-&#x52A0;&#x901F;&#x5EA6; <code>/camera/gyro/sample</code> 63Hz</p>
+<p>IMU&#x53D1;&#x5E03;</p>
+<p>&#x9640;&#x87BA;&#x4EEA; <code>/camera/accel/sample</code> 200Hz</p>
+<p>&#x52A0;&#x901F;&#x5EA6; <code>/camera/gyro/sample</code> 63Hz</p>
 <h4 id="&#x91CC;&#x7A0B;&#x8BA1;&#x4FE1;&#x606F;demo">&#x91CC;&#x7A0B;&#x8BA1;&#x4FE1;&#x606F;demo</h4>
-<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BA2;&#x9605; <code>/camera/odom/sample</code> &#x8BDD;&#x9898;&#xFF0C;&#x8F93;&#x51FA;&#x91CC;&#x7A0B;&#x5750;&#x6807;\
-&#x5176;&#x8F93;&#x51FA;&#x5750;&#x6807;&#x7CFB;&#x4FE1;&#x606F;&#x4E3A;&#xFF1A;&#x6B63;&#x524D;&#x65B9;&#x4E3A;<strong>X&#x8F74;&#x6B63;&#x65B9;&#x5411;</strong>&#x3001;&#x5DE6;&#x8FB9;&#x4E3A;<strong>Y&#x8F74;&#x6B63;&#x65B9;&#x5411;</strong>&#x3001;&#x5929;&#x5411;&#x4E3A;<strong>Z&#x8F74;&#x6B63;&#x65B9;&#x5411;</strong> &#x5373;FLU\
-&#x8F93;&#x51FA;&#x9891;&#x7387;&#x4E3A; <code>200Hz</code></p>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BA2;&#x9605; <code>/camera/odom/sample</code> &#x8BDD;&#x9898;&#xFF0C;&#x8F93;&#x51FA;&#x91CC;&#x7A0B;&#x5750;&#x6807;</p>
+<p>&#x5176;&#x8F93;&#x51FA;&#x5750;&#x6807;&#x7CFB;&#x4FE1;&#x606F;&#x4E3A;&#xFF1A;&#x6B63;&#x524D;&#x65B9;&#x4E3A;<strong>X&#x8F74;&#x6B63;&#x65B9;&#x5411;</strong>&#x3001;&#x5DE6;&#x8FB9;&#x4E3A;<strong>Y&#x8F74;&#x6B63;&#x65B9;&#x5411;</strong>&#x3001;&#x5929;&#x5411;&#x4E3A;<strong>Z&#x8F74;&#x6B63;&#x65B9;&#x5411;</strong> &#x5373;FLU</p>
+<p>&#x8F93;&#x51FA;&#x9891;&#x7387;&#x4E3A; <code>200Hz</code></p>
 <h5 id="cpp">CPP</h5>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ros/ros.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;nav_msgs/Odometry.h&gt;</span></span>
@@ -544,7 +548,7 @@ realsense-viewer
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"T265的基本使用","level":"1.4.2","depth":2,"next":{"title":"UWB的使用","level":"1.4.3","depth":2,"path":"02无人机相关/UWB.md","ref":"02无人机相关/UWB.md","articles":[]},"previous":{"title":"ACFly-Mavros的安装及使用","level":"1.4.1","depth":2,"path":"02无人机相关/ACFly-Mavros.md","ref":"02无人机相关/ACFly-Mavros.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-d4t","-lunr","search","search-pro","code","highlight","expandable-chapters","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-d4t":{},"d4t":{"search-placeholder":"请输入关键字搜索","logo":"assert/readmeAssert/logo.svg","favicon":"assert/readmeAssert/favicon.ico"},"search-pro":{},"search":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"BoomBoomFly","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"集美大学无人机科创实验室相关技术及配置手册","language":"zh-cn","gitbook":"*","description":"无人机实验室技术及配置文档"},"file":{"path":"02无人机相关/T265.md","mtime":"2024-11-03T14:35:02.280Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-11-03T14:59:30.975Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"T265的基本使用","level":"1.4.2","depth":2,"next":{"title":"UWB的使用","level":"1.4.3","depth":2,"path":"02无人机相关/UWB.md","ref":"02无人机相关/UWB.md","articles":[]},"previous":{"title":"ACFly-Mavros的安装及使用","level":"1.4.1","depth":2,"path":"02无人机相关/ACFly-Mavros.md","ref":"02无人机相关/ACFly-Mavros.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-d4t","-lunr","search","search-pro","code","highlight","expandable-chapters","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-d4t":{},"d4t":{"search-placeholder":"请输入关键字搜索","logo":"assert/readmeAssert/logo.svg","favicon":"assert/readmeAssert/favicon.ico"},"search-pro":{},"search":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"BoomBoomFly","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"集美大学无人机科创实验室相关技术及配置手册","language":"zh-cn","gitbook":"*","description":"无人机实验室技术及配置文档"},"file":{"path":"02无人机相关/T265.md","mtime":"2024-11-03T15:07:14.474Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-11-03T15:09:27.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
