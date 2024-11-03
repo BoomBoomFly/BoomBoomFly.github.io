@@ -1,6 +1,6 @@
 module.exports = {
     // 常规信息
-    title: "BoomBoomFly's Book",
+    title: "集美大学无人机科创实验室相关技术及配置手册",
     description: "无人机实验室技术及配置文档",
     author: "BoomBoomFly",
     language: "zh-cn",
