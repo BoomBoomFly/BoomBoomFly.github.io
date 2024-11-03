@@ -30,7 +30,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./book  # 指定源目录为 book 文件夹
+          source: ./_book  # 指定源目录为 book 文件夹
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
