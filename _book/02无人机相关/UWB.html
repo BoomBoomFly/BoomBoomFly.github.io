@@ -1,0 +1,677 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>UWB的使用 · 集美大学无人机科创实验室相关技术及配置手册</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="BoomBoomFly">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-d4t/style.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="D435.html" />
+    
+    
+    <link rel="prev" href="T265.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="header-inner">
+        <!-- LOGO -->
+        <a href="/"><div class="logo"></div></a>
+        <span class="title"></span>
+
+        <!-- Search -->
+        
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+
+        <!-- Nav -->
+        <ul class="header-nav">
+            
+        </ul>
+    </div>
+
+    <div class="book-summary">
+        <div class="sidebar-nav-space"></div>
+        
+        
+        <nav role="navigation">
+            
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../00开发者使用手册/">
+            
+                <a href="../00开发者使用手册/">
+            
+                    
+                    开发者使用手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../01常用开发工具/">
+            
+                <a href="../01常用开发工具/">
+            
+                    
+                    常用开发工具
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../01常用开发工具/git.html">
+            
+                <a href="../01常用开发工具/git.html">
+            
+                    
+                    git的安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../01常用开发工具/conda.html">
+            
+                <a href="../01常用开发工具/conda.html">
+            
+                    
+                    Conda常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../01常用开发工具/ubuntu换源.html">
+            
+                <a href="../01常用开发工具/ubuntu换源.html">
+            
+                    
+                    Ubuntu20.04换源
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    无人机相关
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="ACFly-Mavros.html">
+            
+                <a href="ACFly-Mavros.html">
+            
+                    
+                    ACFly-Mavros的安装及使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="T265.html">
+            
+                <a href="T265.html">
+            
+                    
+                    T265的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.3" data-path="UWB.html">
+            
+                <a href="UWB.html">
+            
+                    
+                    UWB的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="D435.html">
+            
+                <a href="D435.html">
+            
+                    
+                    D435的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+        </nav>
+        
+        
+    </div>
+
+    <!-- Content nav -->
+    <div class="book-anchor">
+        <div class="book-anchor-title">ON THIS PAGE</div>
+        <div class="book-anchor-body">
+
+        </div>
+    </div>
+
+    <div class="book-body">
+        
+        <div class="body-inner">
+            
+            
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >UWB的使用</a>
+    </h1>
+</div>
+
+
+
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                    <section class="normal markdown-section">
+                        
+                        <h1 id="uwb&#x7684;&#x4F7F;&#x7528;">UWB&#x7684;&#x4F7F;&#x7528;</h1>
+<blockquote>
+<p>Author: CGC</p>
+<p>&#x4F7F;&#x7528; Nooploop &#x7684; LinkTrack &#x5B9A;&#x4F4D;&#x7CFB;&#x7EDF;&#x4E3A; Acfly&#x98DE;&#x63A7;&#x63D0;&#x4F9B;&#x5B9A;&#x4F4D;</p>
+<p><a href="https://www.nooploop.com/download/" target="_blank">&#x5B98;&#x65B9;&#x8D44;&#x6599;</a></p>
+</blockquote>
+<h2 id="&#x914D;&#x7F6E;">&#x914D;&#x7F6E;</h2>
+<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x662F;4&#x57FA;&#x7AD9;+1&#x6807;&#x7B7E;+1&#x63A7;&#x5236;&#x53F0;&#x7684;&#x65B9;&#x6848;</p>
+<p>&#x53C2;&#x8003;&#x7684;&#x662F;<a href="https://ftp.nooploop.com/software/products/uwb/doc/LinkTrack_User_Manual_V2.3_zh.pdf" target="_blank">&#x5B98;&#x65B9;&#x7528;&#x6237;&#x624B;&#x518C;</a>&#x4E2D;&#x7B2C;13-14&#x9875;&#x7684;&#x5185;&#x5BB9;</p>
+<blockquote>
+<ol>
+<li>&#x6309;&#x987A;&#x5E8F;0-3&#x7684;id&#x5206;&#x522B;&#x914D;&#x7F6E;4&#x4E2A;anchor</li>
+<li>&#x914D;&#x7F6E;tag&#x6807;&#x7B7E;&#xFF08;&#x98DE;&#x63A7;&#x7AEF;&#xFF09; &#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x9009;&#x62E9;tag_frame0</li>
+<li>&#x914D;&#x7F6E;console&#x63A7;&#x5236;&#x53F0;</li>
+</ol>
+</blockquote>
+<h2 id="&#x6446;&#x653E;&#x53CA;&#x4E0A;&#x7535;&#x65B9;&#x5411;">&#x6446;&#x653E;&#x53CA;&#x4E0A;&#x7535;&#x65B9;&#x5411;</h2>
+<blockquote>
+<p>&#x7531;&#x4E8E;&#x98DE;&#x63A7;&#x7684;&#x6570;&#x636E;&#x9002;&#x914D;&#x6027;&#xFF0C;&#x57FA;&#x7AD9;&#x6446;&#x653E;&#x4F4D;&#x7F6E;&#x548C;&#x98DE;&#x673A;&#x4E0A;&#x7535;&#x4F4D;&#x7F6E;&#x9700;&#x8981;&#x53D7;&#x5230;&#x9650;&#x5236;\
+&#xFF08;&#x53EF;&#x80FD;&#x4E4B;&#x540E;&#x968F;&#x7740;&#x8BBE;&#x5907;&#x7684;&#x66F4;&#x65B0;&#x4F1A;&#x51CF;&#x8F7B;&#x8FD9;&#x65B9;&#x9762;&#x5E26;&#x6765;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x4F46;&#x662F;&#x6309;&#x6211;&#x4EEC;&#x76EE;&#x524D;&#x7684;&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;&#x6765;&#x770B;&#xFF0C;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x5EFA;&#x8BAE;&#x6309;&#x7167;&#x5DF2;&#x7ECF;&#x6D4B;&#x8BD5;&#x597D;&#x7684;&#x65B9;&#x5411;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF09;</p>
+</blockquote>
+<p>&#x5982;&#x4E0B;
+<img src="../assert/imgs/drone/uwb_init.jpg" alt="&#x98DE;&#x63A7;&#x4F4D;&#x7F6E;"></p>
+<h2 id="&#x98DE;&#x63A7;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x8BBE;&#x7F6E;">&#x98DE;&#x63A7;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x8BBE;&#x7F6E;</h2>
+<h3 id="tag&#x7AEF;&#x901A;&#x4FE1;&#x534F;&#x8BAE;">tag&#x7AEF;&#x901A;&#x4FE1;&#x534F;&#x8BAE;</h3>
+<blockquote>
+<p>&#x5177;&#x4F53;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://ftp.nooploop.com/software/products/uwb/doc/NLink_V1.4.pdf" target="_blank">&#x5B98;&#x65B9;&#x53C2;&#x8003;&#x901A;&#x4FE1;&#x534F;&#x8BAE;</a></p>
+<p>&#x5728;&#x6B64;&#x5904;&#x5BF9;&#x98DE;&#x63A7;&#x6BB5;&#x4F7F;&#x7528;&#x7684;&#x534F;&#x8BAE;&#x5373; Tag &#x7AEF;&#x4F5C;&#x8BF4;&#x660E; &#x5373;</p>
+</blockquote>
+<p>tag&#x7AEF;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#xFF08;&#x63A5;&#x6536;&#xFF09;&#x5982;&#x4E0B;
+<img src="../assert/imgs/drone/uwb_xieyi.png" alt="tag&#x901A;&#x4FE1;&#x534F;&#x8BAE;">
+&#x53EF;&#x77E5;&#x98DE;&#x63A7;&#x53EF;&#x63A5;&#x6536;&#x5230;&#x6570;&#x636E;&#x6709;&#x4F4D;&#x7F6E;&#x3001;&#x59FF;&#x6001;&#x3001;&#x7CBE;&#x5EA6;&#x7B49;&#x4E00;&#x7CFB;&#x5217;&#x6570;&#x636E;</p>
+<h3 id="&#x5B98;&#x65B9;&#x9A71;&#x52A8;&#x4EE3;&#x7801;">&#x5B98;&#x65B9;&#x9A71;&#x52A8;&#x4EE3;&#x7801;</h3>
+<p>&#x4EE5;&#x4E0B;&#x7ED9;&#x51FA;acfly&#x5B98;&#x65B9;&#x53D1;&#x5E03;&#x7684;&#x9A71;&#x52A8;&#x4EE3;&#x7801;</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;drv_UWB_LinkTrack.hpp&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Commulink.hpp&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Basic.hpp&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;FreeRTOS.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;task.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;SensorsBackend.hpp&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;MeasurementSystem.hpp&quot;</span></span>
+
+<span class="hljs-keyword">struct</span> DriverInfo
+{
+    <span class="hljs-keyword">uint32_t</span> param;
+    Port port;
+    <span class="hljs-keyword">uint32_t</span> sensor_key;
+};
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span>
+{
+    <span class="hljs-keyword">uint8_t</span> id;
+    <span class="hljs-keyword">uint8_t</span> role;
+    <span class="hljs-keyword">int</span> pos_x:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> pos_y:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> pos_z:<span class="hljs-number">24</span>;        
+    <span class="hljs-keyword">int</span> vel_x:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> vel_y:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> vel_z:<span class="hljs-number">24</span>;    
+    <span class="hljs-keyword">int</span> dis_0:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> dis_1:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> dis_2:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> dis_3:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> dis_4:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> dis_5:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> dis_6:<span class="hljs-number">24</span>;    <span class="hljs-keyword">int</span> dis_7:<span class="hljs-number">24</span>;
+    <span class="hljs-keyword">float</span> imuGyro[<span class="hljs-number">3</span>];
+    <span class="hljs-keyword">float</span> imuAcc[<span class="hljs-number">3</span>];
+    <span class="hljs-keyword">uint8_t</span> reserved1[<span class="hljs-number">12</span>];
+    <span class="hljs-keyword">int16_t</span> angle[<span class="hljs-number">3</span>];
+    <span class="hljs-keyword">float</span> q[<span class="hljs-number">4</span>];
+    <span class="hljs-keyword">uint8_t</span> reserved2[<span class="hljs-number">4</span>];
+    <span class="hljs-keyword">uint32_t</span> localTime;
+    <span class="hljs-keyword">uint32_t</span> systemTime;
+    <span class="hljs-keyword">uint8_t</span> reserved3[<span class="hljs-number">1</span>];
+    <span class="hljs-keyword">uint8_t</span> eop[<span class="hljs-number">3</span>]; <span class="hljs-comment">// &#x4F30;&#x8BA1;&#x4F4D;&#x7F6E;&#x7684;&#x7CBE;&#x5EA6;</span>
+    <span class="hljs-keyword">uint16_t</span> voltage;
+    <span class="hljs-keyword">uint8_t</span> reserved4[<span class="hljs-number">5</span>];
+}__PACKED _Uwb;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> packet_ID[<span class="hljs-number">2</span>] = { <span class="hljs-number">0x55</span> , <span class="hljs-number">0x01</span> };
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OpticalFlow_Server</span><span class="hljs-params">(<span class="hljs-keyword">void</span>* pvParameters)</span>
+</span>{
+    DriverInfo driver_info = *(DriverInfo*)pvParameters;
+    <span class="hljs-keyword">delete</span> (DriverInfo*)pvParameters;
+
+    <span class="hljs-comment">/*&#x72B6;&#x6001;&#x673A;*/</span>
+        _Uwb  Uwb;
+        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> rc_counter = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">signed</span> <span class="hljs-keyword">char</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">/*&#x72B6;&#x6001;&#x673A;*/</span>
+
+    <span class="hljs-comment">//&#x7B49;&#x5F85;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;</span>
+    <span class="hljs-keyword">while</span>( get_Altitude_MSStatus() != MS_Ready )
+        os_delay(<span class="hljs-number">1</span>);
+
+    <span class="hljs-comment">//&#x6CE8;&#x518C;&#x4F20;&#x611F;&#x5668;</span>
+    <span class="hljs-keyword">double</span> angleOffset = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>( driver_info.param&gt;<span class="hljs-number">360</span> )
+    {
+        <span class="hljs-comment">//&#x8BB0;&#x5F55;&#x521D;&#x59CB;&#x504F;&#x822A;</span>
+        Quaternion quat;
+        get_Attitude_quat(&amp;quat);
+        angleOffset = quat.getYaw();
+    }
+    <span class="hljs-keyword">else</span>
+        angleOffset = degree2rad((<span class="hljs-keyword">double</span>)driver_info.param);
+
+
+    <span class="hljs-keyword">uint32_t</span> sensor_key = PositionSlamSensorRegister( default_uwb_sensor_index , \
+                                                    <span class="hljs-string">&quot;UWB_LinkTrack&quot;</span> ,\
+                                                    Position_Sensor_Type_RelativePositioning , \
+                                                    Position_Sensor_DataType_s_xy , \
+                                                    Position_Sensor_frame_SLAM , \
+                                                    <span class="hljs-number">0.1</span>, angleOffset, <span class="hljs-number">100</span> );
+
+    <span class="hljs-keyword">int</span> lastP = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">uint8_t</span> pUCCounter = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)
+    {
+        <span class="hljs-keyword">uint8_t</span> rdata;
+        <span class="hljs-keyword">if</span>( driver_info.port.read( &amp;rdata, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0.5</span> ) )
+        {
+            <span class="hljs-keyword">if</span>( rc_counter &lt; <span class="hljs-keyword">sizeof</span>(packet_ID) )
+            {
+                <span class="hljs-comment">//&#x63A5;&#x6536;&#x5305;&#x5934;</span>
+                <span class="hljs-keyword">if</span>( rdata != packet_ID[ rc_counter ] )
+                {
+                    rc_counter = <span class="hljs-number">0</span>;
+                    sum = <span class="hljs-number">0</span>;
+                }
+                <span class="hljs-keyword">else</span>
+                {
+                    ++rc_counter;
+                    sum += rdata;
+                }
+            }
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( rc_counter &lt; <span class="hljs-keyword">sizeof</span>(packet_ID) + <span class="hljs-keyword">sizeof</span>(_Uwb) )
+            {    <span class="hljs-comment">//&#x63A5;&#x6536;&#x6570;&#x636E;</span>
+                ( (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span>*)&amp;Uwb )[ rc_counter - <span class="hljs-keyword">sizeof</span>(packet_ID) ] = rdata;
+                sum += rdata;
+                ++rc_counter;
+            }
+            <span class="hljs-keyword">else</span>
+            {    <span class="hljs-comment">//&#x6821;&#x9A8C;</span>
+                <span class="hljs-keyword">if</span>( sum == rdata )
+                {
+                    <span class="hljs-keyword">if</span>( Uwb.eop[<span class="hljs-number">0</span>]&gt;<span class="hljs-number">200</span> || Uwb.eop[<span class="hljs-number">1</span>]&gt;<span class="hljs-number">200</span> ) <span class="hljs-comment">// x y &#x7CBE;&#x5EA6;&#x5927;&#x4E8E;2cm&#x5C31;&#x5931;&#x80FD;</span>
+                        PositionSensorSetInavailable(default_uwb_sensor_index,driver_info.sensor_key);
+                    <span class="hljs-keyword">else</span> 
+                    {
+                        vector3&lt;<span class="hljs-keyword">double</span>&gt; pos, vel;
+                        pos.x = Uwb.pos_x*<span class="hljs-number">0.1</span>;
+                        pos.y = Uwb.pos_y*<span class="hljs-number">0.1</span>;
+                        pos.z = Uwb.pos_z * <span class="hljs-number">0.1</span>;
+                        vel.x = Uwb.vel_x*<span class="hljs-number">0.01</span>;
+                        vel.y = Uwb.vel_y*<span class="hljs-number">0.01</span>;
+                        vel.z = Uwb.vel_z * <span class="hljs-number">0.01</span>;
+                        <span class="hljs-keyword">if</span>( Uwb.eop[<span class="hljs-number">2</span>] &gt; <span class="hljs-number">200</span> )
+                            PositionSensorChangeDataType( default_uwb_sensor_index,sensor_key, Position_Sensor_DataType_s_xy );
+                        <span class="hljs-keyword">else</span>
+                            PositionSensorChangeDataType( default_uwb_sensor_index,sensor_key, Position_Sensor_DataType_s_xyz );
+                        <span class="hljs-keyword">double</span> eop_xy = sqrtf( Uwb.eop[<span class="hljs-number">0</span>]*Uwb.eop[<span class="hljs-number">0</span>] + Uwb.eop[<span class="hljs-number">1</span>]*Uwb.eop[<span class="hljs-number">1</span>] );
+
+                        <span class="hljs-keyword">if</span>( Uwb.dis_0 != lastP )
+                        {
+                            lastP = Uwb.dis_0;
+                            pUCCounter = <span class="hljs-number">0</span>;
+                        }
+                        <span class="hljs-keyword">else</span>
+                        {
+                            <span class="hljs-keyword">if</span>( pUCCounter &lt; <span class="hljs-number">255</span> )
+                                ++pUCCounter;
+                        }
+
+                        <span class="hljs-keyword">if</span>( pUCCounter&gt;<span class="hljs-number">100</span> )
+                            PositionSensorSetInavailable( default_uwb_sensor_index,sensor_key );
+                        <span class="hljs-keyword">else</span>
+                            PositionSensorUpdatePosition( default_uwb_sensor_index,sensor_key, pos, <span class="hljs-literal">true</span>, <span class="hljs-number">-1</span>, eop_xy&lt;<span class="hljs-number">100</span>?<span class="hljs-number">100</span>:eop_xy, Uwb.eop[<span class="hljs-number">2</span>] );
+                    }
+                }
+                rc_counter = <span class="hljs-number">0</span>;
+                sum = <span class="hljs-number">0</span>;
+            }
+        }
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">UWB_LinkTrack_DriverInit</span><span class="hljs-params">( Port port, <span class="hljs-keyword">uint32_t</span> param )</span>
+</span>{
+    <span class="hljs-comment">//&#x6CE2;&#x7279;&#x7387;115200</span>
+    port.SetBaudRate( <span class="hljs-number">460800</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span> );
+    <span class="hljs-comment">//&#x6CE8;&#x518C;&#x4F20;&#x611F;&#x5668;</span>
+    DriverInfo* driver_info = <span class="hljs-keyword">new</span> DriverInfo;
+    driver_info-&gt;param = param;
+    driver_info-&gt;port = port;
+
+    xTaskCreate( OpticalFlow_Server, <span class="hljs-string">&quot;OptFlowGL9306&quot;</span>, <span class="hljs-number">1024</span>, (<span class="hljs-keyword">void</span>*)driver_info, SysPriority_ExtSensor, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init_drv_UWB_LinkTrack</span><span class="hljs-params">()</span>
+</span>{
+    PortFunc_Register( <span class="hljs-number">41</span>, UWB_LinkTrack_DriverInit );
+}
+</code></pre>
+<h3 id="&#x503C;&#x5F97;&#x4E00;&#x63D0;">&#x503C;&#x5F97;&#x4E00;&#x63D0;</h3>
+<p>&#x5728;&#x4EE5;&#x4E0A;&#x9A71;&#x52A8;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// z &#x7CBE;&#x5EA6;&#x5927;&#x4E8E;2cm&#x5C31;&#x4E0D;&#x4F7F;&#x7528;z&#x8F74;&#x6570;&#x636E;</span>
+<span class="hljs-keyword">if</span>( Uwb.eop[<span class="hljs-number">2</span>] &gt; <span class="hljs-number">200</span> ) 
+    PositionSensorChangeDataType( default_uwb_sensor_index,sensor_key, Position_Sensor_DataType_s_xy );
+<span class="hljs-keyword">else</span>
+    PositionSensorChangeDataType( default_uwb_sensor_index,sensor_key, Position_Sensor_DataType_s_xyz );
+</code></pre>
+<p>&#x53CA;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">if</span>( Uwb.eop[<span class="hljs-number">0</span>]&gt;<span class="hljs-number">200</span> || Uwb.eop[<span class="hljs-number">1</span>]&gt;<span class="hljs-number">200</span> ) <span class="hljs-comment">// x y &#x7CBE;&#x5EA6;&#x5927;&#x4E8E;2cm&#x5C31;&#x5931;&#x80FD;</span>
+    PositionSensorSetInavailable(default_uwb_sensor_index,driver_info.sensor_key);
+<span class="hljs-keyword">else</span> 
+{
+  <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<blockquote>
+<p>&#x9A71;&#x52A8;&#x5185;&#x5BB9;&#x4E3A; &#x8D85;&#x51FA;2cm&#x7684;&#x7CBE;&#x5EA6;&#x8BB8;&#x53EF;&#x8303;&#x56F4;&#xFF0C;&#x5C31;&#x5C06;&#x4F20;&#x611F;&#x5668;&#x5931;&#x80FD;\
+<strong>UWB&#x5B98;&#x65B9;&#x7ED9;&#x51FA;&#x7684;&#x6570;&#x636E;&#x662F;&#xFF0C;x y &#x7684;&#x7CBE;&#x5EA6;&#x5728; 10cm &#x4E4B;&#x5185; z &#x7CBE;&#x5EA6;&#x5728; 30cm &#x4EE5;&#x5185;</strong></p>
+</blockquote>
+<ul>
+<li>&#x5173;&#x4E8E;z&#x8F74;&#x6570;&#x636E;\
+&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x53CD;&#x5E94;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x7684;&#x73B0;&#x8C61;&#xFF0C;&#x9996;&#x5148;&#x662F;&#x5728;&#x53EA;&#x4F7F;&#x7528;uwb&#x4F5C;&#x4E3A;&#x5916;&#x63A5;&#x4F20;&#x611F;&#x5668;&#x65F6;&#xFF0C;&#x98DE;&#x673A;&#x5B8C;&#x5168;&#x5B9A;&#x4E0D;&#x4F4F;&#x9AD8;&#xFF08;&#x56E0;&#x4E3A;z&#x7CBE;&#x5EA6;&#x5B8C;&#x5168;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;2cm&#x7684;&#x8981;&#x6C42;&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x80FD;&#x7531;&#x4E8E;&#x98DE;&#x63A7;&#x4E2D;&#x6C14;&#x538B;&#x8BA1;&#x7B49;&#x8BBE;&#x5907;&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x98DE;&#x63A7;&#x6709;&#x9AD8;&#x5EA6;&#x6570;&#x636E;&#xFF0C;&#x5BA4;&#x5185;&#x5B9A;&#x4F4D;&#x53EF;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x80FD;&#x591F;&#x5141;&#x8BB8;&#x8D77;&#x98DE;&#xFF0C;&#x4F46;&#x5728;&#x5929;&#x4E0A;&#x7684;&#x9AD8;&#x5EA6;&#x6570;&#x636E;&#xFF0C;&#x5B8C;&#x5168;&#x7531;&#x98DE;&#x63A7;&#x800C;&#x6765;&#xFF0C;&#x6240;&#x4EE5;&#x73B0;&#x8C61;&#x662F;&#xFF0C;&#x6CA1;&#x6709;&#x5B9A;&#x9AD8;&#x53EF;&#x8A00;&#x3002;&#x3002;&#x3002;</li>
+</ul>
+<h2 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x53CA;&#x4F20;&#x611F;&#x5668;&#x4F7F;&#x7528;&#x5EFA;&#x8BAE;">&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x53CA;&#x4F20;&#x611F;&#x5668;&#x4F7F;&#x7528;&#x5EFA;&#x8BAE;</h2>
+<ol>
+<li>&#x4F7F;&#x7528;&#x65F6;&#x53D1;&#x8D77;&#x81EA;&#x52A8;&#x6807;&#x5B9A;&#x7684;&#x8BBE;&#x5907;&#x9700;&#x8981;&#x5728;&#x7EBF;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x63A7;&#x5236;&#x53F0;&#x53D1;&#x8D77;&#x4E00;&#x952E;&#x6807;&#x5B9A;&#xFF0C;&#x5219;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#x63A7;&#x5236;&#x53F0;&#x5FC5;&#x987B;&#x8981;&#x5728;&#x7EBF;&#xFF0C;&#x5426;&#x5219;&#x6570;&#x636E;&#x4F1A;&#x4E0D;&#x53EF;&#x7528;</li>
+<li>&#x7531;&#x4E8E;uwb&#x7684;z&#x8F74;&#x7CBE;&#x5EA6;&#x8F83;&#x4F4E;&#xFF0C;&#x5EFA;&#x8BAE;&#x52A0;&#x4E0A;tfmini&#x7B49;&#x4F5C;&#x4E3A;&#x5B9A;&#x9AD8;&#x4F20;&#x611F;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x6D4B;&#x8BD5;&#xFF0C;&#x6709;uwb&#x52A0;&#x4E0A;tfmini&#xFF0C;&#x5B9A;&#x4F4D;&#x6548;&#x679C;&#x8F83;&#x597D;</li>
+</ol>
+<h2 id="&#x5199;&#x5728;&#x6700;&#x540E;">&#x5199;&#x5728;&#x6700;&#x540E;</h2>
+<ul>
+<li>&#x901A;&#x8FC7;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x7684;&#x6D4B;&#x8BD5;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x81F3;&#x5C11;&#x5728;&#x7535;&#x8D5B;&#x8D5B;&#x5236;&#x7684;&#x80CC;&#x666F;&#x4E0B;&#xFF0C;&#x7528;uwb&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x67D0;&#x4E9B;&#x9650;&#x5236;&#xFF0C;&#x6BD4;&#x5982;&#x573A;&#x5730;&#x4E0D;&#x4E00;&#x5B9A;&#x80FD;&#x591F;&#x5BB9;&#x7EB3;&#x6446;&#x653E;&#x4E0B;&#x57FA;&#x7AD9;&#xFF0C;&#x5E76;&#x4E14;&#x65E0;&#x6CD5;&#x5728;&#x6362;&#x573A;&#x5730;&#x540E;&#x8FDB;&#x884C;&#x6807;&#x5B9A;&#xFF0C;&#x53EF;&#x80FD;&#x53D7;&#x5230;&#x5E72;&#x6270;&#x7B49;</li>
+<li>&#x5BF9;&#x4E8E;&#x7535;&#x8D5B;&#xFF08;&#x8D5B;&#x573A;&#x4E0D;&#x5141;&#x8BB8;&#x643A;&#x5E26;&#x7B14;&#x8BB0;&#x672C;&#x53CA;pc&#xFF0C;&#x4E0A;&#x4F4D;&#x673A;&#x53EA;&#x652F;&#x6301;x86&#xFF0C;&#x6211;&#x4EEC;&#x624B;&#x4E0A;&#x5DF2;&#x6709;&#x7684;&#x677F;&#x8F7D;&#x7535;&#x8111;&#x7686;&#x4E3A;arm&#xFF0C;&#x65E0;&#x6CD5;&#x5728;&#x73B0;&#x573A;&#x8FDB;&#x884C;&#x6807;&#x5B9A;&#xFF09;&#x65E0;&#x6CD5;&#x5728;&#x6362;&#x573A;&#x5730;&#x540E;&#x8FDB;&#x884C;&#x6807;&#x5B9A;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x80FD;&#x8003;&#x8651;&#x81EA;&#x884C;&#x5199;&#x63A5;&#x53E3;&#xFF0C;&#x4F7F;&#x7528;&#x5355;&#x7247;&#x673A;&#x6216;&#x677F;&#x8F7D;&#x7535;&#x8111;&#x8FDB;&#x884C;&#x6807;&#x5B9A;&#xFF0C;&#x80FD;&#x591F;&#x5F88;&#x5927;&#x7A0B;&#x5EA6;&#x51CF;&#x5C11;&#x5BF9;&#x4F4D;&#x7F6E;&#x573A;&#x5730;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x6309;&#x7167;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x5199;&#x4E86;&#x4E00;&#x4EFD;&#x4E00;&#x952E;<a href="https://github.com/CGC12123/LinkTrack-Uwb-OneclickCalibration-STM32" target="_blank">&#x81EA;&#x52A8;&#x6807;&#x5B9A;&#x7684;&#x7A0B;&#x5E8F;</a>&#xFF0C;&#x4F46;&#x8FD8;&#x672A;&#x5728;&#x5B9E;&#x9645;&#x573A;&#x5730;&#x4E2D;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x3002;</li>
+</ul>
+
+                        
+                    </section>
+                    
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+
+        
+        
+        <a href="T265.html" class="navigation navigation-prev " aria-label="Previous page: T265的基本使用">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        
+        
+        <a href="D435.html" class="navigation navigation-next " aria-label="Next page: D435的基本使用">
+            <i class="fa fa-angle-right"></i>
+        </a>
+        
+        
+        
+    </div>
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"UWB的使用","level":"1.4.3","depth":2,"next":{"title":"D435的基本使用","level":"1.4.4","depth":2,"path":"02无人机相关/D435.md","ref":"02无人机相关/D435.md","articles":[]},"previous":{"title":"T265的基本使用","level":"1.4.2","depth":2,"path":"02无人机相关/T265.md","ref":"02无人机相关/T265.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-d4t","-lunr","search","search-pro","code","highlight","expandable-chapters","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-d4t":{},"d4t":{"search-placeholder":"请输入关键字搜索","logo":"assert/readmeAssert/logo.svg","favicon":"assert/readmeAssert/favicon.ico"},"search-pro":{},"search":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"BoomBoomFly","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"集美大学无人机科创实验室相关技术及配置手册","language":"zh-cn","gitbook":"*","description":"无人机实验室技术及配置文档"},"file":{"path":"02无人机相关/UWB.md","mtime":"2024-11-03T14:54:12.511Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-11-03T14:59:30.975Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-d4t/script.js"></script>
+        
+    
+
+    </body>
+</html>
+

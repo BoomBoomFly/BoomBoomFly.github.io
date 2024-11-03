@@ -14,6 +14,7 @@ module.exports = {
         "search",
         "search-pro",
         "code",
+        "highlight",
 
         "expandable-chapters",
         "back-to-top-button"
@@ -29,10 +30,6 @@ module.exports = {
             "search-placeholder": "请输入关键字搜索",
             "logo": "assert/readmeAssert/logo.svg",
             "favicon": "assert/readmeAssert/favicon.ico"
-        },
-        "github":
-        {
-            "url": "https://github.com/BoomBoomFly"
         },
     },
 
