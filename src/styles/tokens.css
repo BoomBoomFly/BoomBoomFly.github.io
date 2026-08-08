@@ -67,14 +67,14 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
   --bg: #191a1b;
-  --surface: #202224;
+  --surface: #191a1b;
   --text: #f5f6f7;
   --muted: #aeb4ba;
   --accent: #5aa9c7;
   --border: #34373a;
   --border-strong: #555a5e;
   --accent-soft: #24343b;
-  --color-surface-strong: #26292c;
+  --color-surface-strong: #191a1b;
   --color-accent-strong: #8ec8dc;
   --color-focus: #74bad2;
   --color-flight: #5aa9c7;

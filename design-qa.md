@@ -1,4 +1,44 @@
-# Theme Visual QA
+# Dark Surface Color QA
+
+- Date: `2026-08-09` (`Asia/Shanghai`)
+- Source visual truth: `qa-artifacts/references/theme-dark-mismatch-reference.png`
+- Implementation screenshot: `qa-artifacts/screenshots/theme-dark-unified-home.png`
+- Full-view comparison: `qa-artifacts/comparisons/theme-dark-unified-comparison.png`
+- Source pixels: `1439 × 481`; implementation pixels: `1439 × 481`
+- CSS viewport: `1439 × 481`; density: `1×`; no density scaling applied
+- State: homepage, dark theme, `TEAM / JOIN` closing cards
+
+## Findings and comparison history
+
+1. Initial P2: the source screenshot showed the page background at `rgb(25, 26, 27)` while the JOIN card used `rgb(32, 34, 36)`, creating an unintended split surface.
+2. Fix: dark `--surface` and `--color-surface-strong` now both resolve to `#191A1B`.
+3. Post-fix evidence: body and explicit card surface both compute to `rgb(25, 26, 27)`; the transparent card inherits the same value. No console errors or warnings were reported.
+
+## Fidelity surfaces
+
+- Fonts and typography: unchanged; outside the requested color correction.
+- Spacing and layout rhythm: unchanged. The user capture and browser capture use different scroll crops, so layout was not judged from their outer margins.
+- Colors and visual tokens: P2 mismatch resolved; both cards now share the requested solid dark background.
+- Image quality and assets: no image assets are present in the compared region.
+- Copy and content: unchanged.
+- Focused region: computed background values were used because the requested defect is a flat-color mismatch; no additional crop was required.
+
+## Verification
+
+- Browser interaction: light-to-dark theme switch and persistent theme state tested.
+- Browser console: no errors or warnings.
+- Browser regression: `37/37` passed.
+- Automated accessibility: `12/12` passed.
+- Astro diagnostics: `21` files, `0` errors, `0` warnings, `0` hints.
+- Production build: passed; `22` pages generated.
+
+## Final result
+
+`passed`
+
+---
+
+# Previous Theme Visual QA
 
 - Date: `2026-08-09` (`Asia/Shanghai`)
 - Implementation: `E:\BoomBoomfly_workspace\website`

@@ -45,6 +45,9 @@ test('theme preference stays consistent across Astro and Starlight', async ({ pa
   await themeToggle.click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe('rgb(25, 26, 27)');
+  await expect
+    .poll(() => page.locator('.closing-grid article').nth(1).evaluate((element) => getComputedStyle(element).backgroundColor))
+    .toBe('rgb(25, 26, 27)');
   await expect(themeToggle).toHaveAttribute('aria-label', '切换到浅色主题');
   await expect.poll(() => page.evaluate(() => localStorage.getItem('starlight-theme'))).toBe('dark');
 
