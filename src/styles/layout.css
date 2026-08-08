@@ -1,0 +1,25 @@
+.page-shell {
+  width: min(calc(100% - (2 * var(--space-page))), var(--page-width));
+  margin-inline: auto;
+}
+
+.page-main {
+  min-height: calc(100vh - var(--header-height) - 9rem);
+  padding-bottom: var(--space-9);
+}
+
+.stack { display: grid; gap: var(--space-5); }
+.stack-lg { display: grid; gap: var(--space-8); }
+.stack-xl { display: grid; gap: var(--space-section); }
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.content-width { width: min(100%, var(--article-width)); }
+
+@media (max-width: 64rem) {
+  .page-main { padding-bottom: var(--space-8); }
+}

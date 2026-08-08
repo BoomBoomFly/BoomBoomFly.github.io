@@ -1,0 +1,21 @@
+---
+import PageIntro from '../../components/PageIntro.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="团队" description="Drone Innovation Lab 团队。">
+  <PageIntro eyebrow="TEAM / 团队" title="团队" />
+  <section class="team-groups" aria-labelledby="groups-title">
+    <div class="team-groups__heading">
+      <p class="section-marker"><span>01</span> / PUBLIC ROSTER</p>
+      <h2 id="groups-title">团队名单</h2>
+      <a class="button secondary" href="/knowledge/legacy/hexo/team-2023/">查看 2023 年名录归档</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .team-groups { border-bottom: 1px solid var(--color-border-strong); padding-block: var(--space-section); }
+  .team-groups__heading { display: grid; align-content: start; gap: var(--space-4); }
+  .team-groups a { width: fit-content; }
+</style>

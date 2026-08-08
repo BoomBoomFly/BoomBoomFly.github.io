@@ -1,0 +1,26 @@
+---
+import PageIntro from '../../components/PageIntro.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="项目档案" description="Drone Innovation Lab 项目档案。">
+  <PageIntro eyebrow="PROJECTS / 项目档案" title="项目档案" />
+  <section class="projects-state stack-lg" aria-labelledby="archive-title">
+    <div>
+      <p class="section-marker"><span>01</span> / ARCHIVE STATUS</p>
+      <h2 id="archive-title">公开档案整理中</h2>
+    </div>
+    <div class="empty-state">
+      <span class="status-label">NO VERIFIED PROJECT RECORDS YET</span>
+      <div class="button-row">
+        <a class="button" href="/research/">浏览研究方向</a>
+        <a class="button secondary" href="/knowledge/">查看已有文档</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects-state { border-bottom: 1px solid var(--color-border-strong); padding-block: var(--space-section); }
+  .projects-state h2 { max-width: 12ch; margin-top: var(--space-3); }
+</style>

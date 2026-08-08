@@ -1,0 +1,22 @@
+---
+import DirectionList from '../../components/DirectionList.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="研究方向" description="无人飞行、感知定位、机器人与工程工具方向。">
+  <PageIntro eyebrow="RESEARCH / 研究方向" title="研究方向" />
+  <section class="subpage-section stack-lg" aria-labelledby="directions-title">
+    <div class="section-heading">
+      <div>
+        <p class="section-marker"><span>01</span> / DIRECTIONS</p>
+        <h2 id="directions-title">方向</h2>
+      </div>
+    </div>
+    <DirectionList headingLevel="h3" />
+  </section>
+</BaseLayout>
+
+<style>
+  .subpage-section { border-bottom: 1px solid var(--color-border-strong); padding-block: var(--space-section); }
+</style>

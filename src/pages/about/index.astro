@@ -1,0 +1,33 @@
+---
+import PageIntro from '../../components/PageIntro.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../config/site';
+---
+
+<BaseLayout title="关于实验室" description="Drone Innovation Lab。">
+  <PageIntro eyebrow="ABOUT / 关于" title="关于实验室" />
+  <section class="facts" aria-label="实验室基本信息">
+    <article><span>EST.</span><strong>{site.established}</strong><p>始建年份</p></article>
+    <article><span>LOCATION</span><strong>106–107</strong><p>集美大学克立楼</p></article>
+    <article><span>FOCUS</span><strong>UAV · ROBOTICS</strong><p>无人机、机器人与智能感知</p></article>
+  </section>
+  <section class="about-links" aria-label="相关链接">
+    <div class="button-row">
+      <a class="button" href="/knowledge/">技术文档</a>
+      <a class="button secondary" href="/knowledge/legacy/lab-introduction/">GitBook 介绍</a>
+      <a class="button secondary" href="/knowledge/legacy/hexo/about-2023/">2023 年介绍</a>
+      <a class="button secondary" href="/join/">加入我们</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--color-border-strong); }
+  .facts article { display: grid; gap: var(--space-3); padding: clamp(1.5rem, 4vw, 3.5rem); }
+  .facts article + article { border-left: 1px solid var(--color-border); }
+  .facts span { color: var(--color-accent); font: 750 .7rem/1 var(--font-mono); letter-spacing: .1em; }
+  .facts strong { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.5rem); letter-spacing: -.04em; }
+  .facts p { color: var(--color-text-muted); }
+  .about-links { padding-block: var(--space-section); }
+  @media (max-width: 42rem) { .facts { grid-template-columns: 1fr; } .facts article + article { border-top: 1px solid var(--color-border); border-left: 0; } }
+</style>

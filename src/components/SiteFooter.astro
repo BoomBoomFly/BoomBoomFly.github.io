@@ -1,0 +1,35 @@
+---
+import { site } from '../config/site';
+---
+
+<footer class="site-footer">
+  <div class="page-shell site-footer__inner">
+    <div class="site-footer__statement">
+      <p class="eyebrow">Drone Innovation Lab</p>
+      <p>{site.chineseName} · 成立于 {site.established} 年</p>
+    </div>
+    <div class="site-footer__meta">
+      <nav aria-label="页脚导航">
+        <a href="/research/">研究方向</a>
+        <a href="/knowledge/">技术文档</a>
+        <a href="/team/">团队</a>
+        <a href="/join/">加入我们</a>
+        <a href="/about/">关于</a>
+        <a href={site.github}>GitHub</a>
+      </nav>
+      <p>© {new Date().getFullYear()} {site.name} · Astro + Starlight</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { margin-top: var(--space-section); border-top: 1px solid var(--color-border); background: var(--color-surface-strong); }
+  .site-footer__inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(18rem, 3fr); gap: var(--space-8); align-items: end; min-height: 12rem; padding-block: var(--space-8); }
+  .site-footer__statement { display: grid; gap: var(--space-4); }
+  .site-footer__statement > p:last-child, .site-footer__meta > p { color: var(--color-text-muted); font-size: .82rem; }
+  .site-footer__meta { display: grid; gap: var(--space-6); }
+  nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3) var(--space-5); }
+  nav a { min-height: 2.75rem; color: var(--color-text); font-size: .86rem; font-weight: 720; text-decoration-color: var(--color-border-strong); }
+  nav a:hover { color: var(--color-accent-strong); }
+  @media (max-width: 48rem) { .site-footer__inner { grid-template-columns: 1fr; min-height: 0; } }
+</style>

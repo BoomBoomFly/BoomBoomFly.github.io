@@ -1,0 +1,139 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+import { navigation, site } from '../config/site';
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => pathname.startsWith(href);
+---
+
+<header class="site-header" data-site-header>
+  <div class="page-shell site-header__inner">
+    <a class="brand" href="/" aria-label={`${site.name} 首页`}>
+      <img src={site.logo} width="200" height="200" alt="" />
+      <span class="brand__copy">
+        <strong>{site.name}</strong>
+        <small>Jimei University · Engineering Notes</small>
+      </span>
+    </a>
+
+    <div class="site-header__actions">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">菜单</button>
+      <nav id="site-navigation" aria-label="主导航">
+        <ul>
+          {navigation.map((item) => (
+            <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<button class="theme-toggle" type="button" aria-label="切换到深色主题" title="切换到深色主题" data-theme-toggle>
+  <span class="theme-toggle__icon theme-toggle__icon--moon"><Icon name="moon" size="1.25rem" /></span>
+  <span class="theme-toggle__icon theme-toggle__icon--sun"><Icon name="sun" size="1.25rem" /></span>
+</button>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const menu = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = header?.querySelector<HTMLElement>('#site-navigation');
+  const mobileQuery = window.matchMedia('(max-width: 64rem)');
+
+  const closeMenu = (restoreFocus = false) => {
+    if (menu?.getAttribute('aria-expanded') !== 'true') return;
+    menu.setAttribute('aria-expanded', 'false');
+    nav?.removeAttribute('data-open');
+    if (restoreFocus) menu.focus();
+  };
+
+  const openMenu = () => {
+    menu?.setAttribute('aria-expanded', 'true');
+    nav?.setAttribute('data-open', '');
+    nav?.querySelector<HTMLElement>('a')?.focus();
+  };
+
+  menu?.addEventListener('click', () => {
+    menu.getAttribute('aria-expanded') === 'true' ? closeMenu(true) : openMenu();
+  });
+  nav?.querySelectorAll('a').forEach((item) => item.addEventListener('click', () => closeMenu(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') {
+      event.preventDefault();
+      closeMenu(true);
+    }
+  });
+  document.addEventListener('pointerdown', (event) => {
+    if (menu?.getAttribute('aria-expanded') !== 'true') return;
+    if (event.target instanceof Node && !nav?.contains(event.target) && !menu.contains(event.target)) closeMenu(false);
+  });
+  mobileQuery.addEventListener('change', () => closeMenu(false));
+
+  const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const syncTheme = (theme: string) => {
+    const dark = theme === 'dark';
+    toggle?.setAttribute('aria-pressed', String(dark));
+    toggle?.setAttribute('data-theme-state', theme);
+    const action = dark ? '切换到浅色主题' : '切换到深色主题';
+    toggle?.setAttribute('aria-label', action);
+    toggle?.setAttribute('title', action);
+  };
+
+  syncTheme(document.documentElement.dataset.theme ?? 'light');
+  toggle?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem('boomboomfly-theme', next);
+      localStorage.setItem('starlight-theme', next);
+    } catch {}
+    syncTheme(next);
+  });
+</script>
+
+<noscript>
+  <style is:global>
+    @media (max-width: 64rem) {
+      .menu-toggle { display: none !important; }
+      #site-navigation { position: static !important; display: block !important; border: 0 !important; padding: 0 !important; background: transparent !important; box-shadow: none !important; }
+      #site-navigation ul { display: flex !important; max-width: calc(100vw - (2 * var(--space-page))); overflow-x: auto; }
+      #site-navigation a { white-space: nowrap; }
+    }
+  </style>
+</noscript>
+
+<style>
+  .site-header { position: relative; z-index: 30; border-bottom: 1px solid var(--color-border); background: color-mix(in srgb, var(--color-bg) 94%, transparent); backdrop-filter: blur(16px); }
+  .site-header__inner { display: flex; min-height: var(--header-height); align-items: center; justify-content: space-between; gap: var(--space-6); }
+  .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: .85rem; color: var(--color-text); text-decoration: none; }
+  .brand img { width: 3.15rem; height: 3.15rem; object-fit: contain; filter: var(--logo-filter); }
+  .brand__copy { display: grid; gap: .28rem; line-height: 1; }
+  .brand strong { font-size: 1rem; font-weight: 850; letter-spacing: -.025em; }
+  .brand small { color: var(--color-text-muted); font: 700 .58rem/1 var(--font-mono); letter-spacing: .11em; text-transform: uppercase; }
+  .site-header__actions { display: flex; align-items: center; gap: var(--space-3); }
+  nav ul { display: flex; gap: clamp(1rem, 2vw, 2rem); margin: 0; padding: 0; list-style: none; }
+  nav a { display: block; border-bottom: 2px solid transparent; padding-block: .65rem .5rem; color: var(--color-text-muted); font-size: .86rem; font-weight: 720; text-decoration: none; transition: color var(--transition-fast), border-color var(--transition-fast); }
+  nav a:hover, nav a[aria-current='page'] { border-color: var(--color-accent); color: var(--color-text); }
+  .menu-toggle { display: none; min-width: 3.2rem; min-height: 2.8rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text); font: 720 .75rem/1 var(--font-mono); cursor: pointer; }
+  .theme-toggle { position: fixed; z-index: 45; right: 1rem; bottom: 2.5rem; display: grid; width: 3rem; min-height: 3rem; place-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0; background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow-soft); cursor: pointer; transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast); }
+  .theme-toggle:hover { transform: translateY(-.2rem); border-color: var(--color-border-strong); background: var(--color-accent-soft); }
+  .theme-toggle__icon { display: grid; grid-area: 1 / 1; place-items: center; line-height: 0; transition: opacity var(--transition-fast), transform var(--transition-fast); }
+  .theme-toggle__icon--sun, .theme-toggle[data-theme-state='dark'] .theme-toggle__icon--moon { opacity: 0; transform: scale(.75) rotate(-18deg); }
+  .theme-toggle__icon--moon, .theme-toggle[data-theme-state='dark'] .theme-toggle__icon--sun { opacity: 1; transform: scale(1) rotate(0); }
+
+  @media (max-width: 64rem) {
+    .site-header__inner { padding-right: calc(var(--space-page) + 3.5rem); }
+    .menu-toggle { display: block; }
+    nav { position: absolute; top: calc(100% + .5rem); right: var(--space-page); left: var(--space-page); display: none; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-3); background: var(--color-surface); box-shadow: var(--shadow-float); }
+    nav[data-open] { display: block; }
+    nav ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2) var(--space-4); }
+    nav a { min-height: 2.75rem; text-align: center; }
+  }
+
+  @media (max-width: 38rem) {
+    .brand img { width: 2.7rem; height: 2.7rem; }
+    .brand small { display: none; }
+    nav ul { grid-template-columns: repeat(2, 1fr); }
+    .theme-toggle { right: .75rem; bottom: calc(.75rem + env(safe-area-inset-bottom)); }
+  }
+</style>

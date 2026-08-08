@@ -1,0 +1,29 @@
+---
+import { researchDirections } from '../config/site';
+
+interface Props { headingLevel?: 'h2' | 'h3'; }
+const { headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+---
+
+<div class="direction-list">
+  {researchDirections.map((direction, index) => (
+    <article class="direction-item">
+      <p class="direction-item__index">{String(index + 1).padStart(2, '0')}</p>
+      <div class="direction-item__body">
+        <Heading><a href={direction.href}>{direction.title}</a></Heading>
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .direction-list { display: grid; border-top: 1px solid var(--color-border-strong); }
+  .direction-item { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: clamp(1.25rem, 4vw, 4rem); align-items: start; border-bottom: 1px solid var(--color-border); padding-block: clamp(1.75rem, 4vw, 3.25rem); }
+  .direction-item__index { color: var(--color-accent); font: 750 clamp(1.35rem, 2.5vw, 2.2rem)/1 var(--font-mono); }
+  .direction-item__body :global(h2), .direction-item__body :global(h3) { font-size: clamp(1.7rem, 3.3vw, 3rem); }
+  .direction-item__body a { text-decoration: none; }
+  .direction-item__body a:hover { color: var(--color-accent-strong); }
+  @media (max-width: 62rem) { .direction-item { grid-template-columns: 3rem minmax(0, 1fr); } }
+  @media (max-width: 36rem) { .direction-item { grid-template-columns: 1fr; } }
+</style>

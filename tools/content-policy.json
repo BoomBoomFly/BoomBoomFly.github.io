@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "sourceAllowlist": "80_Publish",
+  "allowedVisibility": ["public"],
+  "allowedStatus": ["ready", "published"],
+  "requiredChecks": [
+    "metadata",
+    "assets",
+    "links",
+    "routes",
+    "sensitive-information"
+  ],
+  "generatedContentRoot": "src/content/docs/knowledge/legacy",
+  "generatedAssetsRoot": "public/images/generated",
+  "allowedGeneratedPlaceholders": ["public/images/generated/.gitkeep"],
+  "existingRoutes": [
+    "/",
+    "/research/",
+    "/projects/",
+    "/knowledge/",
+    "/knowledge/research/flight-control/",
+    "/knowledge/research/perception-localization/",
+    "/knowledge/research/robotics-intelligence/",
+    "/knowledge/tools/",
+    "/team/",
+    "/join/",
+    "/about/"
+  ],
+  "publicCi": {
+    "repositoryScope": "website",
+    "allowPrivateRepositoryAccess": false,
+    "validateCommittedArtifactsOnly": true
+  }
+}

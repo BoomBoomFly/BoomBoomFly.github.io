@@ -1,0 +1,80 @@
+.eyebrow,
+.section-marker {
+  color: var(--color-text-muted);
+  font: 750 0.7rem/1.35 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-marker span { color: var(--color-accent); }
+
+.lede {
+  max-width: 50rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1.04rem, 1.8vw, 1.28rem);
+}
+
+.button-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+
+.button {
+  display: inline-flex;
+  min-height: 3.1rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  padding: 0.7rem 1.35rem;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 760;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.button:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.button:active { transform: translateY(0) scale(0.98); }
+.button.secondary { border-color: var(--color-border-strong); background: transparent; color: var(--color-text); }
+.button.secondary:hover { border-color: var(--color-accent); background: var(--color-surface); }
+
+.text-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  color: var(--color-text);
+  font-weight: 720;
+  text-decoration-color: var(--color-accent);
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(16rem, 3fr);
+  gap: var(--space-7);
+  align-items: end;
+}
+
+.section-heading h2 { margin-top: var(--space-3); }
+.section-heading > p { color: var(--color-text-muted); }
+
+.empty-state {
+  display: grid;
+  gap: var(--space-5);
+  border-block: 1px solid var(--color-border-strong);
+  padding-block: clamp(2rem, 6vw, 4rem);
+}
+
+.empty-state p { max-width: 52rem; color: var(--color-text-muted); }
+
+.status-label {
+  width: fit-content;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.75rem;
+  background: var(--color-surface);
+  color: var(--color-accent-strong);
+  font: 750 0.7rem/1 var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 48rem) {
+  .section-heading { grid-template-columns: 1fr; gap: var(--space-4); }
+}

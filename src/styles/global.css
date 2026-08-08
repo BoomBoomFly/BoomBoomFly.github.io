@@ -1,0 +1,40 @@
+@import './tokens.css';
+@import './typography.css';
+@import './layout.css';
+@import './components.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { min-width: 20rem; background: var(--color-bg); scroll-behavior: smooth; }
+body { margin: 0; overflow-x: hidden; background: var(--color-bg); }
+img { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+button { color: inherit; }
+[hidden] { display: none !important; }
+
+:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+::selection { background: var(--color-accent-soft); }
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: var(--space-3);
+  left: var(--space-3);
+  transform: translateY(-180%);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1rem;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 750;
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

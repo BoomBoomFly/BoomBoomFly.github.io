@@ -1,0 +1,50 @@
+---
+import PageIntro from '../../components/PageIntro.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { researchDirections, site } from '../../config/site';
+---
+
+<BaseLayout title="加入我们" description="加入 Drone Innovation Lab。">
+  <PageIntro eyebrow="JOIN / 加入我们" title="加入我们" />
+  <section class="join-section interests" aria-labelledby="interests-title">
+    <div>
+      <p class="section-marker"><span>01</span> / INTERESTS</p>
+      <h2 id="interests-title">研究方向</h2>
+    </div>
+    <ul>
+      {researchDirections.map((direction) => <li><a href={direction.href}>{direction.title}</a></li>)}
+    </ul>
+  </section>
+  <section class="join-section process" aria-labelledby="process-title">
+    <div>
+      <p class="section-marker"><span>02</span> / PREPARE</p>
+      <h2 id="process-title">准备</h2>
+    </div>
+    <ol>
+      <li><span>01</span><div><h3>阅读公开资料</h3></div></li>
+      <li><span>02</span><div><h3>准备具体问题</h3></div></li>
+      <li><span>03</span><div><h3>关注招募通知</h3></div></li>
+    </ol>
+  </section>
+  <aside class="location-note" aria-labelledby="location-title">
+    <p class="eyebrow">LOCATION</p>
+    <div>
+      <h2 id="location-title">{site.location}</h2>
+    </div>
+  </aside>
+</BaseLayout>
+
+<style>
+  .join-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(25rem, 1.5fr); gap: clamp(2rem, 8vw, 8rem); border-bottom: 1px solid var(--color-border-strong); padding-block: var(--space-section); }
+  .join-section h2 { max-width: 14ch; margin-top: var(--space-3); }
+  .interests ul, .process ol { display: grid; margin: 0; padding: 0; list-style: none; }
+  .interests li { border-top: 1px solid var(--color-border); padding-block: var(--space-5); }
+  .interests a { display: inline-block; margin-bottom: var(--space-2); font-size: 1.25rem; font-weight: 760; text-decoration-color: var(--color-accent); }
+  .process li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: var(--space-4); border-top: 1px solid var(--color-border); padding-block: var(--space-5); }
+  .process li > span { color: var(--color-accent); font: 750 .8rem/1.6 var(--font-mono); }
+  .process li div { display: grid; gap: var(--space-2); }
+  .location-note { display: grid; grid-template-columns: 2fr 8fr; gap: clamp(2rem, 7vw, 7rem); padding-block: var(--space-section); }
+  .location-note > div { display: grid; gap: var(--space-4); }
+  .location-note h2 { max-width: 18ch; }
+  @media (max-width: 50rem) { .join-section, .location-note { grid-template-columns: 1fr; } }
+</style>
