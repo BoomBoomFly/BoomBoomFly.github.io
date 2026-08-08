@@ -1,10 +1,8 @@
 ---
 title: "Conda 环境管理及常用指令"
-description: "旧站公开的 Conda 环境与软件包管理命令。"
+description: "Conda 环境与软件包管理常用命令。"
 editUrl: false
 ---
-
-> 历史资料，内容可能过时。
 
 > Author: CGC
 

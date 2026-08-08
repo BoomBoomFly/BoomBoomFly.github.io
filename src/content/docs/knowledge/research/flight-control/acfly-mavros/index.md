@@ -1,10 +1,8 @@
 ---
 title: "在上位机安装 ACFly-Mavros"
-description: "旧站公开的 ACFly-Mavros、RealSense 与 ROS 安装使用记录。"
+description: "Jetson 上配置 ACFly-Mavros、Intel RealSense 与 ROS 的操作记录。"
 editUrl: false
 ---
-
-> 历史资料，内容可能过时。
 
 > Author: CGC
 

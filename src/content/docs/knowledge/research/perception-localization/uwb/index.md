@@ -1,10 +1,8 @@
 ---
 title: "关于 UWB 的使用"
-description: "旧站公开的 LinkTrack UWB 初始化、通信协议与飞控接入记录。"
+description: "LinkTrack UWB 初始化、通信协议与飞控接入记录。"
 editUrl: false
 ---
-
-> 历史资料，内容可能过时。
 
 > Author: CGC
 

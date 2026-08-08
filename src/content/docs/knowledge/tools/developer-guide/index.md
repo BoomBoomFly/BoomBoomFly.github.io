@@ -1,10 +1,8 @@
 ---
-title: "旧 GitBook 开发者使用手册"
-description: "旧 GitBook 的 Node、GitBook、编辑、预览与部署操作记录。"
+title: "GitBook 开发者使用手册"
+description: "GitBook 的 Node.js、编辑、预览与部署操作记录。"
 editUrl: false
 ---
-
-> 历史资料，内容可能过时。
 
 > Author: CGC
 > 

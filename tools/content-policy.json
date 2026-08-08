@@ -10,9 +10,23 @@
     "routes",
     "sensitive-information"
   ],
-  "generatedContentRoot": "src/content/docs/knowledge/legacy",
+  "generatedContentRoot": "src/content/docs/knowledge",
+  "generatedContentRoutePrefix": "/knowledge/",
+  "allowedGeneratedRoutePrefixes": [
+    "/knowledge/research/flight-control/",
+    "/knowledge/research/perception-localization/",
+    "/knowledge/tools/",
+    "/knowledge/history/"
+  ],
   "generatedAssetsRoot": "public/images/generated",
-  "allowedGeneratedPlaceholders": ["public/images/generated/.gitkeep"],
+  "allowedGeneratedPlaceholders": [
+    "src/content/docs/knowledge/index.mdx",
+    "src/content/docs/knowledge/research/flight-control.mdx",
+    "src/content/docs/knowledge/research/perception-localization.mdx",
+    "src/content/docs/knowledge/research/robotics-intelligence.mdx",
+    "src/content/docs/knowledge/tools/index.mdx",
+    "public/images/generated/.gitkeep"
+  ],
   "existingRoutes": [
     "/",
     "/research/",
@@ -26,6 +40,14 @@
     "/join/",
     "/about/"
   ],
+  "staticRedirects": {
+    "/knowledge/legacy/gitbook/drone-docs/": "/knowledge/research/flight-control/",
+    "/02无人机相关/": "/knowledge/research/flight-control/",
+    "/02无人机相关/index.html": "/knowledge/research/flight-control/",
+    "/knowledge/legacy/gitbook/developer-tools/": "/knowledge/tools/",
+    "/01常用开发工具/": "/knowledge/tools/",
+    "/01常用开发工具/index.html": "/knowledge/tools/"
+  },
   "publicCi": {
     "repositoryScope": "website",
     "allowPrivateRepositoryAccess": false,

@@ -2,135 +2,125 @@
   "schemaVersion": 1,
   "content": [
     {
-      "source": "80_Publish/legacy/gitbook/acfly-mavros.md",
-      "sourceSha256": "da2d6b1bff6b838600dba45ba245431be1eec4af9559659368a60ab53228d682",
-      "target": "src/content/docs/knowledge/legacy/gitbook/acfly-mavros/index.md",
-      "sha256": "5a1eada8e7c955359b38c932420b94a4f657807fd6ab69c4ca2ebc95c2660e92",
-      "route": "/knowledge/legacy/gitbook/acfly-mavros/",
+      "source": "80_Publish/history/about-2023.md",
+      "sourceSha256": "2e63dc6165197210d5d6933ecd302384533a520047a3102663c1469fea31e5f4",
+      "target": "src/content/docs/knowledge/history/about-2023/index.md",
+      "sha256": "3b0dace13e143c8e470d30ea2a66700f2988d5ee5701fdee67c604636ee009ca",
+      "route": "/knowledge/history/about-2023/",
       "legacyUrls": [
-        "/02无人机相关/ACFly-Mavros.html"
+        "/2023/10/29/about/",
+        "/knowledge/legacy/hexo/about-2023/"
       ]
     },
     {
-      "source": "80_Publish/legacy/gitbook/conda.md",
-      "sourceSha256": "912364f9f6491ee44a16a66e5cd7c168daa43779d15bb2c5d7b30efb60140e7c",
-      "target": "src/content/docs/knowledge/legacy/gitbook/conda/index.md",
-      "sha256": "d1c04fe9e6f89d0ea924331a6e295246f6856b06d31de3ce473be648934238fd",
-      "route": "/knowledge/legacy/gitbook/conda/",
+      "source": "80_Publish/history/lab-introduction.md",
+      "sourceSha256": "b8eb0de11c671f8a74ca686ec2a1fa5ce8d09fbce4c364cb9d62d860688f2e67",
+      "target": "src/content/docs/knowledge/history/lab-introduction/index.md",
+      "sha256": "0b5688590f8cc664a0293b3f0534a0b1dec136cd598aa216935ed94eabbc29b1",
+      "route": "/knowledge/history/lab-introduction/",
       "legacyUrls": [
-        "/01常用开发工具/conda.html"
+        "/knowledge/legacy/lab-introduction/"
       ]
     },
     {
-      "source": "80_Publish/legacy/gitbook/d435.md",
-      "sourceSha256": "9324d2f400e71e0f106f34932ea6bbdcbd37d3c95f8fbd1e465417f70006b395",
-      "target": "src/content/docs/knowledge/legacy/gitbook/d435/index.md",
-      "sha256": "06781aa3aa2379f20486108afb644d1d38d3426a3a932e390dc4e36bd3967f00",
-      "route": "/knowledge/legacy/gitbook/d435/",
+      "source": "80_Publish/history/team-2023.md",
+      "sourceSha256": "5c432fd353a0653d50670a97f0bf119789e23da8b49980698c86a3f832ded6a3",
+      "target": "src/content/docs/knowledge/history/team-2023/index.md",
+      "sha256": "a0c3f9582bbdef348b294928e679fb6174d1d46a9361c1aa91e61d4bb9a607a2",
+      "route": "/knowledge/history/team-2023/",
       "legacyUrls": [
-        "/02无人机相关/D435.html"
+        "/group/",
+        "/knowledge/legacy/hexo/team-2023/"
       ]
     },
     {
-      "source": "80_Publish/legacy/gitbook/developer-guide.md",
-      "sourceSha256": "2788ba0b0a437acbb7afd98714f74324f22df17a8c64bc9692b7dcf7b6b4610d",
-      "target": "src/content/docs/knowledge/legacy/gitbook/developer-guide/index.md",
-      "sha256": "51abd41136ef19e3b47ec4983c36fe3f96bf0b6544b85603df384c971f76b7a3",
-      "route": "/knowledge/legacy/gitbook/developer-guide/",
+      "source": "80_Publish/research/flight-control/acfly-mavros.md",
+      "sourceSha256": "9bb16647bf8af09182dcd31e8a223aa0d37a77d38635169439a87341e0dbd2a0",
+      "target": "src/content/docs/knowledge/research/flight-control/acfly-mavros/index.md",
+      "sha256": "13f17336910b0055d1d655479aa2836f06eba2559ccbbe80af7f5ac1c37dddba",
+      "route": "/knowledge/research/flight-control/acfly-mavros/",
+      "legacyUrls": [
+        "/02无人机相关/ACFly-Mavros.html",
+        "/knowledge/legacy/gitbook/acfly-mavros/"
+      ]
+    },
+    {
+      "source": "80_Publish/research/perception-localization/d435.md",
+      "sourceSha256": "917608be5e636d2e4df99d9967ced8c9469bda36da7bfbf92583651191d6df80",
+      "target": "src/content/docs/knowledge/research/perception-localization/d435/index.md",
+      "sha256": "edf35a95e82c2e3038272d344c7d626ebbcf9942cdbb7fb0809a36185b3c5fee",
+      "route": "/knowledge/research/perception-localization/d435/",
+      "legacyUrls": [
+        "/02无人机相关/D435.html",
+        "/knowledge/legacy/gitbook/d435/"
+      ]
+    },
+    {
+      "source": "80_Publish/research/perception-localization/t265.md",
+      "sourceSha256": "578f432efb945a26fff8207a59d5e2164413e3902dfd6530a64429d0aecdf0a1",
+      "target": "src/content/docs/knowledge/research/perception-localization/t265/index.md",
+      "sha256": "cf9b0e70b26ee7f55a3716da48bff21f38e93975b754c5dda1eeb2722de5573e",
+      "route": "/knowledge/research/perception-localization/t265/",
+      "legacyUrls": [
+        "/02无人机相关/T265.html",
+        "/knowledge/legacy/gitbook/t265/"
+      ]
+    },
+    {
+      "source": "80_Publish/research/perception-localization/uwb.md",
+      "sourceSha256": "01cf987132170a33eed4ad2d5cf26bb6d4d597f7b3e6127ab303ab87897cb608",
+      "target": "src/content/docs/knowledge/research/perception-localization/uwb/index.md",
+      "sha256": "fd895576bc4c3a5a29e064630a0a20f0571021389d6e4be59a655480ae0fe997",
+      "route": "/knowledge/research/perception-localization/uwb/",
+      "legacyUrls": [
+        "/02无人机相关/UWB.html",
+        "/knowledge/legacy/gitbook/uwb/"
+      ]
+    },
+    {
+      "source": "80_Publish/tools/conda.md",
+      "sourceSha256": "e663613289b82c87eccf0866375863e052be1cec4a831fb41503dd21604e66c6",
+      "target": "src/content/docs/knowledge/tools/conda/index.md",
+      "sha256": "bae4209ff1651ddb77426fcf346132addba389149995aa71ae9e0aac384332fc",
+      "route": "/knowledge/tools/conda/",
+      "legacyUrls": [
+        "/01常用开发工具/conda.html",
+        "/knowledge/legacy/gitbook/conda/"
+      ]
+    },
+    {
+      "source": "80_Publish/tools/developer-guide.md",
+      "sourceSha256": "d4625001a21f5ac1e17c5800ee381b17bcaa4c51bb898b0d160c433442fc7df9",
+      "target": "src/content/docs/knowledge/tools/developer-guide/index.md",
+      "sha256": "e02a44dc678f347001f0184de47fd392a10aeef0338ab8693d8d343f38abcf10",
+      "route": "/knowledge/tools/developer-guide/",
       "legacyUrls": [
         "/00开发者使用手册/",
-        "/00开发者使用手册/index.html"
+        "/00开发者使用手册/index.html",
+        "/knowledge/legacy/gitbook/developer-guide/"
       ]
     },
     {
-      "source": "80_Publish/legacy/gitbook/developer-tools.md",
-      "sourceSha256": "cbf90c02e99107a8e08c1a301917e34c5878cc478383053af34553be2898d11e",
-      "target": "src/content/docs/knowledge/legacy/gitbook/developer-tools/index.md",
-      "sha256": "b4bcffa9bd583462d0e86b0788b0cf34301e454fbb8eb1371299d52ec3e7251d",
-      "route": "/knowledge/legacy/gitbook/developer-tools/",
+      "source": "80_Publish/tools/git.md",
+      "sourceSha256": "23d9d40167b7be415c6884610808a4bee56bd5f52f154bdd0fc4ccf934e320be",
+      "target": "src/content/docs/knowledge/tools/git/index.md",
+      "sha256": "6f6ec58a94c56284a0c46ece08e219376737bf9b1c06801738b2d1ad3808a56b",
+      "route": "/knowledge/tools/git/",
       "legacyUrls": [
-        "/01常用开发工具/",
-        "/01常用开发工具/index.html"
+        "/01常用开发工具/git.html",
+        "/knowledge/legacy/gitbook/git/"
       ]
     },
     {
-      "source": "80_Publish/legacy/gitbook/drone-docs.md",
-      "sourceSha256": "f1204f94febf8de483b93c4480b9b925264ccbfe04b3f026c859e771fcccc304",
-      "target": "src/content/docs/knowledge/legacy/gitbook/drone-docs/index.md",
-      "sha256": "183e1c4a33c3646e0c15978dc222f6535815c7dfa755046020674141d027f9e7",
-      "route": "/knowledge/legacy/gitbook/drone-docs/",
+      "source": "80_Publish/tools/ubuntu-20-04-sources.md",
+      "sourceSha256": "f2a4fd2309d9cf38ed0bfe2781183e1e8f2a13e4df0a6a5ffac49fdf08586401",
+      "target": "src/content/docs/knowledge/tools/ubuntu-20-04-sources/index.md",
+      "sha256": "6308cda0c6f4b0618f71f88bab2adc69cb737af91bdf4904609d98aebcb25925",
+      "route": "/knowledge/tools/ubuntu-20-04-sources/",
       "legacyUrls": [
-        "/02无人机相关/",
-        "/02无人机相关/index.html"
+        "/01常用开发工具/ubuntu换源.html",
+        "/knowledge/legacy/gitbook/ubuntu-20-04-sources/"
       ]
-    },
-    {
-      "source": "80_Publish/legacy/gitbook/git.md",
-      "sourceSha256": "6d1112349ccb19ba2eac6e1ed507c15a50d0a4e0120fdc6b67a728a099e8ad9f",
-      "target": "src/content/docs/knowledge/legacy/gitbook/git/index.md",
-      "sha256": "4ec4c4d619f4bedd6e7cb4e001aa0fab4370825396122fb44b393c395844e178",
-      "route": "/knowledge/legacy/gitbook/git/",
-      "legacyUrls": [
-        "/01常用开发工具/git.html"
-      ]
-    },
-    {
-      "source": "80_Publish/legacy/gitbook/t265.md",
-      "sourceSha256": "f5489847431957fdb8016193a3ab91d1f2be9086103baa003e3d4681969ea49a",
-      "target": "src/content/docs/knowledge/legacy/gitbook/t265/index.md",
-      "sha256": "89b5d1e7f5a764517f00a825e630ded1a13d6c2a9b03bb479517de127110a8e8",
-      "route": "/knowledge/legacy/gitbook/t265/",
-      "legacyUrls": [
-        "/02无人机相关/T265.html"
-      ]
-    },
-    {
-      "source": "80_Publish/legacy/gitbook/ubuntu-20-04-sources.md",
-      "sourceSha256": "1ff141c37d9d5ed2a279c54605fb67515aca8c7212d3233326693c9f1ef29f5b",
-      "target": "src/content/docs/knowledge/legacy/gitbook/ubuntu-20-04-sources/index.md",
-      "sha256": "d9b5853667d2ff4f177f9de3d48822e40aceff0bfc39bdba4f88c96d9dafb219",
-      "route": "/knowledge/legacy/gitbook/ubuntu-20-04-sources/",
-      "legacyUrls": [
-        "/01常用开发工具/ubuntu换源.html"
-      ]
-    },
-    {
-      "source": "80_Publish/legacy/gitbook/uwb.md",
-      "sourceSha256": "bf78337d46aaad28588a5301d90a986bd47bc5704db3195ed139503a62632e6e",
-      "target": "src/content/docs/knowledge/legacy/gitbook/uwb/index.md",
-      "sha256": "28b1afd63a72025b89d3d5c1d021bf4ea12509f9e4c61c6f519ad815bed14b77",
-      "route": "/knowledge/legacy/gitbook/uwb/",
-      "legacyUrls": [
-        "/02无人机相关/UWB.html"
-      ]
-    },
-    {
-      "source": "80_Publish/legacy/hexo/about-2023.md",
-      "sourceSha256": "036db7453300af48a2525b080b43682283081d1d9830ff9fd38277a2775ac513",
-      "target": "src/content/docs/knowledge/legacy/hexo/about-2023/index.md",
-      "sha256": "d2cae57aa187cc6a5bbcfb0e92c5e191db48f175f62fcb46c95a8aa7b9f69a60",
-      "route": "/knowledge/legacy/hexo/about-2023/",
-      "legacyUrls": [
-        "/2023/10/29/about/"
-      ]
-    },
-    {
-      "source": "80_Publish/legacy/hexo/team-2023.md",
-      "sourceSha256": "034a47f1a209827fdf0d36ab72c21fec85da43bfc32fef66c1cf064983c019f5",
-      "target": "src/content/docs/knowledge/legacy/hexo/team-2023/index.md",
-      "sha256": "01ef5ce557827118f923c5cc692c3b6cb09b95c076e2b10478cac687ee7e5f94",
-      "route": "/knowledge/legacy/hexo/team-2023/",
-      "legacyUrls": [
-        "/group/"
-      ]
-    },
-    {
-      "source": "80_Publish/legacy/lab-introduction.md",
-      "sourceSha256": "3b31c2b4a3939ef74222b07c9a49daeda76472ece1b02c5f3a3df8c6bf772398",
-      "target": "src/content/docs/knowledge/legacy/lab-introduction/index.md",
-      "sha256": "7561704a1700535eca34b137725a472e5d26f7d98006db00b92e34504e29dafe",
-      "route": "/knowledge/legacy/lab-introduction/",
-      "legacyUrls": []
     }
   ],
   "assets": [
@@ -154,20 +144,33 @@
     }
   ],
   "redirects": {
-    "/02无人机相关/ACFly-Mavros.html": "/knowledge/legacy/gitbook/acfly-mavros/",
-    "/01常用开发工具/conda.html": "/knowledge/legacy/gitbook/conda/",
-    "/02无人机相关/D435.html": "/knowledge/legacy/gitbook/d435/",
-    "/00开发者使用手册/": "/knowledge/legacy/gitbook/developer-guide/",
-    "/00开发者使用手册/index.html": "/knowledge/legacy/gitbook/developer-guide/",
-    "/01常用开发工具/": "/knowledge/legacy/gitbook/developer-tools/",
-    "/01常用开发工具/index.html": "/knowledge/legacy/gitbook/developer-tools/",
-    "/02无人机相关/": "/knowledge/legacy/gitbook/drone-docs/",
-    "/02无人机相关/index.html": "/knowledge/legacy/gitbook/drone-docs/",
-    "/01常用开发工具/git.html": "/knowledge/legacy/gitbook/git/",
-    "/02无人机相关/T265.html": "/knowledge/legacy/gitbook/t265/",
-    "/01常用开发工具/ubuntu换源.html": "/knowledge/legacy/gitbook/ubuntu-20-04-sources/",
-    "/02无人机相关/UWB.html": "/knowledge/legacy/gitbook/uwb/",
-    "/2023/10/29/about/": "/knowledge/legacy/hexo/about-2023/",
-    "/group/": "/knowledge/legacy/hexo/team-2023/"
+    "/knowledge/legacy/gitbook/drone-docs/": "/knowledge/research/flight-control/",
+    "/02无人机相关/": "/knowledge/research/flight-control/",
+    "/02无人机相关/index.html": "/knowledge/research/flight-control/",
+    "/knowledge/legacy/gitbook/developer-tools/": "/knowledge/tools/",
+    "/01常用开发工具/": "/knowledge/tools/",
+    "/01常用开发工具/index.html": "/knowledge/tools/",
+    "/2023/10/29/about/": "/knowledge/history/about-2023/",
+    "/knowledge/legacy/hexo/about-2023/": "/knowledge/history/about-2023/",
+    "/knowledge/legacy/lab-introduction/": "/knowledge/history/lab-introduction/",
+    "/group/": "/knowledge/history/team-2023/",
+    "/knowledge/legacy/hexo/team-2023/": "/knowledge/history/team-2023/",
+    "/02无人机相关/ACFly-Mavros.html": "/knowledge/research/flight-control/acfly-mavros/",
+    "/knowledge/legacy/gitbook/acfly-mavros/": "/knowledge/research/flight-control/acfly-mavros/",
+    "/02无人机相关/D435.html": "/knowledge/research/perception-localization/d435/",
+    "/knowledge/legacy/gitbook/d435/": "/knowledge/research/perception-localization/d435/",
+    "/02无人机相关/T265.html": "/knowledge/research/perception-localization/t265/",
+    "/knowledge/legacy/gitbook/t265/": "/knowledge/research/perception-localization/t265/",
+    "/02无人机相关/UWB.html": "/knowledge/research/perception-localization/uwb/",
+    "/knowledge/legacy/gitbook/uwb/": "/knowledge/research/perception-localization/uwb/",
+    "/01常用开发工具/conda.html": "/knowledge/tools/conda/",
+    "/knowledge/legacy/gitbook/conda/": "/knowledge/tools/conda/",
+    "/00开发者使用手册/": "/knowledge/tools/developer-guide/",
+    "/00开发者使用手册/index.html": "/knowledge/tools/developer-guide/",
+    "/knowledge/legacy/gitbook/developer-guide/": "/knowledge/tools/developer-guide/",
+    "/01常用开发工具/git.html": "/knowledge/tools/git/",
+    "/knowledge/legacy/gitbook/git/": "/knowledge/tools/git/",
+    "/01常用开发工具/ubuntu换源.html": "/knowledge/tools/ubuntu-20-04-sources/",
+    "/knowledge/legacy/gitbook/ubuntu-20-04-sources/": "/knowledge/tools/ubuntu-20-04-sources/"
   }
 }

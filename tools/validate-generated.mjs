@@ -52,10 +52,11 @@ for (const file of [...await walk(contentRoot), ...await walk(assetsRoot)]) {
 }
 
 const routes = new Set([...policy.existingRoutes, ...manifest.content.map((entry) => entry.route)]);
-const routePattern = /^\/knowledge\/legacy\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\/$/;
+const routePattern = /^\/knowledge\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\/$/;
 const markdownLinks = /!?\[[^\]]*\]\(([^)\s]+)(?:\s+["'][^"']*["'])?\)/g;
 for (const entry of manifest.content) {
-  if (!routePattern.test(entry.route)) throw new Error(`Generated route is outside the legacy namespace: ${entry.route}.`);
+  const routePrefixIsAllowed = policy.allowedGeneratedRoutePrefixes.some((prefix) => entry.route.startsWith(prefix) && entry.route !== prefix);
+  if (!routePattern.test(entry.route) || !routePrefixIsAllowed) throw new Error(`Generated route is outside the approved generated namespaces: ${entry.route}.`);
   const markdown = await readFile(path.join(websiteRoot, entry.target), 'utf8');
   if (/visibility\s*:|status\s*:|source_commit\s*:/.test(markdown.split('---', 3)[1] ?? '')) throw new Error(`Private publishing metadata leaked into ${entry.target}.`);
   for (const match of markdown.matchAll(markdownLinks)) {

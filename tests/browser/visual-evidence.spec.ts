@@ -56,14 +56,14 @@ test('capture dark theme, mobile navigation, and Starlight states', async ({ pag
   await page.screenshot({ path: resolve(outputDirectory, 'starlight-mobile.png'), fullPage: false });
 });
 
-test('capture migrated archive content on desktop and mobile', async ({ page }) => {
+test('capture integrated knowledge content on desktop and mobile', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1100 });
-  await page.goto('/knowledge/legacy/lab-introduction/');
-  await expect(page.getByRole('heading', { level: 1, name: '实验室旧站介绍' })).toBeVisible();
-  await page.screenshot({ path: resolve(outputDirectory, 'legacy-lab-introduction-desktop.png'), fullPage: true });
+  await page.goto('/knowledge/history/lab-introduction/');
+  await expect(page.getByRole('heading', { level: 1, name: '实验室介绍' })).toBeVisible();
+  await page.screenshot({ path: resolve(outputDirectory, 'lab-introduction-desktop.png'), fullPage: true });
 
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/knowledge/legacy/gitbook/uwb/');
+  await page.goto('/knowledge/research/perception-localization/uwb/');
   await expect(page.getByRole('heading', { level: 1, name: '关于 UWB 的使用' })).toBeVisible();
-  await page.screenshot({ path: resolve(outputDirectory, 'legacy-uwb-mobile.png'), fullPage: true });
+  await page.screenshot({ path: resolve(outputDirectory, 'uwb-mobile.png'), fullPage: true });
 });

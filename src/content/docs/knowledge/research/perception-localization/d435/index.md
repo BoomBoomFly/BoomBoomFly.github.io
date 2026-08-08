@@ -1,10 +1,8 @@
 ---
 title: "关于 D435 的使用"
-description: "旧站公开的 Intel RealSense D435 参数与数据获取记录。"
+description: "Intel RealSense D435 配置与数据获取记录。"
 editUrl: false
 ---
-
-> 历史资料，内容可能过时。
 
 > Author: CGC
 

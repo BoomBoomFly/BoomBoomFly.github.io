@@ -1,10 +1,8 @@
 ---
 title: "关于 T265 的使用"
-description: "旧站公开的 Intel RealSense T265 参数、驱动与数据获取记录。"
+description: "Intel RealSense T265 参数、驱动与数据获取记录。"
 editUrl: false
 ---
-
-> 历史资料，内容可能过时。
 
 > Author: CGC
 

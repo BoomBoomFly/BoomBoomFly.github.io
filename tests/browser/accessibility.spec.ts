@@ -11,8 +11,8 @@ const pages = [
   { name: 'about', route: '/about/' },
   { name: 'Starlight desktop', route: '/knowledge/' },
   { name: 'Starlight mobile', route: '/knowledge/', viewport: { width: 390, height: 844 } },
-  { name: 'legacy archive desktop', route: '/knowledge/legacy/gitbook/uwb/' },
-  { name: 'legacy archive mobile', route: '/knowledge/legacy/hexo/team-2023/', viewport: { width: 390, height: 844 } },
+  { name: 'UWB document desktop', route: '/knowledge/research/perception-localization/uwb/' },
+  { name: '2023 team mobile', route: '/knowledge/history/team-2023/', viewport: { width: 390, height: 844 } },
 ];
 
 for (const pageCase of pages) {
@@ -34,7 +34,7 @@ test('Starlight open mobile sidebar has no automatically detectable WCAG A/AA vi
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/knowledge/research/flight-control/', { waitUntil: 'domcontentloaded' });
   await page.locator('starlight-menu-button button').click();
-  await expect(page.getByRole('navigation', { name: '主要' }).getByRole('link', { name: '飞行控制与 ROS', exact: true })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: '主要' }).locator('a[href="/knowledge/research/flight-control/"]')).toBeVisible();
 
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])

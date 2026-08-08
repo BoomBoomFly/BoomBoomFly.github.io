@@ -1,10 +1,8 @@
 ---
 title: "Git 的安装、配置与学习入口"
-description: "旧站公开的 Git 安装、身份配置和学习入口。"
+description: "Git 安装、身份配置与学习入口。"
 editUrl: false
 ---
-
-> 历史资料，内容可能过时。
 
 > Author: CGC
 

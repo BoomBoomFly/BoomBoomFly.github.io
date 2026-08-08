@@ -1,4 +1,59 @@
-# Browser and Visual Acceptance
+# Theme Visual QA
+
+- Date: `2026-08-09` (`Asia/Shanghai`)
+- Implementation: `E:\BoomBoomfly_workspace\website`
+- Browser: Codex in-app browser
+- Viewport: `1280 × 720`
+- Reference images: `qa-artifacts/references/theme-light-reference.png` (`858 × 435`) and `qa-artifacts/references/theme-dark-reference.png` (`214 × 216`)
+- Implementation evidence: `qa-artifacts/screenshots/theme-light-join.png` and `qa-artifacts/screenshots/theme-dark-join.png`
+- Comparison boards: `qa-artifacts/comparisons/theme-light-comparison.png` and `qa-artifacts/comparisons/theme-dark-comparison.png`
+
+## Scope
+
+The references define the color system only. Typography, spacing, layout, copy, and assets remain unchanged.
+
+- Light theme: white `#FFFFFF`, ink `#101820`, accent `#1F5D7A`.
+- Dark theme: page background `#191A1B`; readable text, border, surface, and accent variants are derived from it.
+
+## Comparison method
+
+- Browser density: `1×`.
+- Light comparison: implementation resized to `858` px wide and cropped to `858 × 435` beside the reference.
+- Dark comparison: the solid `#191A1B` reference swatch expanded to `858 × 435` beside the implementation.
+- Focused check: computed body, text, sidebar, accent, and border colors in both Astro and Starlight views.
+- No layout-region crop was required because layout was outside the requested scope.
+
+## Results
+
+- Light body and Starlight sidebar: `rgb(255, 255, 255)`; text: `rgb(16, 24, 32)`.
+- Dark body and Starlight sidebar: `rgb(25, 26, 27)`; text: `rgb(245, 246, 247)`.
+- Theme controls switched both views correctly and persisted the selected state.
+- Browser console: no errors or warnings.
+- Light contrast: primary text `17.89:1`, muted text `8.03:1`, accent `7.23:1`, accent-button text `7.23:1`.
+- Dark contrast: primary text `16.11:1`, muted text `8.33:1`, accent `6.59:1`, accent-button text `6.76:1`.
+
+## Findings
+
+- P0: none.
+- P1: none.
+- P2: none.
+- P3: the dark reference provides only the background swatch; `#5AA9C7` is used as the derived accent to retain contrast and theme identity.
+
+One implementation pass was sufficient; no P0–P2 corrections were required.
+
+## Verification
+
+- Public-content validation: `11` generated pages, `3` assets, `28` legacy URLs.
+- Astro diagnostics: `21` files, `0` errors, `0` warnings, `0` hints.
+- Production build: passed; `22` pages generated.
+
+## Final result
+
+`passed`
+
+---
+
+# Previous Browser and Visual Acceptance
 
 - Acceptance date: `2026-08-08` (`Asia/Shanghai`)
 - Reference: `E:\BoomBoomfly_workspace\prototypes\color-theme-preview\index.html`, `aviation` palette

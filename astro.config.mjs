@@ -6,9 +6,9 @@ const generatedManifest = JSON.parse(
   readFileSync(new URL('./generated-content-manifest.json', import.meta.url), 'utf8'),
 );
 const redirects = Object.fromEntries([
-  ...Object.entries(generatedManifest.redirects).filter(([source]) => !source.endsWith('/index.html')),
+  ...Object.entries(generatedManifest.redirects),
   ['/tag/', '/knowledge/'],
-]);
+].filter(([source]) => !source.endsWith('/index.html')));
 
 export default defineConfig({
   site: 'https://boomboomfly.github.io',
@@ -47,35 +47,33 @@ export default defineConfig({
         {
           label: '研究与实践',
           items: [
-            { label: '飞行控制与 ROS', slug: 'knowledge/research/flight-control' },
-            { label: '感知、定位与通信', slug: 'knowledge/research/perception-localization' },
-            { label: '机器人与智能系统', slug: 'knowledge/research/robotics-intelligence' },
             {
-              label: '飞控与感知（历史）',
+              label: '飞行控制与 ROS',
               items: [
-                { label: 'ACFly-Mavros', slug: 'knowledge/legacy/gitbook/acfly-mavros' },
-                { label: 'T265', slug: 'knowledge/legacy/gitbook/t265' },
-                { label: 'D435', slug: 'knowledge/legacy/gitbook/d435' },
-                { label: 'UWB', slug: 'knowledge/legacy/gitbook/uwb' },
-                { label: '无人机文档索引', slug: 'knowledge/legacy/gitbook/drone-docs' },
+                { label: '主题概览', slug: 'knowledge/research/flight-control' },
+                { label: 'ACFly-Mavros', slug: 'knowledge/research/flight-control/acfly-mavros' },
               ],
             },
+            {
+              label: '感知、定位与通信',
+              items: [
+                { label: '主题概览', slug: 'knowledge/research/perception-localization' },
+                { label: 'T265', slug: 'knowledge/research/perception-localization/t265' },
+                { label: 'D435', slug: 'knowledge/research/perception-localization/d435' },
+                { label: 'UWB', slug: 'knowledge/research/perception-localization/uwb' },
+              ],
+            },
+            { label: '机器人与智能系统', slug: 'knowledge/research/robotics-intelligence' },
           ],
         },
         {
           label: '工程工具',
           items: [
-            { label: '开发环境与工具', slug: 'knowledge/tools' },
-            {
-              label: '环境与工具（历史）',
-              items: [
-                { label: 'Git', slug: 'knowledge/legacy/gitbook/git' },
-                { label: 'Conda', slug: 'knowledge/legacy/gitbook/conda' },
-                { label: 'Ubuntu 20.04 换源', slug: 'knowledge/legacy/gitbook/ubuntu-20-04-sources' },
-                { label: 'GitBook 手册', slug: 'knowledge/legacy/gitbook/developer-guide' },
-                { label: '开发工具索引', slug: 'knowledge/legacy/gitbook/developer-tools' },
-              ],
-            },
+            { label: '主题概览', slug: 'knowledge/tools' },
+            { label: 'Git', slug: 'knowledge/tools/git' },
+            { label: 'Conda', slug: 'knowledge/tools/conda' },
+            { label: 'Ubuntu 20.04 换源', slug: 'knowledge/tools/ubuntu-20-04-sources' },
+            { label: 'GitBook 手册', slug: 'knowledge/tools/developer-guide' },
           ],
         },
         {
@@ -83,14 +81,9 @@ export default defineConfig({
           items: [
             { label: '实验室介绍', link: '/about/' },
             { label: '团队', link: '/team/' },
-            {
-              label: '历史档案',
-              items: [
-                { label: 'GitBook 实验室介绍', slug: 'knowledge/legacy/lab-introduction' },
-                { label: '2023 年实验室介绍', slug: 'knowledge/legacy/hexo/about-2023' },
-                { label: '2023 年团队名录', slug: 'knowledge/legacy/hexo/team-2023' },
-              ],
-            },
+            { label: '实验室资料', slug: 'knowledge/history/lab-introduction' },
+            { label: '2023 年实验室介绍', slug: 'knowledge/history/about-2023' },
+            { label: '2023 年团队名录', slug: 'knowledge/history/team-2023' },
           ],
         },
         { label: '加入我们', link: '/join/' },

@@ -1,10 +1,8 @@
 ---
 title: "Ubuntu 20.04 换源记录"
-description: "旧站公开的 Ubuntu 20.04 软件源备份与替换记录。"
+description: "Ubuntu 20.04 软件源备份与替换步骤。"
 editUrl: false
 ---
-
-> 历史资料，内容可能过时。
 
 > Author: CGC
 
