@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceAllowlist": "80_Publish",
+  "sourceAllowlist": "40_发布",
   "allowedVisibility": ["public"],
   "allowedStatus": ["ready", "published"],
   "requiredChecks": [
