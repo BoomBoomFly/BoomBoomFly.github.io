@@ -1,6 +1,6 @@
 # BoomBoomFly 网站
 
-本目录是无人机科创实验室的公开网站仓库。第一阶段实现包含 Astro 首页、Starlight 知识层、已经批准的航空冷银视觉体系，以及研究方向、项目、团队、加入我们和实验室背景等稳定的公开路由。
+本目录是无人机科创实验室的公开网站仓库。用户已经批准本仓库中的新站替换旧版 GitBook 与 Hexo 站点，并继续使用 `BoomBoomFly/BoomBoomFly.github.io` 作为公开远程仓库。第一阶段实现包含 Astro 首页、Starlight 知识层、已经批准的航空冷银视觉体系，以及研究方向、项目、团队、加入我们和实验室背景等稳定的公开路由。
 
 ## 本地开发
 
@@ -35,10 +35,10 @@ npm run build
 
 ## 发布生成路径
 
-- `src/content/docs/knowledge/legacy/`：由 Starlight 加载的公开文本生成内容。
+- `src/content/docs/knowledge/{research,tools,history}/`：由 Starlight 加载、按当前信息架构组织的公开文本生成内容。
 - `public/images/generated/`：生成的公开附件副本。
 - `generated-content-manifest.json`：记录所有权、哈希、路由和重定向的清单。
 - `tools/content-policy.json`：机器可读的发布约定。
 - `tools/validate-generated.mjs`：只在网站仓库内验证已提交公开产物的工具。
 
-已经审核的旧版归档内容已启用生成发布。在本仓库运行 `npm run validate:content`，即可在不读取私有知识库的情况下验证已提交的公开副本。
+已经审核的公开内容按当前信息架构生成发布，已登记的旧 URL 由显式重定向保持兼容。页面、附件和重定向数量以 `generated-content-manifest.json` 为准；在本仓库运行 `npm run validate:content`，即可在不读取私有知识库或旧版仓库的情况下验证已提交的公开副本。
