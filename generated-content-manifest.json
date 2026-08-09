@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "content": [
     {
-      "source": "80_Publish/history/about-2023.md",
+      "source": "40_发布/history/about-2023.md",
       "sourceSha256": "2e63dc6165197210d5d6933ecd302384533a520047a3102663c1469fea31e5f4",
       "target": "src/content/docs/knowledge/history/about-2023/index.md",
       "sha256": "3b0dace13e143c8e470d30ea2a66700f2988d5ee5701fdee67c604636ee009ca",
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "source": "80_Publish/history/lab-introduction.md",
+      "source": "40_发布/history/lab-introduction.md",
       "sourceSha256": "b8eb0de11c671f8a74ca686ec2a1fa5ce8d09fbce4c364cb9d62d860688f2e67",
       "target": "src/content/docs/knowledge/history/lab-introduction/index.md",
       "sha256": "0b5688590f8cc664a0293b3f0534a0b1dec136cd598aa216935ed94eabbc29b1",
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "source": "80_Publish/history/team-2023.md",
+      "source": "40_发布/history/team-2023.md",
       "sourceSha256": "5c432fd353a0653d50670a97f0bf119789e23da8b49980698c86a3f832ded6a3",
       "target": "src/content/docs/knowledge/history/team-2023/index.md",
       "sha256": "a0c3f9582bbdef348b294928e679fb6174d1d46a9361c1aa91e61d4bb9a607a2",
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "source": "80_Publish/research/flight-control/acfly-mavros.md",
+      "source": "40_发布/research/flight-control/acfly-mavros.md",
       "sourceSha256": "9bb16647bf8af09182dcd31e8a223aa0d37a77d38635169439a87341e0dbd2a0",
       "target": "src/content/docs/knowledge/research/flight-control/acfly-mavros/index.md",
       "sha256": "13f17336910b0055d1d655479aa2836f06eba2559ccbbe80af7f5ac1c37dddba",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "source": "80_Publish/research/perception-localization/d435.md",
+      "source": "40_发布/research/perception-localization/d435.md",
       "sourceSha256": "917608be5e636d2e4df99d9967ced8c9469bda36da7bfbf92583651191d6df80",
       "target": "src/content/docs/knowledge/research/perception-localization/d435/index.md",
       "sha256": "edf35a95e82c2e3038272d344c7d626ebbcf9942cdbb7fb0809a36185b3c5fee",
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "source": "80_Publish/research/perception-localization/t265.md",
+      "source": "40_发布/research/perception-localization/t265.md",
       "sourceSha256": "578f432efb945a26fff8207a59d5e2164413e3902dfd6530a64429d0aecdf0a1",
       "target": "src/content/docs/knowledge/research/perception-localization/t265/index.md",
       "sha256": "cf9b0e70b26ee7f55a3716da48bff21f38e93975b754c5dda1eeb2722de5573e",
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "source": "80_Publish/research/perception-localization/uwb.md",
+      "source": "40_发布/research/perception-localization/uwb.md",
       "sourceSha256": "01cf987132170a33eed4ad2d5cf26bb6d4d597f7b3e6127ab303ab87897cb608",
       "target": "src/content/docs/knowledge/research/perception-localization/uwb/index.md",
       "sha256": "fd895576bc4c3a5a29e064630a0a20f0571021389d6e4be59a655480ae0fe997",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "source": "80_Publish/tools/conda.md",
+      "source": "40_发布/tools/conda.md",
       "sourceSha256": "e663613289b82c87eccf0866375863e052be1cec4a831fb41503dd21604e66c6",
       "target": "src/content/docs/knowledge/tools/conda/index.md",
       "sha256": "bae4209ff1651ddb77426fcf346132addba389149995aa71ae9e0aac384332fc",
@@ -89,7 +89,7 @@
       ]
     },
     {
-      "source": "80_Publish/tools/developer-guide.md",
+      "source": "40_发布/tools/developer-guide.md",
       "sourceSha256": "d4625001a21f5ac1e17c5800ee381b17bcaa4c51bb898b0d160c433442fc7df9",
       "target": "src/content/docs/knowledge/tools/developer-guide/index.md",
       "sha256": "e02a44dc678f347001f0184de47fd392a10aeef0338ab8693d8d343f38abcf10",
@@ -101,7 +101,7 @@
       ]
     },
     {
-      "source": "80_Publish/tools/git.md",
+      "source": "40_发布/tools/git.md",
       "sourceSha256": "23d9d40167b7be415c6884610808a4bee56bd5f52f154bdd0fc4ccf934e320be",
       "target": "src/content/docs/knowledge/tools/git/index.md",
       "sha256": "6f6ec58a94c56284a0c46ece08e219376737bf9b1c06801738b2d1ad3808a56b",
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "source": "80_Publish/tools/ubuntu-20-04-sources.md",
+      "source": "40_发布/tools/ubuntu-20-04-sources.md",
       "sourceSha256": "f2a4fd2309d9cf38ed0bfe2781183e1e8f2a13e4df0a6a5ffac49fdf08586401",
       "target": "src/content/docs/knowledge/tools/ubuntu-20-04-sources/index.md",
       "sha256": "6308cda0c6f4b0618f71f88bab2adc69cb737af91bdf4904609d98aebcb25925",

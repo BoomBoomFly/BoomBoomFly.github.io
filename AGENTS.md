@@ -1,24 +1,24 @@
-# Website Rules
+# 网站规则
 
-This directory is the future public website repository. The current phase is architecture-only: do not add pages, visual design, a framework, dependencies, CI, or deployment unless a later task explicitly requests it.
+本目录是公开网站仓库。除非后续任务明确要求，否则不得新增页面、视觉设计、框架、依赖、CI 或部署实现。
 
-## Boundaries
+## 边界
 
-- Treat the knowledge base as private and as the only editorial source of truth.
-- A trusted local exporter may read only `../knowledge-base/80_Publish/` and only notes with `visibility: public` plus `status: ready` or `status: published`.
-- Generated content and assets are public copies. Never use them to overwrite source notes or source attachments.
-- Never copy private notes, references, archives, credentials, or unapproved assets into this repository.
+- 将知识库视为私有内容，并作为唯一的编辑来源。
+- 受信任的本地导出器只能读取 `../knowledge-base/40_发布/`，并且只能导出同时包含 `visibility: public` 以及 `status: ready` 或 `status: published` 的笔记。
+- 生成的内容和附件都是公开副本，绝不能用于覆盖源笔记或源附件。
+- 不得将私有笔记、参考资料、归档、凭据或未经批准的附件复制到本仓库。
 
-## Public CI Boundary
+## 公开 CI 边界
 
-Public CI must check out and operate on this repository alone. It must not clone, fetch, mount, or use credentials to access the private knowledge-base repository. It may validate and deploy only committed public artifacts already present here.
+公开 CI 只能检出并操作本仓库。它不得克隆、获取、挂载私有知识库，也不得使用凭据访问私有知识库。它只能验证和部署已经提交并存在于本仓库中的公开产物。
 
-Future content tooling must fail closed when allowlist, metadata, asset, link, route, sensitive-information, or generated-file ownership checks fail.
+未来的内容工具在白名单、元数据、附件、链接、路由、敏感信息或生成文件所有权检查失败时，必须以拒绝处理的方式安全失败。
 
-## Product Ownership
+## 产品决策权
 
-The user owns visual direction, information architecture, content meaning, primary branding, navigation, public URLs, and final approval. Do not independently make those decisions.
+用户负责视觉方向、信息架构、内容含义、主要品牌、导航、公开 URL 和最终批准。不得自行决定这些事项。
 
-## Repository Hygiene
+## 仓库卫生
 
-Before changes, inspect Git status and preserve unrelated work. Do not add a remote, commit, push, publish, or deploy without explicit authorization. When the full workspace is available, also read `../AGENTS.md` and `../workspace.config.json`.
+修改前必须检查 Git 状态并保留无关的既有工作。未经明确授权，不得添加远程仓库、提交、推送、发布或部署。完整工作区可用时，还必须阅读 `../AGENTS.md` 和 `../workspace.config.json`。

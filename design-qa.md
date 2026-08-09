@@ -1,143 +1,143 @@
-# Dark Surface Color QA
+# 深色表面颜色质量检查
 
-- Date: `2026-08-09` (`Asia/Shanghai`)
-- Source visual truth: `qa-artifacts/references/theme-dark-mismatch-reference.png`
-- Implementation screenshot: `qa-artifacts/screenshots/theme-dark-unified-home.png`
-- Full-view comparison: `qa-artifacts/comparisons/theme-dark-unified-comparison.png`
-- Source pixels: `1439 × 481`; implementation pixels: `1439 × 481`
-- CSS viewport: `1439 × 481`; density: `1×`; no density scaling applied
-- State: homepage, dark theme, `TEAM / JOIN` closing cards
+- 日期：`2026-08-09`（`Asia/Shanghai`）
+- 视觉基准：`qa-artifacts/references/theme-dark-mismatch-reference.png`
+- 实现截图：`qa-artifacts/screenshots/theme-dark-unified-home.png`
+- 完整对比图：`qa-artifacts/comparisons/theme-dark-unified-comparison.png`
+- 基准像素：`1439 × 481`；实现像素：`1439 × 481`
+- CSS 视口：`1439 × 481`；像素密度：`1×`；未应用密度缩放
+- 状态：首页、深色主题、`TEAM / JOIN` 收尾卡片
 
-## Findings and comparison history
+## 发现与对比记录
 
-1. Initial P2: the source screenshot showed the page background at `rgb(25, 26, 27)` while the JOIN card used `rgb(32, 34, 36)`, creating an unintended split surface.
-2. Fix: dark `--surface` and `--color-surface-strong` now both resolve to `#191A1B`.
-3. Post-fix evidence: body and explicit card surface both compute to `rgb(25, 26, 27)`; the transparent card inherits the same value. No console errors or warnings were reported.
+1. 初始 P2：基准截图的页面背景为 `rgb(25, 26, 27)`，JOIN 卡片为 `rgb(32, 34, 36)`，产生了非预期的表面色差。
+2. 修复：深色主题的 `--surface` 和 `--color-surface-strong` 现在都解析为 `#191A1B`。
+3. 修复后证据：页面主体和显式卡片表面都计算为 `rgb(25, 26, 27)`，透明卡片继承相同值；控制台没有错误或警告。
 
-## Fidelity surfaces
+## 保真检查范围
 
-- Fonts and typography: unchanged; outside the requested color correction.
-- Spacing and layout rhythm: unchanged. The user capture and browser capture use different scroll crops, so layout was not judged from their outer margins.
-- Colors and visual tokens: P2 mismatch resolved; both cards now share the requested solid dark background.
-- Image quality and assets: no image assets are present in the compared region.
-- Copy and content: unchanged.
-- Focused region: computed background values were used because the requested defect is a flat-color mismatch; no additional crop was required.
+- 字体与排版：未修改，不属于本次颜色修正范围。
+- 间距与布局节奏：未修改。用户截图和浏览器截图的滚动裁剪不同，因此未通过外边距判断布局。
+- 颜色与视觉令牌：P2 色差已解决，两张卡片现在使用要求的统一深色背景。
+- 图片质量与附件：对比区域内没有图片附件。
+- 文案与内容：未修改。
+- 聚焦区域：问题属于纯色不一致，因此使用计算后的背景值验证，无需额外裁剪。
 
-## Verification
+## 验证
 
-- Browser interaction: light-to-dark theme switch and persistent theme state tested.
-- Browser console: no errors or warnings.
-- Browser regression: `37/37` passed.
-- Automated accessibility: `12/12` passed.
-- Astro diagnostics: `21` files, `0` errors, `0` warnings, `0` hints.
-- Production build: passed; `22` pages generated.
+- 浏览器交互：已测试浅色到深色主题切换以及主题状态持久化。
+- 浏览器控制台：无错误或警告。
+- 浏览器回归：`37/37` 通过。
+- 自动化无障碍检查：`12/12` 通过。
+- Astro 诊断：`21` 个文件，`0` 个错误、`0` 个警告、`0` 个提示。
+- 生产构建：通过，生成 `22` 个页面。
 
-## Final result
+## 最终结果
 
-`passed`
-
----
-
-# Previous Theme Visual QA
-
-- Date: `2026-08-09` (`Asia/Shanghai`)
-- Implementation: `E:\BoomBoomfly_workspace\website`
-- Browser: Codex in-app browser
-- Viewport: `1280 × 720`
-- Reference images: `qa-artifacts/references/theme-light-reference.png` (`858 × 435`) and `qa-artifacts/references/theme-dark-reference.png` (`214 × 216`)
-- Implementation evidence: `qa-artifacts/screenshots/theme-light-join.png` and `qa-artifacts/screenshots/theme-dark-join.png`
-- Comparison boards: `qa-artifacts/comparisons/theme-light-comparison.png` and `qa-artifacts/comparisons/theme-dark-comparison.png`
-
-## Scope
-
-The references define the color system only. Typography, spacing, layout, copy, and assets remain unchanged.
-
-- Light theme: white `#FFFFFF`, ink `#101820`, accent `#1F5D7A`.
-- Dark theme: page background `#191A1B`; readable text, border, surface, and accent variants are derived from it.
-
-## Comparison method
-
-- Browser density: `1×`.
-- Light comparison: implementation resized to `858` px wide and cropped to `858 × 435` beside the reference.
-- Dark comparison: the solid `#191A1B` reference swatch expanded to `858 × 435` beside the implementation.
-- Focused check: computed body, text, sidebar, accent, and border colors in both Astro and Starlight views.
-- No layout-region crop was required because layout was outside the requested scope.
-
-## Results
-
-- Light body and Starlight sidebar: `rgb(255, 255, 255)`; text: `rgb(16, 24, 32)`.
-- Dark body and Starlight sidebar: `rgb(25, 26, 27)`; text: `rgb(245, 246, 247)`.
-- Theme controls switched both views correctly and persisted the selected state.
-- Browser console: no errors or warnings.
-- Light contrast: primary text `17.89:1`, muted text `8.03:1`, accent `7.23:1`, accent-button text `7.23:1`.
-- Dark contrast: primary text `16.11:1`, muted text `8.33:1`, accent `6.59:1`, accent-button text `6.76:1`.
-
-## Findings
-
-- P0: none.
-- P1: none.
-- P2: none.
-- P3: the dark reference provides only the background swatch; `#5AA9C7` is used as the derived accent to retain contrast and theme identity.
-
-One implementation pass was sufficient; no P0–P2 corrections were required.
-
-## Verification
-
-- Public-content validation: `11` generated pages, `3` assets, `28` legacy URLs.
-- Astro diagnostics: `21` files, `0` errors, `0` warnings, `0` hints.
-- Production build: passed; `22` pages generated.
-
-## Final result
-
-`passed`
+`通过`
 
 ---
 
-# Previous Browser and Visual Acceptance
+# 上一次主题视觉质量检查
 
-- Acceptance date: `2026-08-08` (`Asia/Shanghai`)
-- Reference: `E:\BoomBoomfly_workspace\prototypes\color-theme-preview\index.html`, `aviation` palette
-- Implementation: `E:\BoomBoomfly_workspace\website`
-- Browser fallback: standalone Playwright with installed Chrome, explicitly approved after the in-app browser rejected local URLs
-- Viewports: desktop `1440 × 1100`, tablet `768 × 1024`, mobile `390 × 844`
-- Evidence: `qa-artifacts/screenshots/`
-- Migration pages inspected: legacy laboratory introduction (desktop) and UWB guide (mobile)
+- 日期：`2026-08-09`（`Asia/Shanghai`）
+- 实现位置：`E:\BoomBoomfly_workspace\website`
+- 浏览器：Codex 应用内浏览器
+- 视口：`1280 × 720`
+- 参考图：`qa-artifacts/references/theme-light-reference.png`（`858 × 435`）和 `qa-artifacts/references/theme-dark-reference.png`（`214 × 216`）
+- 实现证据：`qa-artifacts/screenshots/theme-light-join.png` 和 `qa-artifacts/screenshots/theme-dark-join.png`
+- 对比板：`qa-artifacts/comparisons/theme-light-comparison.png` 和 `qa-artifacts/comparisons/theme-dark-comparison.png`
 
-## Visual comparison
+## 范围
 
-The reference and implementation were captured in the same Chromium runtime at matching viewport sizes. The accepted screenshots preserve the aviation-cool-silver palette, editorial section markers, display typography, headline wrapping, CTA hierarchy, borders, and generous whitespace.
+参考图只定义颜色系统。排版、间距、布局、文案和附件保持不变。
 
-Expected implementation differences:
+- 浅色主题：白色 `#FFFFFF`、墨色 `#101820`、强调色 `#1F5D7A`。
+- 深色主题：页面背景 `#191A1B`，并由此派生可读的文字、边框、表面和强调色变体。
 
-- The production site replaces the prototype palette selector with a persistent light/dark theme control.
-- Tablet and mobile use a compact menu instead of keeping the full prototype navigation visible.
-- The production homepage continues beyond the reference hero into the approved `01–05` content sequence.
-- The production header uses the approved accent treatment on the source logo while keeping the SVG source unchanged.
+## 对比方法
 
-No clipped content, broken images, horizontal page overflow, blank captures, or incorrect viewport states were found in the accepted evidence.
+- 浏览器像素密度：`1×`。
+- 浅色对比：将实现截图缩放到 `858` 像素宽并裁剪为 `858 × 435`，与参考图并排比较。
+- 深色对比：将纯色 `#191A1B` 参考色块扩展到 `858 × 435`，与实现截图并排比较。
+- 聚焦检查：计算 Astro 和 Starlight 视图中的主体、文字、侧边栏、强调色和边框颜色。
+- 布局不在本次范围内，因此无需裁剪布局区域。
 
-The migrated archive adds two accepted screenshots: `legacy-lab-introduction-desktop.png` and `legacy-uwb-mobile.png`. Manual in-app browser inspection confirmed one page-level H1, visible historical notices, intact images, a responsive single-column mobile layout, keyboard-focusable horizontally scrolling code blocks, and the expected old-URL redirect destination.
+## 结果
 
-## Issues found and fixed
+- 浅色主体和 Starlight 侧边栏：`rgb(255, 255, 255)`；文字：`rgb(16, 24, 32)`。
+- 深色主体和 Starlight 侧边栏：`rgb(25, 26, 27)`；文字：`rgb(245, 246, 247)`。
+- 主题控件可以正确切换两个视图，并保留所选状态。
+- 浏览器控制台：无错误或警告。
+- 浅色对比度：主要文字 `17.89:1`、次要文字 `8.03:1`、强调色 `7.23:1`、强调按钮文字 `7.23:1`。
+- 深色对比度：主要文字 `16.11:1`、次要文字 `8.33:1`、强调色 `6.59:1`、强调按钮文字 `6.76:1`。
 
-1. Theme switching transitioned the page background after text colors had already changed, briefly producing very low contrast. The body background now switches immediately while local interaction animations remain intact.
-2. The active Starlight sidebar item used white text on a white active background in dark mode. It now uses the palette's on-accent text token and is readable in the open mobile sidebar.
-3. Browser assertions were narrowed to user-visible main content and semantic controls so Astro's development toolbar and hidden Starlight controls do not create false failures.
-4. Sidebar checks now run on a standard Starlight document page; the knowledge landing page intentionally uses the sidebar-free `splash` template.
-5. Long migrated C++ code blocks were horizontally scrollable but not keyboard-focusable. Starlight now assigns `tabindex="0"` to rendered code scroll regions at page load, including client-side navigations.
+## 发现
 
-## Verification
+- P0：无。
+- P1：无。
+- P2：无。
+- P3：深色参考只提供背景色块，因此使用派生强调色 `#5AA9C7` 保持对比度和主题辨识度。
 
-- Public-content validation: `13` generated pages, `3` assets, and `15` legacy URLs passed ownership, hash, link, route, and boundary checks.
-- Astro diagnostics: `21` files, `0` errors, `0` warnings, `0` hints.
-- Production build: passed; `24` content pages plus legacy redirect outputs, Pagefind search index, and sitemap generated.
-- Browser acceptance: `48/48` passed.
-  - `36` route, redirect, metadata, interaction, focus, theme, navigation, and reduced-motion checks.
-  - `12` automated WCAG A/AA checks, including migrated desktop/mobile pages and the open dark-mode mobile Starlight sidebar.
-- Visual evidence: `5/5` passed; reference and implementation captured at three target viewports, with dark theme, mobile navigation, Starlight sidebar, and migrated desktop/mobile archive pages inspected.
+一次实现即可满足要求，无需进行 P0–P2 修正。
 
-Automated Axe checks do not establish full WCAG conformance. Screen-reader behavior, high zoom beyond the tested responsive viewports, and human content comprehension remain manual-review concerns.
+## 验证
 
-## Final result
+- 公开内容验证：`11` 个生成页面、`3` 个附件、`28` 条旧 URL。
+- Astro 诊断：`21` 个文件，`0` 个错误、`0` 个警告、`0` 个提示。
+- 生产构建：通过，生成 `22` 个页面。
 
-`passed`
+## 最终结果
+
+`通过`
+
+---
+
+# 上一次浏览器与视觉验收
+
+- 验收日期：`2026-08-08`（`Asia/Shanghai`）
+- 参考实现：`E:\BoomBoomfly_workspace\prototypes\color-theme-preview\index.html`，`aviation` 配色
+- 实现位置：`E:\BoomBoomfly_workspace\website`
+- 浏览器备用方案：应用内浏览器拒绝本地 URL 后，经明确批准使用独立 Playwright 和已安装的 Chrome
+- 视口：桌面 `1440 × 1100`、平板 `768 × 1024`、移动端 `390 × 844`
+- 证据：`qa-artifacts/screenshots/`
+- 检查的迁移页面：旧版实验室介绍（桌面端）和 UWB 指南（移动端）
+
+## 视觉对比
+
+参考实现和实际实现使用同一个 Chromium 运行时，并在匹配的视口尺寸下截图。通过验收的截图保留了航空冷银配色、编辑式章节标记、展示字体、标题换行、行动按钮层级、边框和充足留白。
+
+符合预期的实现差异：
+
+- 生产网站使用持久化浅色/深色主题控件替代原型中的配色选择器。
+- 平板和移动端使用紧凑菜单，不再始终显示原型中的完整导航。
+- 生产首页在参考图首屏之后继续展示已经批准的 `01–05` 内容序列。
+- 生产页头在不修改 SVG 源文件的前提下，对源 Logo 使用已经批准的强调色处理。
+
+验收证据中未发现内容裁切、图片损坏、页面横向溢出、空白截图或错误视口状态。
+
+迁移归档增加了两张通过验收的截图：`legacy-lab-introduction-desktop.png` 和 `legacy-uwb-mobile.png`。应用内浏览器人工检查确认：页面只有一个页面级 H1、历史提示可见、图片完整、移动端使用响应式单栏布局、横向滚动代码块可通过键盘聚焦，并且旧 URL 跳转到预期目标。
+
+## 已发现并修复的问题
+
+1. 主题切换时，文字颜色先于页面背景完成变化，短暂产生极低对比度。现在页面主体背景会立即切换，同时保留局部交互动画。
+2. 深色模式下，Starlight 当前侧边栏条目曾使用白色文字和白色激活背景。现在改用配色中的强调色文字令牌，在展开的移动端侧边栏中可正常阅读。
+3. 浏览器断言已经收窄到用户可见的主要内容和语义控件，避免 Astro 开发工具栏和隐藏的 Starlight 控件造成误报。
+4. 侧边栏检查现在运行在标准 Starlight 文档页；知识库首页有意使用无侧边栏的 `splash` 模板。
+5. 迁移后的长 C++ 代码块虽然可以横向滚动，但无法通过键盘聚焦。Starlight 现在会在页面加载时为渲染后的代码滚动区域设置 `tabindex="0"`，并覆盖客户端导航场景。
+
+## 验证
+
+- 公开内容验证：`13` 个生成页面、`3` 个附件和 `15` 条旧 URL 通过所有权、哈希、链接、路由和边界检查。
+- Astro 诊断：`21` 个文件，`0` 个错误、`0` 个警告、`0` 个提示。
+- 生产构建：通过，生成 `24` 个内容页面、旧 URL 重定向输出、Pagefind 搜索索引和站点地图。
+- 浏览器验收：`48/48` 通过。
+  - `36` 项路由、重定向、元数据、交互、焦点、主题、导航和减少动态效果检查。
+  - `12` 项自动化 WCAG A/AA 检查，包括迁移后的桌面/移动页面和展开的深色移动端 Starlight 侧边栏。
+- 视觉证据：`5/5` 通过；参考实现与实际实现在三个目标视口下完成截图，并检查了深色主题、移动导航、Starlight 侧边栏以及迁移后的桌面和移动归档页面。
+
+自动化 Axe 检查并不能证明完整符合 WCAG。屏幕阅读器行为、超出已测试响应式视口的高倍缩放，以及人工内容理解仍需要手动审查。
+
+## 最终结果
+
+`通过`
