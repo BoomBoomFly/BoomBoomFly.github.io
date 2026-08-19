@@ -21,7 +21,7 @@ editUrl: false
 
 ### 2021 级学生
 
-- [蔡国赐](https://CGC12123.github.io)
+- 蔡国赐
 - [余海奇](https://123-yuyuyu.github.io)
 
 ### 2022 级学生

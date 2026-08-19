@@ -113,3 +113,7 @@ if __name__ == "__main__":
 
         detect_obj_yolov5(depth_image, color_image, detect_target = 'person', model = model, show = 1)
 ```
+
+### 相关学习路线
+
+- [ROS 2 机器人开发学习路线](/knowledge/tools/learning-paths/ros2/)：继续学习相机数据、话题通信和感知节点的工程化集成。

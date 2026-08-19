@@ -16,7 +16,7 @@ editUrl: false
 `npm v6.14.12`
 > 由于更高的 `node` 版本可能不支持 `gitbook` ，经尝试使用 `node` 版本为 `v10`，若您版本更高，请降低版本以使用
 
-建议使用[node官网](https://nodejs.org/en/download/prebuilt-installer)安装，一般安装node后npm自动捆绑安装，所以只需要安装node即可
+Node v10.24.1 已停止维护，当前 Node.js 下载页不再适合作为这份旧 GitBook 环境的安装入口。需要复现时，应在隔离环境中使用经过确认的历史安装包。
 
 安装成功后，可以使用如下命令验证node和npm安装情况
 ```bash

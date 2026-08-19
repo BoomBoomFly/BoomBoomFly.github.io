@@ -79,3 +79,7 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 让计算机根据源进行更新
+
+### 相关学习路线
+
+- [Linux 工程实践学习路线](/knowledge/tools/learning-paths/linux/)：系统学习软件源、包管理和环境故障排查。
