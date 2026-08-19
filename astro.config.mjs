@@ -50,14 +50,14 @@ export default defineConfig({
             {
               label: '飞行控制与 ROS',
               items: [
-                { label: '主题概览', slug: 'knowledge/research/flight-control' },
+                { label: '方向介绍', slug: 'knowledge/research/flight-control' },
                 { label: 'ACFly-Mavros', slug: 'knowledge/research/flight-control/acfly-mavros' },
               ],
             },
             {
               label: '感知、定位与通信',
               items: [
-                { label: '主题概览', slug: 'knowledge/research/perception-localization' },
+                { label: '方向介绍', slug: 'knowledge/research/perception-localization' },
                 { label: 'T265', slug: 'knowledge/research/perception-localization/t265' },
                 { label: 'D435', slug: 'knowledge/research/perception-localization/d435' },
                 { label: 'UWB', slug: 'knowledge/research/perception-localization/uwb' },
@@ -69,11 +69,24 @@ export default defineConfig({
         {
           label: '工程工具',
           items: [
-            { label: '主题概览', slug: 'knowledge/tools' },
+            { label: '工具目录', slug: 'knowledge/tools' },
             { label: 'Git', slug: 'knowledge/tools/git' },
             { label: 'Conda', slug: 'knowledge/tools/conda' },
             { label: 'Ubuntu 20.04 换源', slug: 'knowledge/tools/ubuntu-20-04-sources' },
             { label: 'GitBook 手册', slug: 'knowledge/tools/developer-guide' },
+          ],
+        },
+        {
+          label: '学习路线',
+          items: [
+            { label: '路线总览', slug: 'knowledge/tools/learning-paths' },
+            { label: '嵌入式', slug: 'knowledge/tools/learning-paths/embedded' },
+            { label: 'Git', slug: 'knowledge/tools/learning-paths/git' },
+            { label: 'C++', slug: 'knowledge/tools/learning-paths/cpp' },
+            { label: 'Linux', slug: 'knowledge/tools/learning-paths/linux' },
+            { label: 'ROS 2', slug: 'knowledge/tools/learning-paths/ros2' },
+            { label: 'PX4', slug: 'knowledge/tools/learning-paths/px4' },
+            { label: 'FPGA（选读）', slug: 'knowledge/tools/learning-paths/fpga' },
           ],
         },
         {

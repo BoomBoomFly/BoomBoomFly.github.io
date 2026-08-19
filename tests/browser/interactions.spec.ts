@@ -70,20 +70,24 @@ test('Starlight sidebar groups documents into current knowledge paths', async ({
   const sidebar = page.getByRole('navigation', { name: '主要' });
   const currentSidebarLink = sidebar.locator('a[href="/knowledge/research/flight-control/"]');
   await expect(currentSidebarLink).toBeVisible();
+  await expect(currentSidebarLink).toHaveText('方向介绍');
   await expect(sidebar.getByText('实验室与团队', { exact: true })).toBeVisible();
   await expect(sidebar.getByRole('link', { name: 'ACFly-Mavros', exact: true })).toHaveAttribute(
     'href',
     '/knowledge/research/flight-control/acfly-mavros/',
   );
-  await expect(sidebar.getByRole('link', { name: 'Git', exact: true })).toHaveAttribute(
+  await expect(sidebar.locator('a[href="/knowledge/tools/git/"]')).toHaveText('Git');
+  await expect(sidebar.getByText('学习路线', { exact: true })).toBeVisible();
+  await expect(sidebar.getByRole('link', { name: 'ROS 2', exact: true })).toHaveAttribute(
     'href',
-    '/knowledge/tools/git/',
+    '/knowledge/tools/learning-paths/ros2/',
   );
   await expect(sidebar.getByRole('link', { name: '2023 年团队名录', exact: true })).toHaveAttribute(
     'href',
     '/knowledge/history/team-2023/',
   );
   await expect(sidebar.getByText(/历史|旧站公开档案/)).toHaveCount(0);
+  await expect(sidebar.getByText('主题概览', { exact: true })).toHaveCount(0);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
