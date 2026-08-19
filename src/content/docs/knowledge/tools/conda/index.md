@@ -80,3 +80,7 @@ conda update conda
 conda update python
 ```
 > 假设当前环境是python 3.6 执行命令后conda会将python升级为3.6.x系列的当前最新版本
+
+### 相关学习路线
+
+- [Linux 工程实践学习路线](/knowledge/tools/learning-paths/linux/)：在 Linux 开发环境中理解软件包、路径和环境隔离。

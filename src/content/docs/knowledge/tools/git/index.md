@@ -7,8 +7,7 @@ editUrl: false
 > Author: CGC
 
 ### Windows
-可在官方网站上下载，网站：https://git-scm.com/ \
-也可在国内镜像源下载，网站：http://npm.taobao.org/mirrors/git-for-windows
+可从 [Git 官方网站](https://git-scm.com/) 下载。
 ### Ubuntu
 ```bash
 sudo apt-get update
@@ -16,7 +15,7 @@ sudo apt-get upgrade
 sudo apt-get install git
 ```
 ## github账号的注册
-进入github，注册账号，网站：https://github.com/
+进入 [GitHub](https://github.com/) 注册账号。
 > 在此处要注意记住你注册时的用户名和邮箱
 
 ## git的配置
@@ -53,4 +52,8 @@ git config --global --list
 至此，git下载及配置完成
 
 ## git常用命令的学习
-推荐一个教程网站：https://learngitbranching.js.org/?locale=zh_CN
+推荐使用 [Learn Git Branching 中文版](https://learngitbranching.js.org/?locale=zh_CN) 练习常用操作。
+
+### 相关学习路线
+
+- [Git 零基础学习路线](/knowledge/tools/learning-paths/git/)：从本地版本管理逐步学习分支与远程协作。

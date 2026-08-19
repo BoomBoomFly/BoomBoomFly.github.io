@@ -11,7 +11,7 @@ editUrl: false
 - 使用双目鱼眼相机 分辨率848X800分辨率 30HZ 单色图像 视场角 163° Fov(±5°)
 - IMU型号为 BMI-055
 ### SDK
-从 `Intel® RealSense™ SDK 2.0 (v2.54.1)` 中已经明确说明版本不再支持T265 最后一个支持的版本为 [v2.50.0](https://github.com/IntelRealSense/librealsense/releases/tag/v2.50.0)，而期间的几个版本虽然支持T265但官方说明不在对其进行测试。
+从 `Intel® RealSense™ SDK 2.0 (v2.54.1)` 中已经明确说明版本不再支持T265 最后一个支持的版本为 [v2.50.0](https://github.com/realsenseai/librealsense/releases/tag/v2.50.0)，而期间的几个版本虽然支持T265但官方说明不在对其进行测试。
 #### 安装方式
 > 其中一种方式，测试可用
 
@@ -20,7 +20,7 @@ mkdir ~/releases-2.50.0
 cd ~/releases-2.50.0
 
 ## 克隆仓库并进入分支
-git clone https://github.com/IntelRealSense/realsense-ros.git
+git clone https://github.com/realsenseai/realsense-ros.git
 cd realsense-ros/
 git checkout `git tag | sort -V | grep -P "^2.\d+\.\d+" | tail -1`
 ## 也可以直接进入仓库下载源码
@@ -170,3 +170,8 @@ if __name__ == '__main__':
 ```
 ### 注意事项
 1. T265等需要在计算机开机后插入或使用代码进行刷新，否则将无法被识别
+
+### 相关学习路线
+
+- [ROS 2 机器人开发学习路线](/knowledge/tools/learning-paths/ros2/)：学习传感器话题、TF2、时间戳和机器人系统集成。
+- [PX4 无人机学习路线](/knowledge/tools/learning-paths/px4/)：了解外部定位与飞控集成在无人机系统中的位置。

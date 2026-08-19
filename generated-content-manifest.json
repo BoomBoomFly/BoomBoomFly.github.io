@@ -3,7 +3,7 @@
   "content": [
     {
       "source": "40_发布/history/about-2023.md",
-      "sourceSha256": "2e63dc6165197210d5d6933ecd302384533a520047a3102663c1469fea31e5f4",
+      "sourceSha256": "1287c2e90096fde879b73f74ec3d34a5b4a896ea7c6791901e40c4aeefd48341",
       "target": "src/content/docs/knowledge/history/about-2023/index.md",
       "sha256": "3b0dace13e143c8e470d30ea2a66700f2988d5ee5701fdee67c604636ee009ca",
       "route": "/knowledge/history/about-2023/",
@@ -14,7 +14,7 @@
     },
     {
       "source": "40_发布/history/lab-introduction.md",
-      "sourceSha256": "b8eb0de11c671f8a74ca686ec2a1fa5ce8d09fbce4c364cb9d62d860688f2e67",
+      "sourceSha256": "a030343ff2e3408cf6e3747b718bcef8eb3d4832b256b1d5a24ae23eff05760c",
       "target": "src/content/docs/knowledge/history/lab-introduction/index.md",
       "sha256": "0b5688590f8cc664a0293b3f0534a0b1dec136cd598aa216935ed94eabbc29b1",
       "route": "/knowledge/history/lab-introduction/",
@@ -24,9 +24,9 @@
     },
     {
       "source": "40_发布/history/team-2023.md",
-      "sourceSha256": "5c432fd353a0653d50670a97f0bf119789e23da8b49980698c86a3f832ded6a3",
+      "sourceSha256": "faca214e27d42169aef0f549840adfe302173eb7089311aef60b524381c3c4a3",
       "target": "src/content/docs/knowledge/history/team-2023/index.md",
-      "sha256": "a0c3f9582bbdef348b294928e679fb6174d1d46a9361c1aa91e61d4bb9a607a2",
+      "sha256": "9708873d52d4d4782469c63858cb5cf3ba81f5903b664e87162e0b6f4f714ff0",
       "route": "/knowledge/history/team-2023/",
       "legacyUrls": [
         "/group/",
@@ -35,9 +35,9 @@
     },
     {
       "source": "40_发布/research/flight-control/acfly-mavros.md",
-      "sourceSha256": "9bb16647bf8af09182dcd31e8a223aa0d37a77d38635169439a87341e0dbd2a0",
+      "sourceSha256": "288e02e01a9ffd960e988a87af2bc74a0c943c94fd027034af5aceabe2ce6de4",
       "target": "src/content/docs/knowledge/research/flight-control/acfly-mavros/index.md",
-      "sha256": "13f17336910b0055d1d655479aa2836f06eba2559ccbbe80af7f5ac1c37dddba",
+      "sha256": "223e7c8abcdfe7f0fdd93b5b8744609505a26becf2ecead23ad67054ce1c62a7",
       "route": "/knowledge/research/flight-control/acfly-mavros/",
       "legacyUrls": [
         "/02无人机相关/ACFly-Mavros.html",
@@ -45,10 +45,18 @@
       ]
     },
     {
+      "source": "40_发布/research/flight-control/px4-gazebo-simulation-setup.md",
+      "sourceSha256": "8bb84dce8be71ff90352c5fe5eabeed7406e4dc5244e11a4dc0ed4ed380c78fa",
+      "target": "src/content/docs/knowledge/research/flight-control/px4-gazebo-simulation-setup/index.md",
+      "sha256": "ae9fd68cfaa3959c93d0c7fc94ada87ea729a974037a57b7f315aced49e5d930",
+      "route": "/knowledge/research/flight-control/px4-gazebo-simulation-setup/",
+      "legacyUrls": []
+    },
+    {
       "source": "40_发布/research/perception-localization/d435.md",
-      "sourceSha256": "917608be5e636d2e4df99d9967ced8c9469bda36da7bfbf92583651191d6df80",
+      "sourceSha256": "76a975757c1e397ad6dd07c15a3264be85f10e4f760f812db39912312ec24540",
       "target": "src/content/docs/knowledge/research/perception-localization/d435/index.md",
-      "sha256": "edf35a95e82c2e3038272d344c7d626ebbcf9942cdbb7fb0809a36185b3c5fee",
+      "sha256": "8fc6d621e3c5e63c68c92797d171bf5f4959678c98359c446a4c48dae8676578",
       "route": "/knowledge/research/perception-localization/d435/",
       "legacyUrls": [
         "/02无人机相关/D435.html",
@@ -57,9 +65,9 @@
     },
     {
       "source": "40_发布/research/perception-localization/t265.md",
-      "sourceSha256": "578f432efb945a26fff8207a59d5e2164413e3902dfd6530a64429d0aecdf0a1",
+      "sourceSha256": "c9973f8fa3fb542cdafe378635be316110f052a07f5ba9215c270cfbe28e3876",
       "target": "src/content/docs/knowledge/research/perception-localization/t265/index.md",
-      "sha256": "cf9b0e70b26ee7f55a3716da48bff21f38e93975b754c5dda1eeb2722de5573e",
+      "sha256": "5097fa7286975e139083438c546d208c11c12f5b78fc13b7906c702d51a69a43",
       "route": "/knowledge/research/perception-localization/t265/",
       "legacyUrls": [
         "/02无人机相关/T265.html",
@@ -68,9 +76,9 @@
     },
     {
       "source": "40_发布/research/perception-localization/uwb.md",
-      "sourceSha256": "01cf987132170a33eed4ad2d5cf26bb6d4d597f7b3e6127ab303ab87897cb608",
+      "sourceSha256": "c1a57072210581cee5beb00ed02858db9771d67cfd3351d0447818e9bb1e6bce",
       "target": "src/content/docs/knowledge/research/perception-localization/uwb/index.md",
-      "sha256": "fd895576bc4c3a5a29e064630a0a20f0571021389d6e4be59a655480ae0fe997",
+      "sha256": "b04bc5b54660012d0b70ace08dfdc7c12630262a88db6b8670ea85bd7b4a4479",
       "route": "/knowledge/research/perception-localization/uwb/",
       "legacyUrls": [
         "/02无人机相关/UWB.html",
@@ -79,9 +87,9 @@
     },
     {
       "source": "40_发布/tools/conda.md",
-      "sourceSha256": "e663613289b82c87eccf0866375863e052be1cec4a831fb41503dd21604e66c6",
+      "sourceSha256": "75cc536f0493e1c333319d614f4a7521f25fc1bb0cd06feae3604afae8edde1b",
       "target": "src/content/docs/knowledge/tools/conda/index.md",
-      "sha256": "bae4209ff1651ddb77426fcf346132addba389149995aa71ae9e0aac384332fc",
+      "sha256": "6bd2c50a8ffb72d8ed694647b32fba10b5663a91783b1fcf389d6a88f4d6646c",
       "route": "/knowledge/tools/conda/",
       "legacyUrls": [
         "/01常用开发工具/conda.html",
@@ -90,9 +98,9 @@
     },
     {
       "source": "40_发布/tools/developer-guide.md",
-      "sourceSha256": "d4625001a21f5ac1e17c5800ee381b17bcaa4c51bb898b0d160c433442fc7df9",
+      "sourceSha256": "6c5ca9ef3cd49111f31444538e5de2ddebae4817c8c8123f638c494864fbb926",
       "target": "src/content/docs/knowledge/tools/developer-guide/index.md",
-      "sha256": "e02a44dc678f347001f0184de47fd392a10aeef0338ab8693d8d343f38abcf10",
+      "sha256": "8bacbba720d939b3c806d0094ed3f449d2625a38ec0ff15948b11076a81f6703",
       "route": "/knowledge/tools/developer-guide/",
       "legacyUrls": [
         "/00开发者使用手册/",
@@ -102,9 +110,9 @@
     },
     {
       "source": "40_发布/tools/git.md",
-      "sourceSha256": "23d9d40167b7be415c6884610808a4bee56bd5f52f154bdd0fc4ccf934e320be",
+      "sourceSha256": "ac199c55e68024a695386197831ad8d101a60f233c34350875a940b16e4c9343",
       "target": "src/content/docs/knowledge/tools/git/index.md",
-      "sha256": "6f6ec58a94c56284a0c46ece08e219376737bf9b1c06801738b2d1ad3808a56b",
+      "sha256": "6b7b3bd3550629671184d546b738c8ce805c7219ddaca6377d4281ecfd199e48",
       "route": "/knowledge/tools/git/",
       "legacyUrls": [
         "/01常用开发工具/git.html",
@@ -112,10 +120,74 @@
       ]
     },
     {
+      "source": "40_发布/tools/learning-paths/C++学习路线.md",
+      "sourceSha256": "be2177e53a65c7a60bb2123633015eb0e83b7cd68a0e8ca0e4de7e81738909b7",
+      "target": "src/content/docs/knowledge/tools/learning-paths/cpp/index.md",
+      "sha256": "fa0c7bbf327e4ce7b3ffdd71d339fb28774afc856d229e9a191da779ae918d01",
+      "route": "/knowledge/tools/learning-paths/cpp/",
+      "legacyUrls": []
+    },
+    {
+      "source": "40_发布/tools/learning-paths/STM32嵌入式零基础学习路线.md",
+      "sourceSha256": "f6561b2bdd2e74afa63efe33a972663d0a5e5ceca8404b067a38f21306f2b4f8",
+      "target": "src/content/docs/knowledge/tools/learning-paths/embedded/index.md",
+      "sha256": "7da9c250e2210793ce94794e331ff8e664ab5b3588ee1cb3f211c58b566a060a",
+      "route": "/knowledge/tools/learning-paths/embedded/",
+      "legacyUrls": []
+    },
+    {
+      "source": "40_发布/tools/learning-paths/FPGA学习路线.md",
+      "sourceSha256": "9fec660d55693e8f58ea697e1532b9b6598c176e34dce63b793e10cd95a51d90",
+      "target": "src/content/docs/knowledge/tools/learning-paths/fpga/index.md",
+      "sha256": "3470cbeda769574ff320f9a0a0a6eb3ebbd559b20cae8f3d2c41762d66ed8f70",
+      "route": "/knowledge/tools/learning-paths/fpga/",
+      "legacyUrls": []
+    },
+    {
+      "source": "40_发布/tools/learning-paths/Git零基础学习路线.md",
+      "sourceSha256": "545e913c7be48762fd2f860e796a38530ed29e9be185c7b5dbcd1558e7c17e9a",
+      "target": "src/content/docs/knowledge/tools/learning-paths/git/index.md",
+      "sha256": "969f059090b3255ce39f5aaf145c2cf37777c88393fc51d6673ed0ab613900e7",
+      "route": "/knowledge/tools/learning-paths/git/",
+      "legacyUrls": []
+    },
+    {
+      "source": "40_发布/tools/learning-paths/学习路线总览.md",
+      "sourceSha256": "85aa68ba07cc09f704076e48f5dd3f06330e6c74d6bd8f7ff6fa3bfa94405264",
+      "target": "src/content/docs/knowledge/tools/learning-paths/index.md",
+      "sha256": "253728b292531aa2cc7bb7f35fa1cccb5897ae5b84cbbc1b7f9d36fca4fee82d",
+      "route": "/knowledge/tools/learning-paths/",
+      "legacyUrls": []
+    },
+    {
+      "source": "40_发布/tools/learning-paths/Linux学习路线.md",
+      "sourceSha256": "7f7c379ab579dd7b05d07d022fe81988531748a7a267629323a8a1bd3ab73e2b",
+      "target": "src/content/docs/knowledge/tools/learning-paths/linux/index.md",
+      "sha256": "4cde5e37e02594232a02897261303dfb7b03c2a921d6182fa69d5b47c770e2a1",
+      "route": "/knowledge/tools/learning-paths/linux/",
+      "legacyUrls": []
+    },
+    {
+      "source": "40_发布/tools/learning-paths/PX4无人机学习路线.md",
+      "sourceSha256": "cc82e00515c818304b77bc22ffde0969d3ed237d3b6dcc200a585ca85790dc27",
+      "target": "src/content/docs/knowledge/tools/learning-paths/px4/index.md",
+      "sha256": "745307f3eeca6007118c140877cfb4a0864dada388021706df78ae502c490484",
+      "route": "/knowledge/tools/learning-paths/px4/",
+      "legacyUrls": []
+    },
+    {
+      "source": "40_发布/tools/learning-paths/ROS2学习路线.md",
+      "sourceSha256": "cd0868eabe255d93835d36073274f7d131b1eec562c4bacde141eb6d8fc8d2a7",
+      "target": "src/content/docs/knowledge/tools/learning-paths/ros2/index.md",
+      "sha256": "f9bcc3630e31e9dc4dc5e04ae895a535ebd677a3ab18810975901e27b0ea888f",
+      "route": "/knowledge/tools/learning-paths/ros2/",
+      "legacyUrls": []
+    },
+    {
       "source": "40_发布/tools/ubuntu-20-04-sources.md",
-      "sourceSha256": "f2a4fd2309d9cf38ed0bfe2781183e1e8f2a13e4df0a6a5ffac49fdf08586401",
+      "sourceSha256": "c77d68ac7b79c48969b51022936ebdd2b7de47e8ff61b195d5d1f39d9d84b0f7",
       "target": "src/content/docs/knowledge/tools/ubuntu-20-04-sources/index.md",
-      "sha256": "6308cda0c6f4b0618f71f88bab2adc69cb737af91bdf4904609d98aebcb25925",
+      "sha256": "e103fdbd95225a0292c479d259f31983d113670624d35bc890f3d59d04418df6",
       "route": "/knowledge/tools/ubuntu-20-04-sources/",
       "legacyUrls": [
         "/01常用开发工具/ubuntu换源.html",

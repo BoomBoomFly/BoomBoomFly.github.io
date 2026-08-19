@@ -9,14 +9,13 @@ editUrl: false
 
 > 此为为Jetson配置Intel T265，以此为 Acfly-A9飞控提供定位
 > 
-> 官方参考教程：[realsense-ros](https://github.com/IntelRealSense/realsense-ros)     [acfly-mavros](https://github.com/CGC12123/acfly-mavros)
+> 官方参考教程：[realsense-ros](https://github.com/realsenseai/realsense-ros)     [acfly-mavros](https://github.com/CGC12123/acfly-mavros)
 
 ### ROS Wrapper
 > T265使用所需的packages
 
 #### 安装 ROS 
->Install [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu) on Ubuntu 16.04, [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) on Ubuntu 18.04, [ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu) on Ubuntu 20.04.
-> [可参考autolabor的安装教程](http://www.autolabor.com.cn/book/ROSTutorials/chapter1/12-roskai-fa-gong-ju-an-zhuang/124-an-zhuang-ros.html)
+> 该历史环境分别使用 Ubuntu 16.04 + ROS Kinetic、Ubuntu 18.04 + ROS Melodic 或 Ubuntu 20.04 + ROS Noetic。这些 ROS 1 发行版均已停止维护，仅应在锁定版本的隔离环境中复现。
 
 #### 安装realsense2_camera
 realsense2_camera 可作为 ROS 发行版的 debian 软件包使用
@@ -64,7 +63,7 @@ source devel/setup.bash
 ```bash
 cd ~/acfly_ws/src
 git clone https://github.com/thien94/vision_to_mavros.git
-git clone https://github.com/IntelRealSense/librealsense.git
+git clone https://github.com/realsenseai/librealsense.git
 cd ~/acfly_ws && catkin build
 ```
 
@@ -109,3 +108,7 @@ roslaunch atart_all start_all.launch
 > [使用指南](https://github.com/LauZanMo/acfly-mavros/blob/acfly-develop/acfly-mavros%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.md)  
 > 
 > [二次开发指南](https://github.com/LauZanMo/acfly-mavros/blob/acfly-develop/acfly-mavros%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
+
+### 相关学习路线
+
+- [ROS 2 机器人开发学习路线](/knowledge/tools/learning-paths/ros2/)：本文是旧 ROS 1/MAVROS 集成记录，可用来对照理解迁移前后的节点、话题与飞控接口。
