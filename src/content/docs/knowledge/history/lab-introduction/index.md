@@ -2,6 +2,8 @@
 title: "实验室介绍"
 description: "集美大学无人机科创实验室介绍。"
 editUrl: false
+banner:
+  content: "资料归档页。网站主入口：<a href=\"/about/#lab-introduction\">实验室介绍</a>。"
 ---
 
 ![drone](/images/generated/legacy/gitbook/drone.jpg)

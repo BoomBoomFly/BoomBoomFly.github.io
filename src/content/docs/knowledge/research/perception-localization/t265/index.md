@@ -1,8 +1,12 @@
 ---
-title: "关于 T265 的使用"
-description: "Intel RealSense T265 参数、驱动与数据获取记录。"
+title: "Intel RealSense T265 使用记录（已停产）"
+description: "已停产的 Intel RealSense T265 参数、驱动与数据获取记录。"
 editUrl: false
 ---
+
+:::caution[历史资料]
+本页来自旧站，仅用于既有设备或环境复现。内容未按当前软硬件版本全面复核，操作前请先核对官方文档与实验环境。
+:::
 
 > Author: CGC
 

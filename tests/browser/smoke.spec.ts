@@ -18,8 +18,8 @@ const routes = [
   '/knowledge/tools/conda/',
   '/knowledge/tools/ubuntu-20-04-sources/',
   '/knowledge/history/lab-introduction/',
-  '/knowledge/history/about-2023/',
-  '/knowledge/history/team-2023/',
+  '/knowledge/history/about/',
+  '/knowledge/history/team/',
   '/team/',
   '/join/',
   '/about/',
@@ -74,12 +74,28 @@ test('home exposes conservative Organization JSON-LD', async ({ page }) => {
   expect(data.email).toBeUndefined();
 });
 
+test('unknown routes use the built-in 404 page', async ({ page }) => {
+  const response = await page.goto('/definitely-not-a-public-route/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(404);
+  await expect(page.locator('body')).toBeVisible();
+});
+
+test('/team/ keeps its public URL while forwarding to the current roster', async ({ page }) => {
+  const response = await page.goto('/team/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  expect(new URL(page.url()).pathname).toBe('/about/');
+  expect(new URL(page.url()).hash).toBe('#team-roster');
+  await expect(page.getByRole('heading', { name: '团队名录', exact: true })).toBeVisible();
+});
+
 for (const [legacyUrl, expectedRoute] of [
   ['/00开发者使用手册/', '/knowledge/tools/developer-guide/'],
   ['/01常用开发工具/git.html', '/knowledge/tools/git/'],
   ['/02无人机相关/UWB.html', '/knowledge/research/perception-localization/uwb/'],
-  ['/2023/10/29/about/', '/knowledge/history/about-2023/'],
-  ['/group/', '/knowledge/history/team-2023/'],
+  ['/2023/10/29/about/', '/knowledge/history/about/'],
+  ['/knowledge/history/about-2023/', '/knowledge/history/about/'],
+  ['/group/', '/knowledge/history/team/'],
+  ['/knowledge/history/team-2023/', '/knowledge/history/team/'],
   ['/knowledge/legacy/gitbook/acfly-mavros/', '/knowledge/research/flight-control/acfly-mavros/'],
   ['/knowledge/legacy/gitbook/drone-docs/', '/knowledge/research/flight-control/'],
   ['/knowledge/legacy/gitbook/developer-tools/', '/knowledge/tools/'],

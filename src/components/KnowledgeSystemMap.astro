@@ -1,0 +1,172 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+import '../styles/knowledge-system-map.css';
+
+const nodes = [
+  {
+    id: 'sensors',
+    icon: 'analytics',
+    label: '传感器',
+    summary: '采集环境与机体状态',
+    title: '传感器层',
+    description: '从 IMU、相机与定位设备开始理解数据。传感器决定系统能看见什么，也决定后续估计与控制的上限。',
+    href: '/knowledge/research/perception-localization/',
+    linkLabel: '进入感知与定位',
+  },
+  {
+    id: 'flight-control',
+    icon: 'setting',
+    label: '飞控 / PX4',
+    summary: '状态估计与实时控制',
+    title: '飞控 / PX4',
+    description: '飞控负责姿态、位置与安全边界等实时环节。沿此入口可以继续阅读当前公开的飞控链路资料。',
+    href: '/knowledge/research/flight-control/',
+    linkLabel: '进入飞控资料',
+  },
+  {
+    id: 'ros2',
+    icon: 'code-branch',
+    label: 'ROS 2',
+    summary: '连接模块与数据流',
+    title: 'ROS 2 通信层',
+    description: 'ROS 2 把感知、规划与控制节点组织成可观察的数据流，并为模块间通信提供统一接口。',
+    href: '/knowledge/tools/learning-paths/ros2/',
+    linkLabel: '打开 ROS 2 路径',
+  },
+  {
+    id: 'perception',
+    icon: 'magnifier',
+    label: '智能感知',
+    summary: '理解环境与目标',
+    title: '智能感知层',
+    description: '感知层把原始数据转换为位姿、障碍物与目标信息，为导航、交互和任务决策提供输入。',
+    href: '/knowledge/research/perception-localization/',
+    linkLabel: '查看感知资料',
+  },
+  {
+    id: 'actuators',
+    icon: 'rocket',
+    label: '执行机构',
+    summary: '把指令变成动作',
+    title: '执行机构层',
+    description: '电机、舵机和移动底盘把控制量变成真实动作。它们与实时控制共同决定系统能否稳定完成任务。',
+    href: '/knowledge/research/robotics-intelligence/',
+    linkLabel: '进入机器人系统',
+  },
+] as const;
+
+const selected = nodes[1];
+---
+
+<section class="knowledge-system-map" aria-labelledby="knowledge-system-map-title" data-knowledge-system-map>
+  <header class="knowledge-system-map__header">
+    <div>
+      <p class="knowledge-system-map__kicker">SYSTEM MAP / 系统图谱</p>
+      <h2 id="knowledge-system-map-title">从输入到动作</h2>
+    </div>
+    <p>选择一个节点，查看它在工程链路中的作用，并进入对应的公开资料。</p>
+  </header>
+
+  <div class="knowledge-system-map__nodes" aria-label="工程系统节点">
+    {nodes.map((node) => (
+      <button
+        class="knowledge-system-node"
+        type="button"
+        aria-pressed={node.id === selected.id ? 'true' : 'false'}
+        aria-controls="knowledge-system-detail"
+        data-system-node
+        data-id={node.id}
+        data-title={node.title}
+        data-description={node.description}
+        data-href={node.href}
+        data-link-label={node.linkLabel}
+      >
+        <Icon name={node.icon} size="1.5rem" />
+        <strong>{node.label}</strong>
+        <small>{node.summary}</small>
+        <span class="knowledge-system-node__visited" data-visited-indicator hidden>
+          <Icon name="approve-check" size="0.85rem" />
+          已探索
+        </span>
+      </button>
+    ))}
+  </div>
+
+  <article class="knowledge-system-detail" id="knowledge-system-detail" aria-live="polite">
+    <div>
+      <p class="knowledge-system-map__kicker">SELECTED NODE</p>
+      <h3 data-system-title>{selected.title}</h3>
+    </div>
+    <p data-system-description>{selected.description}</p>
+    <a class="knowledge-system-detail__link" data-system-link href={selected.href}>
+      <span data-system-link-label>{selected.linkLabel}</span>
+      <Icon name="right-arrow" size="1rem" />
+    </a>
+  </article>
+
+  <div class="knowledge-system-progress">
+    <div>
+      <span>本机探索进度</span>
+      <output data-progress-output aria-live="polite">0 / {nodes.length}</output>
+    </div>
+    <progress data-progress max={nodes.length} value="0">0 / {nodes.length}</progress>
+    <small>选择节点后自动记录，仅保存在当前浏览器。</small>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-knowledge-system-map]');
+  const storageKey = 'boomboomfly-knowledge-system-map';
+
+  if (root) {
+    const nodes = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-system-node]'));
+    const validIds = new Set(nodes.map((node) => node.dataset.id ?? ''));
+    const title = root.querySelector<HTMLElement>('[data-system-title]');
+    const description = root.querySelector<HTMLElement>('[data-system-description]');
+    const link = root.querySelector<HTMLAnchorElement>('[data-system-link]');
+    const linkLabel = root.querySelector<HTMLElement>('[data-system-link-label]');
+    const progress = root.querySelector<HTMLProgressElement>('[data-progress]');
+    const progressOutput = root.querySelector<HTMLOutputElement>('[data-progress-output]');
+
+    const readVisited = () => {
+      try {
+        const stored = JSON.parse(localStorage.getItem(storageKey) ?? '[]');
+        return new Set<string>(Array.isArray(stored) ? stored.filter((id) => typeof id === 'string' && validIds.has(id)) : []);
+      } catch {
+        return new Set<string>();
+      }
+    };
+
+    const visited = readVisited();
+
+    const renderVisited = () => {
+      nodes.forEach((node) => {
+        const isVisited = visited.has(node.dataset.id ?? '');
+        node.dataset.visited = String(isVisited);
+        const indicator = node.querySelector<HTMLElement>('[data-visited-indicator]');
+        if (indicator) indicator.hidden = !isVisited;
+      });
+      if (progress) {
+        progress.value = visited.size;
+        progress.textContent = `${visited.size} / ${nodes.length}`;
+      }
+      if (progressOutput) progressOutput.textContent = `${visited.size} / ${nodes.length}`;
+    };
+
+    const selectNode = (node: HTMLButtonElement) => {
+      nodes.forEach((candidate) => candidate.setAttribute('aria-pressed', String(candidate === node)));
+      if (title) title.textContent = node.dataset.title ?? '';
+      if (description) description.textContent = node.dataset.description ?? '';
+      if (link) link.href = node.dataset.href ?? '#';
+      if (linkLabel) linkLabel.textContent = node.dataset.linkLabel ?? '打开资料';
+
+      const id = node.dataset.id;
+      if (id) visited.add(id);
+      try { localStorage.setItem(storageKey, JSON.stringify([...visited])); } catch {}
+      renderVisited();
+    };
+
+    nodes.forEach((node) => node.addEventListener('click', () => selectNode(node)));
+    selectNode(nodes.find((node) => node.getAttribute('aria-pressed') === 'true') ?? nodes[0]);
+  }
+</script>

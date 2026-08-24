@@ -1,0 +1,107 @@
+---
+import TeamRoster from '../content/docs/knowledge/history/team/index.md';
+import '../styles/team-timeline.css';
+---
+
+<div class="team-timeline" data-team-timeline>
+  <div class="team-timeline__enhanced" data-team-enhanced hidden>
+    <aside class="team-timeline__advisor" aria-label="指导老师">
+      <p>ADVISOR</p>
+      <div data-team-advisor></div>
+    </aside>
+
+    <div class="team-timeline__browser">
+      <div class="team-timeline__years" role="tablist" aria-label="选择团队年份" data-team-tabs></div>
+      <div data-team-panels></div>
+    </div>
+  </div>
+
+  <div class="team-timeline__source" data-team-source>
+    <TeamRoster />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-team-timeline]').forEach((root) => {
+    const source = root.querySelector<HTMLElement>('[data-team-source]');
+    const enhanced = root.querySelector<HTMLElement>('[data-team-enhanced]');
+    const advisorTarget = root.querySelector<HTMLElement>('[data-team-advisor]');
+    const tabsTarget = root.querySelector<HTMLElement>('[data-team-tabs]');
+    const panelsTarget = root.querySelector<HTMLElement>('[data-team-panels]');
+    if (!source || !enhanced || !advisorTarget || !tabsTarget || !panelsTarget) return;
+
+    const groups = Array.from(source.querySelectorAll<HTMLElement>('.sl-heading-wrapper'))
+      .map((heading) => ({
+        title: heading.querySelector('h3')?.textContent?.trim() ?? '',
+        list: heading.nextElementSibling instanceof HTMLUListElement ? heading.nextElementSibling : null,
+      }))
+      .filter((group): group is { title: string; list: HTMLUListElement } => Boolean(group.title && group.list));
+
+    const advisor = groups.find((group) => group.title === '指导老师');
+    const years = groups.flatMap((group) => {
+      const match = group.title.match(/^(\d{4})\s*级学生$/);
+      return match ? [{ year: match[1], list: group.list }] : [];
+    });
+    if (!advisor || years.length === 0) return;
+
+    advisorTarget.append(advisor.list.cloneNode(true));
+
+    const tabs: HTMLButtonElement[] = [];
+    const panels: HTMLElement[] = [];
+    years.forEach(({ year, list }) => {
+      const tab = document.createElement('button');
+      tab.type = 'button';
+      tab.id = `team-year-tab-${year}`;
+      tab.className = 'team-timeline__year';
+      tab.textContent = year;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', `team-year-panel-${year}`);
+      tabsTarget.append(tab);
+      tabs.push(tab);
+
+      const panel = document.createElement('section');
+      panel.id = `team-year-panel-${year}`;
+      panel.className = 'team-timeline__panel';
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', tab.id);
+
+      const header = document.createElement('header');
+      const title = document.createElement('h3');
+      const count = document.createElement('p');
+      title.textContent = `${year} 级学生`;
+      count.textContent = `${list.children.length} 位公开成员`;
+      header.append(title, count);
+
+      const members = list.cloneNode(true) as HTMLUListElement;
+      members.className = 'team-timeline__members';
+      panel.append(header, members);
+      panelsTarget.append(panel);
+      panels.push(panel);
+    });
+
+    const selectYear = (index: number, moveFocus = false) => {
+      tabs.forEach((tab, tabIndex) => {
+        const selected = tabIndex === index;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        panels[tabIndex].hidden = !selected;
+      });
+      if (moveFocus) tabs[index].focus();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectYear(index));
+      tab.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        const direction = event.key === 'ArrowRight' ? 1 : -1;
+        selectYear((index + direction + tabs.length) % tabs.length, true);
+      });
+    });
+
+    const defaultIndex = years.length - 1;
+    selectYear(defaultIndex);
+    source.remove();
+    enhanced.hidden = false;
+  });
+</script>

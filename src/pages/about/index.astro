@@ -1,7 +1,9 @@
 ---
 import PageIntro from '../../components/PageIntro.astro';
+import TeamTimeline from '../../components/TeamTimeline.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../config/site';
+import LabIntroduction from '../../content/docs/knowledge/history/lab-introduction/index.md';
 ---
 
 <BaseLayout title="关于实验室" description="Drone Innovation Lab。">
@@ -11,14 +13,25 @@ import { site } from '../../config/site';
     <article><span>LOCATION</span><strong>106–107</strong><p>集美大学克立楼</p></article>
     <article><span>FOCUS</span><strong>UAV · ROBOTICS</strong><p>无人机、机器人与智能感知</p></article>
   </section>
-  <section class="about-links" aria-label="相关链接">
+  <section class="about-links" aria-label="实验室相关资料">
     <div class="button-row">
-      <a class="button" href="/knowledge/">技术文档</a>
-      <a class="button secondary" href="/knowledge/history/lab-introduction/">实验室介绍</a>
-      <a class="button secondary" href="/knowledge/history/about-2023/">2023 年介绍</a>
+      <a class="button" href="/knowledge/">知识库</a>
+      <a class="button secondary" href="#team-roster">团队名录</a>
+      <a class="button secondary" href="#lab-introduction">实验室资料</a>
       <a class="button secondary" href="/join/">加入我们</a>
     </div>
   </section>
+
+  <section class="about-content" id="team-roster" aria-labelledby="team-roster-title">
+    <h2 id="team-roster-title">团队名录</h2>
+    <TeamTimeline />
+  </section>
+
+  <section class="about-content" id="lab-introduction" aria-labelledby="lab-introduction-title">
+    <h2 id="lab-introduction-title">实验室资料</h2>
+    <div class="about-content__body"><LabIntroduction /></div>
+  </section>
+
 </BaseLayout>
 
 <style>
@@ -29,5 +42,13 @@ import { site } from '../../config/site';
   .facts strong { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.5rem); letter-spacing: -.04em; }
   .facts p { color: var(--color-text-muted); }
   .about-links { padding-block: var(--space-section); }
+  .about-content { scroll-margin-top: var(--space-6); border-top: 1px solid var(--color-border-strong); padding-block: var(--space-section); }
+  .about-content > h2 { margin-bottom: var(--space-8); font-size: clamp(2.4rem, 5vw, 5rem); }
+  .about-content__body { max-width: 78ch; }
+  .about-content__body :global(h3) { margin-block: var(--space-8) var(--space-4); font-size: clamp(1.35rem, 2.5vw, 2rem); }
+  .about-content__body :global(p), .about-content__body :global(li) { color: var(--color-text-muted); line-height: 1.85; }
+  .about-content__body :global(ul) { display: grid; gap: var(--space-2); padding-left: 1.4rem; }
+  .about-content__body :global(img) { width: 100%; border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+  .about-content__body :global(.sl-anchor-link) { display: none; }
   @media (max-width: 42rem) { .facts { grid-template-columns: 1fr; } .facts article + article { border-top: 1px solid var(--color-border); border-left: 0; } }
 </style>

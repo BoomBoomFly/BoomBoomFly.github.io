@@ -394,7 +394,7 @@ FishROS 章节用于建立知识顺序，本路线中的故障注入、测试和
 - [ROS 2 Humble QoS](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Quality-of-Service-Settings.html)
 - [ROS 2 Humble TF2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Tf2-Main.html)
 - [ROS 2 Humble Launch Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html)
-- [ROS 2 Humble rosbag2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Ros2bag/Recording-A-Bag-From-Your-Own-Node-Cpp.html)
+- [ROS 2 Humble rosbag2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html)
 - [ROS 2 Executor 概念](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html)
 - [PX4 v1.16 ROS 2 User Guide](https://docs.px4.io/v1.16/en/ros2/user_guide)
 - [PX4 v1.16 Offboard Mode](https://docs.px4.io/v1.16/en/flight_modes/offboard)

@@ -12,7 +12,7 @@ const pages = [
   { name: 'Starlight desktop', route: '/knowledge/' },
   { name: 'Starlight mobile', route: '/knowledge/', viewport: { width: 390, height: 844 } },
   { name: 'UWB document desktop', route: '/knowledge/research/perception-localization/uwb/' },
-  { name: '2023 team mobile', route: '/knowledge/history/team-2023/', viewport: { width: 390, height: 844 } },
+  { name: 'team mobile', route: '/about/#team-roster', viewport: { width: 390, height: 844 } },
 ];
 
 for (const pageCase of pages) {

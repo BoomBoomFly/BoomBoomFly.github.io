@@ -4,6 +4,10 @@ description: "Jetson 上配置 ACFly-Mavros、Intel RealSense 与 ROS 的操作�
 editUrl: false
 ---
 
+:::caution[历史资料]
+本页来自旧站，仅用于既有设备或环境复现。内容未按当前软硬件版本全面复核，操作前请先核对官方文档与实验环境。
+:::
+
 > Author: CGC
 
 

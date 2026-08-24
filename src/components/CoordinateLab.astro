@@ -1,0 +1,133 @@
+---
+import '../styles/coordinate-lab.css';
+---
+
+<section class="coordinate-lab" aria-labelledby="coordinate-lab-title" data-coordinate-lab>
+  <div class="coordinate-lab__controls">
+    <div>
+      <p class="coordinate-lab__eyebrow">INTERACTIVE CONTROL</p>
+      <h3 id="coordinate-lab-title">坐标系与航向角</h3>
+      <p>先选择坐标约定，再拖动航向角，观察机体朝向和各轴含义的变化。</p>
+    </div>
+
+    <div class="coordinate-lab__modes" aria-label="坐标系选择">
+      <button type="button" aria-pressed="true" data-coordinate-mode="enu">ENU</button>
+      <button type="button" aria-pressed="false" data-coordinate-mode="ned">NED</button>
+      <button type="button" aria-pressed="false" data-coordinate-mode="flu">FLU</button>
+    </div>
+
+    <label class="coordinate-lab__heading" for="coordinate-heading">
+      <span>航向角 <output for="coordinate-heading" data-heading-output>42°</output></span>
+      <input id="coordinate-heading" type="range" min="0" max="359" value="42" data-heading-range />
+    </label>
+
+    <p class="coordinate-lab__explanation" aria-live="polite" data-coordinate-explanation>
+      ENU：X 指向东、Y 指向北、Z 指向上，常用于 ROS 中的局部世界坐标表达。
+    </p>
+  </div>
+
+  <div class="coordinate-lab__stage" aria-label="坐标方向演示区域" data-coordinate-stage>
+    <p class="coordinate-lab__axis coordinate-lab__axis--x" style="--axis-inline: 86%; --axis-block: 50%"><strong data-axis-x>东 / X+</strong><span>横向轴</span></p>
+    <p class="coordinate-lab__axis coordinate-lab__axis--y" style="--axis-inline: 50%; --axis-block: 14%"><strong data-axis-y>北 / Y+</strong><span>纵向轴</span></p>
+    <p class="coordinate-lab__axis coordinate-lab__axis--z"><strong data-axis-z>上 / Z+</strong><span>垂直轴</span></p>
+
+    <div class="coordinate-lab__scene">
+      <div class="coordinate-lab__floor" aria-hidden="true">
+        <span class="coordinate-lab__plane-axis coordinate-lab__plane-axis--x"></span>
+        <span class="coordinate-lab__plane-axis coordinate-lab__plane-axis--y"></span>
+        <span class="coordinate-lab__origin"></span>
+        <div
+          class="coordinate-lab__craft"
+          data-coordinate-craft
+          style="--heading: 42deg"
+        >
+          <span class="coordinate-lab__nose"></span>
+          <img src="/brand/drone-lab-logo.svg" width="224" height="224" alt="" />
+        </div>
+      </div>
+      <span class="coordinate-lab__vertical-axis" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const coordinateModes = {
+    enu: {
+      x: '东 / X+', y: '北 / Y+', z: '上 / Z+',
+      xAngle: 90, yAngle: 0, bodyFixed: false,
+      description: 'ENU：X 指向东、Y 指向北、Z 指向上，常用于 ROS 中的局部世界坐标表达。',
+    },
+    ned: {
+      x: '北 / X+', y: '东 / Y+', z: '下 / Z+',
+      xAngle: 0, yAngle: 90, bodyFixed: false,
+      description: 'NED：X 指向北、Y 指向东、Z 指向下，在飞行器导航与飞控系统中很常见。',
+    },
+    flu: {
+      x: '前 / X+', y: '左 / Y+', z: '上 / Z+',
+      xAngle: 0, yAngle: -90, bodyFixed: true,
+      description: 'FLU：X 指向机头、Y 指向机体左侧、Z 指向上方；X/Y 轴会随航向一起旋转。',
+    },
+  } as const;
+
+  const initCoordinateLabs = () => {
+    document.querySelectorAll<HTMLElement>('[data-coordinate-lab]').forEach((lab) => {
+      if (lab.dataset.ready === 'true') return;
+      lab.dataset.ready = 'true';
+
+      const modeButtons = lab.querySelectorAll<HTMLButtonElement>('[data-coordinate-mode]');
+      const axisX = lab.querySelector<HTMLElement>('[data-axis-x]');
+      const axisY = lab.querySelector<HTMLElement>('[data-axis-y]');
+      const axisZ = lab.querySelector<HTMLElement>('[data-axis-z]');
+      const axisXLabel = axisX?.closest<HTMLElement>('.coordinate-lab__axis') ?? null;
+      const axisYLabel = axisY?.closest<HTMLElement>('.coordinate-lab__axis') ?? null;
+      const explanation = lab.querySelector<HTMLElement>('[data-coordinate-explanation]');
+      const headingRange = lab.querySelector<HTMLInputElement>('[data-heading-range]');
+      const headingOutput = lab.querySelector<HTMLOutputElement>('[data-heading-output]');
+      const craft = lab.querySelector<HTMLElement>('[data-coordinate-craft]');
+      let activeMode: keyof typeof coordinateModes = 'enu';
+
+      const positionAxis = (axis: HTMLElement | null, angle: number) => {
+        if (!axis) return;
+        const radians = angle * Math.PI / 180;
+        axis.style.setProperty('--axis-inline', `${50 + Math.sin(radians) * 38}%`);
+        axis.style.setProperty('--axis-block', `${50 - Math.cos(radians) * 38}%`);
+      };
+
+      const renderAxes = () => {
+        const content = coordinateModes[activeMode];
+        const heading = Number(headingRange?.value ?? 0);
+        const rotation = content.bodyFixed ? heading : 0;
+        positionAxis(axisXLabel, content.xAngle + rotation);
+        positionAxis(axisYLabel, content.yAngle + rotation);
+      };
+
+      modeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const mode = button.dataset.coordinateMode as keyof typeof coordinateModes;
+          const content = coordinateModes[mode];
+          if (!content) return;
+
+          activeMode = mode;
+          modeButtons.forEach((candidate) => candidate.setAttribute('aria-pressed', String(candidate === button)));
+          if (axisX) axisX.textContent = content.x;
+          if (axisY) axisY.textContent = content.y;
+          if (axisZ) axisZ.textContent = content.z;
+          if (explanation) explanation.textContent = content.description;
+          renderAxes();
+        });
+      });
+
+      headingRange?.addEventListener('input', () => {
+        const value = headingRange.value;
+        if (headingOutput) headingOutput.textContent = `${value}°`;
+        if (craft) craft.style.setProperty('--heading', `${value}deg`);
+        renderAxes();
+      });
+
+      renderAxes();
+    });
+  };
+
+  initCoordinateLabs();
+  document.addEventListener('astro:page-load', initCoordinateLabs);
+</script>

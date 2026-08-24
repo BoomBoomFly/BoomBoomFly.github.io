@@ -8,6 +8,7 @@ const generatedManifest = JSON.parse(
 const redirects = Object.fromEntries([
   ...Object.entries(generatedManifest.redirects),
   ['/tag/', '/knowledge/'],
+  ['/team/', '/about/#team-roster'],
 ].filter(([source]) => !source.endsWith('/index.html')));
 
 export default defineConfig({
@@ -41,8 +42,6 @@ export default defineConfig({
       ],
       sidebar: [
         { label: '返回实验室主页', link: '/' },
-        { label: '研究方向', link: '/research/' },
-        { label: '项目档案', link: '/projects/' },
         { label: '知识库首页', slug: 'knowledge' },
         {
           label: '研究与实践',
@@ -51,16 +50,16 @@ export default defineConfig({
               label: '飞行控制与 ROS',
               items: [
                 { label: '方向介绍', slug: 'knowledge/research/flight-control' },
-                { label: 'ACFly-Mavros', slug: 'knowledge/research/flight-control/acfly-mavros' },
+                { label: 'ACFly-Mavros', slug: 'knowledge/research/flight-control/acfly-mavros', badge: { text: '历史', variant: 'caution' } },
               ],
             },
             {
               label: '感知、定位与通信',
               items: [
                 { label: '方向介绍', slug: 'knowledge/research/perception-localization' },
-                { label: 'T265', slug: 'knowledge/research/perception-localization/t265' },
-                { label: 'D435', slug: 'knowledge/research/perception-localization/d435' },
-                { label: 'UWB', slug: 'knowledge/research/perception-localization/uwb' },
+                { label: 'T265（已停产）', slug: 'knowledge/research/perception-localization/t265' },
+                { label: 'D435', slug: 'knowledge/research/perception-localization/d435', badge: { text: '历史', variant: 'caution' } },
+                { label: 'UWB', slug: 'knowledge/research/perception-localization/uwb', badge: { text: '历史', variant: 'caution' } },
               ],
             },
             { label: '机器人与智能系统', slug: 'knowledge/research/robotics-intelligence' },
@@ -70,10 +69,10 @@ export default defineConfig({
           label: '工程工具',
           items: [
             { label: '工具目录', slug: 'knowledge/tools' },
-            { label: 'Git', slug: 'knowledge/tools/git' },
-            { label: 'Conda', slug: 'knowledge/tools/conda' },
-            { label: 'Ubuntu 20.04 换源', slug: 'knowledge/tools/ubuntu-20-04-sources' },
-            { label: 'GitBook 手册', slug: 'knowledge/tools/developer-guide' },
+            { label: 'Git', slug: 'knowledge/tools/git', badge: { text: '历史', variant: 'caution' } },
+            { label: 'Conda', slug: 'knowledge/tools/conda', badge: { text: '历史', variant: 'caution' } },
+            { label: 'Ubuntu 20.04（历史）', slug: 'knowledge/tools/ubuntu-20-04-sources' },
+            { label: 'GitBook 旧站（历史）', slug: 'knowledge/tools/developer-guide' },
           ],
         },
         {
@@ -89,22 +88,11 @@ export default defineConfig({
             { label: 'FPGA（选读）', slug: 'knowledge/tools/learning-paths/fpga' },
           ],
         },
-        {
-          label: '实验室与团队',
-          items: [
-            { label: '实验室介绍', link: '/about/' },
-            { label: '团队', link: '/team/' },
-            { label: '实验室资料', slug: 'knowledge/history/lab-introduction' },
-            { label: '2023 年实验室介绍', slug: 'knowledge/history/about-2023' },
-            { label: '2023 年团队名录', slug: 'knowledge/history/team-2023' },
-          ],
-        },
         { label: '加入我们', link: '/join/' },
       ],
       lastUpdated: true,
       pagination: true,
       credits: false,
-      disable404Route: true,
     }),
   ],
 });

@@ -2,34 +2,36 @@
   "schemaVersion": 1,
   "content": [
     {
-      "source": "40_发布/history/about-2023.md",
-      "sourceSha256": "1287c2e90096fde879b73f74ec3d34a5b4a896ea7c6791901e40c4aeefd48341",
-      "target": "src/content/docs/knowledge/history/about-2023/index.md",
-      "sha256": "3b0dace13e143c8e470d30ea2a66700f2988d5ee5701fdee67c604636ee009ca",
-      "route": "/knowledge/history/about-2023/",
+      "source": "40_发布/history/about.md",
+      "sourceSha256": "62c7a0408282f49096db8e15eec3412ea37819278e5d410a7dd1c0d74fb9a890",
+      "target": "src/content/docs/knowledge/history/about/index.md",
+      "sha256": "b6e2b6afc6af63c285f13c35e49a4214fdc6ccb1eae935289e937c4625a00f4f",
+      "route": "/knowledge/history/about/",
       "legacyUrls": [
         "/2023/10/29/about/",
+        "/knowledge/history/about-2023/",
         "/knowledge/legacy/hexo/about-2023/"
       ]
     },
     {
       "source": "40_发布/history/lab-introduction.md",
-      "sourceSha256": "a030343ff2e3408cf6e3747b718bcef8eb3d4832b256b1d5a24ae23eff05760c",
+      "sourceSha256": "57a2be00e44962ca66457b89cf98e0bd790dbd9f2ebe503c9b67914b3c563a74",
       "target": "src/content/docs/knowledge/history/lab-introduction/index.md",
-      "sha256": "0b5688590f8cc664a0293b3f0534a0b1dec136cd598aa216935ed94eabbc29b1",
+      "sha256": "b4b30c171822c8faa558ef8e609a1fab5893d88fe62896c642f4d42843eff824",
       "route": "/knowledge/history/lab-introduction/",
       "legacyUrls": [
         "/knowledge/legacy/lab-introduction/"
       ]
     },
     {
-      "source": "40_发布/history/team-2023.md",
-      "sourceSha256": "faca214e27d42169aef0f549840adfe302173eb7089311aef60b524381c3c4a3",
-      "target": "src/content/docs/knowledge/history/team-2023/index.md",
-      "sha256": "9708873d52d4d4782469c63858cb5cf3ba81f5903b664e87162e0b6f4f714ff0",
-      "route": "/knowledge/history/team-2023/",
+      "source": "40_发布/history/team.md",
+      "sourceSha256": "1e4e39fa7c0ff4eac2aecd6c843d0b37748bebb617f612d5023d01a571eaba00",
+      "target": "src/content/docs/knowledge/history/team/index.md",
+      "sha256": "5301dcc0780dfc4574f111ab64a681fa8f68464c44f80ccb818ba80502cd6d13",
+      "route": "/knowledge/history/team/",
       "legacyUrls": [
         "/group/",
+        "/knowledge/history/team-2023/",
         "/knowledge/legacy/hexo/team-2023/"
       ]
     },
@@ -37,7 +39,7 @@
       "source": "40_发布/research/flight-control/acfly-mavros.md",
       "sourceSha256": "288e02e01a9ffd960e988a87af2bc74a0c943c94fd027034af5aceabe2ce6de4",
       "target": "src/content/docs/knowledge/research/flight-control/acfly-mavros/index.md",
-      "sha256": "223e7c8abcdfe7f0fdd93b5b8744609505a26becf2ecead23ad67054ce1c62a7",
+      "sha256": "2fc225c3e6c2409454a5893c931190e86afad110fa007c525ce746ca75c9bf33",
       "route": "/knowledge/research/flight-control/acfly-mavros/",
       "legacyUrls": [
         "/02无人机相关/ACFly-Mavros.html",
@@ -46,7 +48,7 @@
     },
     {
       "source": "40_发布/research/flight-control/px4-gazebo-simulation-setup.md",
-      "sourceSha256": "8bb84dce8be71ff90352c5fe5eabeed7406e4dc5244e11a4dc0ed4ed380c78fa",
+      "sourceSha256": "7362b1d38756eb365683b455b6cdfbf598401b319ff5eb6e762a8a6a868e2bf5",
       "target": "src/content/docs/knowledge/research/flight-control/px4-gazebo-simulation-setup/index.md",
       "sha256": "ae9fd68cfaa3959c93d0c7fc94ada87ea729a974037a57b7f315aced49e5d930",
       "route": "/knowledge/research/flight-control/px4-gazebo-simulation-setup/",
@@ -54,9 +56,9 @@
     },
     {
       "source": "40_发布/research/perception-localization/d435.md",
-      "sourceSha256": "76a975757c1e397ad6dd07c15a3264be85f10e4f760f812db39912312ec24540",
+      "sourceSha256": "f1254ddd93c880b757f18458c89ff7e3583bc0a3dc2f20f0f9080a229559aaf1",
       "target": "src/content/docs/knowledge/research/perception-localization/d435/index.md",
-      "sha256": "8fc6d621e3c5e63c68c92797d171bf5f4959678c98359c446a4c48dae8676578",
+      "sha256": "a0af3060f5a92d33826497720caaa85348591bf057964cfc15f4e8ba877de668",
       "route": "/knowledge/research/perception-localization/d435/",
       "legacyUrls": [
         "/02无人机相关/D435.html",
@@ -65,9 +67,9 @@
     },
     {
       "source": "40_发布/research/perception-localization/t265.md",
-      "sourceSha256": "c9973f8fa3fb542cdafe378635be316110f052a07f5ba9215c270cfbe28e3876",
+      "sourceSha256": "c61242adee39594a77a2db53855288a4773c3f7b59d1a04f16d9a8e46f8f8082",
       "target": "src/content/docs/knowledge/research/perception-localization/t265/index.md",
-      "sha256": "5097fa7286975e139083438c546d208c11c12f5b78fc13b7906c702d51a69a43",
+      "sha256": "5e28849bd3ee0982720cdc8dc55d722027609ea8e7256bcb76af91741dc85caa",
       "route": "/knowledge/research/perception-localization/t265/",
       "legacyUrls": [
         "/02无人机相关/T265.html",
@@ -76,9 +78,9 @@
     },
     {
       "source": "40_发布/research/perception-localization/uwb.md",
-      "sourceSha256": "c1a57072210581cee5beb00ed02858db9771d67cfd3351d0447818e9bb1e6bce",
+      "sourceSha256": "37c9c4dff7bf9f612331217066f3a7cd90cff656c80ae489ac401214bf2b02d1",
       "target": "src/content/docs/knowledge/research/perception-localization/uwb/index.md",
-      "sha256": "b04bc5b54660012d0b70ace08dfdc7c12630262a88db6b8670ea85bd7b4a4479",
+      "sha256": "72dee29f45602daed6bd692b2c568123f0148bc8c1a28af8ff06e2d352417614",
       "route": "/knowledge/research/perception-localization/uwb/",
       "legacyUrls": [
         "/02无人机相关/UWB.html",
@@ -89,7 +91,7 @@
       "source": "40_发布/tools/conda.md",
       "sourceSha256": "75cc536f0493e1c333319d614f4a7521f25fc1bb0cd06feae3604afae8edde1b",
       "target": "src/content/docs/knowledge/tools/conda/index.md",
-      "sha256": "6bd2c50a8ffb72d8ed694647b32fba10b5663a91783b1fcf389d6a88f4d6646c",
+      "sha256": "400d1442da031bcd9dc5b457f5eab2010d628e8cc3ec97f53b397a39edb6ccd5",
       "route": "/knowledge/tools/conda/",
       "legacyUrls": [
         "/01常用开发工具/conda.html",
@@ -98,9 +100,9 @@
     },
     {
       "source": "40_发布/tools/developer-guide.md",
-      "sourceSha256": "6c5ca9ef3cd49111f31444538e5de2ddebae4817c8c8123f638c494864fbb926",
+      "sourceSha256": "c6f78dacba8f3fd0ad34f821c436b358ed49591dd230ff13e16a23c4f1eafd87",
       "target": "src/content/docs/knowledge/tools/developer-guide/index.md",
-      "sha256": "8bacbba720d939b3c806d0094ed3f449d2625a38ec0ff15948b11076a81f6703",
+      "sha256": "727771fc693e9ff3b814ded3293b0bb52e6e41c9f15e1a9b4942f3c5447b50cd",
       "route": "/knowledge/tools/developer-guide/",
       "legacyUrls": [
         "/00开发者使用手册/",
@@ -112,7 +114,7 @@
       "source": "40_发布/tools/git.md",
       "sourceSha256": "ac199c55e68024a695386197831ad8d101a60f233c34350875a940b16e4c9343",
       "target": "src/content/docs/knowledge/tools/git/index.md",
-      "sha256": "6b7b3bd3550629671184d546b738c8ce805c7219ddaca6377d4281ecfd199e48",
+      "sha256": "fb06ceaa707354b846e437d85cac21aaa68751be60948fbf906f8942a45dda7d",
       "route": "/knowledge/tools/git/",
       "legacyUrls": [
         "/01常用开发工具/git.html",
@@ -177,17 +179,17 @@
     },
     {
       "source": "40_发布/tools/learning-paths/ROS2学习路线.md",
-      "sourceSha256": "cd0868eabe255d93835d36073274f7d131b1eec562c4bacde141eb6d8fc8d2a7",
+      "sourceSha256": "54c2e471e0b43b4eab70711aae68393c38c0abd8025cf2d7d9dbfee801b070ac",
       "target": "src/content/docs/knowledge/tools/learning-paths/ros2/index.md",
-      "sha256": "f9bcc3630e31e9dc4dc5e04ae895a535ebd677a3ab18810975901e27b0ea888f",
+      "sha256": "5ef3f265f4c1ab311f7dd7ddbc5fd41ff21d515a89434b63145a2ce0e1b600a3",
       "route": "/knowledge/tools/learning-paths/ros2/",
       "legacyUrls": []
     },
     {
       "source": "40_发布/tools/ubuntu-20-04-sources.md",
-      "sourceSha256": "c77d68ac7b79c48969b51022936ebdd2b7de47e8ff61b195d5d1f39d9d84b0f7",
+      "sourceSha256": "a1475941994552896a07b7020e2f8e29f249637a4106d217cd5fdb4a99236202",
       "target": "src/content/docs/knowledge/tools/ubuntu-20-04-sources/index.md",
-      "sha256": "e103fdbd95225a0292c479d259f31983d113670624d35bc890f3d59d04418df6",
+      "sha256": "f814b31f9cc2653377300b555979fbb003c25c7ba07b56bdc75843ac8c904934",
       "route": "/knowledge/tools/ubuntu-20-04-sources/",
       "legacyUrls": [
         "/01常用开发工具/ubuntu换源.html",
@@ -222,11 +224,13 @@
     "/knowledge/legacy/gitbook/developer-tools/": "/knowledge/tools/",
     "/01常用开发工具/": "/knowledge/tools/",
     "/01常用开发工具/index.html": "/knowledge/tools/",
-    "/2023/10/29/about/": "/knowledge/history/about-2023/",
-    "/knowledge/legacy/hexo/about-2023/": "/knowledge/history/about-2023/",
+    "/2023/10/29/about/": "/knowledge/history/about/",
+    "/knowledge/history/about-2023/": "/knowledge/history/about/",
+    "/knowledge/legacy/hexo/about-2023/": "/knowledge/history/about/",
     "/knowledge/legacy/lab-introduction/": "/knowledge/history/lab-introduction/",
-    "/group/": "/knowledge/history/team-2023/",
-    "/knowledge/legacy/hexo/team-2023/": "/knowledge/history/team-2023/",
+    "/group/": "/knowledge/history/team/",
+    "/knowledge/history/team-2023/": "/knowledge/history/team/",
+    "/knowledge/legacy/hexo/team-2023/": "/knowledge/history/team/",
     "/02无人机相关/ACFly-Mavros.html": "/knowledge/research/flight-control/acfly-mavros/",
     "/knowledge/legacy/gitbook/acfly-mavros/": "/knowledge/research/flight-control/acfly-mavros/",
     "/02无人机相关/D435.html": "/knowledge/research/perception-localization/d435/",

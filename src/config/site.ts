@@ -10,10 +10,8 @@ export const site = {
 } as const;
 
 export const navigation = [
-  { href: '/research/', label: '研究方向' },
-  { href: '/projects/', label: '项目档案' },
-  { href: '/knowledge/', label: '技术文档' },
-  { href: '/team/', label: '团队' },
+  { href: '/knowledge/', label: '知识库' },
+  { href: '/about/', label: '实验室介绍' },
   { href: '/join/', label: '加入我们' },
 ] as const;
 

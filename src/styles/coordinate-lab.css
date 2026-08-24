@@ -1,0 +1,284 @@
+.coordinate-lab {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.85fr) minmax(0, 1.15fr);
+  grid-template-areas: 'controls stage';
+  gap: 1rem;
+  margin-block: 1.75rem 3rem;
+}
+
+.coordinate-lab__controls,
+.coordinate-lab__stage {
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.coordinate-lab__controls {
+  grid-area: controls;
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.coordinate-lab__controls h3,
+.coordinate-lab__controls p {
+  margin: 0;
+}
+
+.coordinate-lab__controls h3 {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.coordinate-lab__controls h3 + p {
+  margin-top: .75rem;
+  color: var(--color-text-muted);
+}
+
+.coordinate-lab__eyebrow {
+  color: var(--color-accent);
+  font: 750 .72rem/1.4 var(--font-mono);
+  letter-spacing: .14em;
+}
+
+.coordinate-lab__modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5rem;
+}
+
+.coordinate-lab__modes button {
+  min-height: 2.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text);
+  font: 750 .9rem/1 var(--font-sans);
+  cursor: pointer;
+}
+
+.coordinate-lab__modes button:is(:hover, :focus-visible) {
+  border-color: var(--color-accent);
+}
+
+.coordinate-lab__modes button[aria-pressed='true'] {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.coordinate-lab__heading {
+  display: grid;
+  gap: .75rem;
+  font-weight: 750;
+}
+
+.coordinate-lab__heading span {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.coordinate-lab__heading output {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+}
+
+.coordinate-lab__heading input {
+  width: 100%;
+  accent-color: var(--color-accent);
+}
+
+.coordinate-lab__explanation {
+  padding: 1rem;
+  border-inline-start: .25rem solid var(--color-accent);
+  background: var(--color-accent-soft);
+  line-height: 1.7;
+}
+
+.coordinate-lab__stage {
+  grid-area: stage;
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 23rem;
+  padding: 3.5rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 62%, var(--color-accent-soft), transparent 58%), var(--color-surface);
+}
+
+.coordinate-lab__scene {
+  position: absolute;
+  inset: 2rem;
+  display: grid;
+  place-items: center;
+  perspective: 42rem;
+  transform-style: preserve-3d;
+}
+
+.coordinate-lab__floor {
+  position: relative;
+  width: min(82%, 21rem);
+  aspect-ratio: 1.2;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 1.25rem;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 1.75rem, var(--color-border) 1.75rem calc(1.75rem + 1px)),
+    repeating-linear-gradient(90deg, transparent 0 1.75rem, var(--color-border) 1.75rem calc(1.75rem + 1px)),
+    color-mix(in srgb, var(--color-surface) 86%, transparent);
+  box-shadow: 0 2.6rem 3.2rem rgb(16 24 32 / 18%);
+  transform: translateY(2.2rem) rotateX(58deg) rotateZ(-7deg);
+  transform-style: preserve-3d;
+}
+
+.coordinate-lab__plane-axis {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  width: 44%;
+  height: 3px;
+  transform-origin: left center;
+}
+
+.coordinate-lab__plane-axis::after {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: -.2rem;
+  width: .65rem;
+  height: .65rem;
+  transform: translateY(-50%) rotate(45deg);
+  border-block-start: 3px solid currentColor;
+  border-inline-end: 3px solid currentColor;
+  content: '';
+}
+
+.coordinate-lab__plane-axis--x {
+  background: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.coordinate-lab__plane-axis--y {
+  background: var(--color-sensing);
+  color: var(--color-sensing);
+  transform: rotate(-90deg);
+}
+
+.coordinate-lab__origin {
+  position: absolute;
+  z-index: 4;
+  inset: 50% auto auto 50%;
+  width: .75rem;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) translateZ(1.8rem);
+  border: 2px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-text);
+  box-shadow: 0 0 0 .3rem color-mix(in srgb, var(--color-accent) 28%, transparent);
+}
+
+.coordinate-lab__vertical-axis {
+  position: absolute;
+  z-index: 3;
+  inset-block-start: 13%;
+  inset-inline-start: 50%;
+  width: 3px;
+  height: 38%;
+  transform: translateX(-50%);
+  background: linear-gradient(var(--color-tooling), var(--color-tooling) 82%, transparent);
+  color: var(--color-tooling);
+}
+
+.coordinate-lab__vertical-axis::before {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 50%;
+  width: .7rem;
+  height: .7rem;
+  transform: translate(-50%, -15%) rotate(-45deg);
+  border-block-start: 3px solid currentColor;
+  border-inline-end: 3px solid currentColor;
+  content: '';
+}
+
+.coordinate-lab__craft {
+  position: absolute;
+  z-index: 3;
+  inset: 50% auto auto 50%;
+  width: clamp(6.75rem, 15vw, 8.25rem);
+  transform: translate(-50%, -50%) translateZ(1.4rem) rotate(var(--heading));
+  transform-style: preserve-3d;
+  transition: transform 120ms linear;
+}
+
+.coordinate-lab__craft img {
+  width: 100%;
+  height: auto;
+  filter: var(--logo-filter) drop-shadow(0 .8rem 1rem rgb(16 24 32 / 14%));
+}
+
+.coordinate-lab__nose {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: -1.6rem;
+  inset-inline-start: 50%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-inline: .55rem solid transparent;
+  border-block-end: 1rem solid var(--color-accent);
+}
+
+.coordinate-lab__axis {
+  position: absolute;
+  display: grid;
+  gap: .2rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font: .72rem/1.4 var(--font-mono);
+  letter-spacing: .06em;
+}
+
+.coordinate-lab__axis--x,
+.coordinate-lab__axis--y {
+  z-index: 2;
+  inset-block-start: var(--axis-block);
+  inset-inline-start: var(--axis-inline);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.coordinate-lab__axis strong {
+  font-size: .88rem;
+  white-space: nowrap;
+}
+
+.coordinate-lab__axis span { white-space: nowrap; }
+
+.coordinate-lab__axis--x strong { color: var(--color-accent); }
+.coordinate-lab__axis--y strong { color: var(--color-sensing); }
+.coordinate-lab__axis--z { z-index: 4; inset-block-start: 1.25rem; inset-inline-start: 1.25rem; }
+.coordinate-lab__axis--z strong { color: var(--color-tooling); }
+
+@media (max-width: 70rem) {
+  .coordinate-lab {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'controls' 'stage';
+  }
+
+  .coordinate-lab__stage { min-height: 22rem; }
+}
+
+@media (max-width: 34rem) {
+  .coordinate-lab__stage {
+    min-height: 19rem;
+    padding: 2rem;
+  }
+
+  .coordinate-lab__scene { inset: 1.25rem; }
+  .coordinate-lab__floor { width: 88%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coordinate-lab__craft { transition: none; }
+}

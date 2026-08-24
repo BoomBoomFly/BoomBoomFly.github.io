@@ -1,0 +1,221 @@
+.knowledge-system-map {
+  display: grid;
+  gap: 1.25rem;
+  margin-block: 2.5rem 4rem;
+  padding-block: 2rem;
+  border-block: 1px solid var(--color-border-strong);
+}
+
+.knowledge-system-map :is(h2, h3, p) {
+  margin: 0;
+}
+
+.sl-markdown-content .knowledge-system-map h2 {
+  padding: 0;
+  border: 0;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  line-height: 1;
+}
+
+.knowledge-system-map__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.75fr);
+  align-items: end;
+  gap: 2rem;
+}
+
+.knowledge-system-map__header > p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.knowledge-system-map__kicker {
+  margin-bottom: 0.65rem !important;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.knowledge-system-map__nodes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(7.4rem, 1fr));
+  gap: 0.65rem;
+  padding: 0.65rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.knowledge-system-node {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  align-content: start;
+  gap: 0.7rem;
+  min-height: 9.5rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.knowledge-system-node:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-0.15rem);
+}
+
+.knowledge-system-node:focus-visible {
+  outline: 0.2rem solid var(--color-focus);
+  outline-offset: 0.2rem;
+}
+
+.knowledge-system-node[aria-pressed='true'] {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.knowledge-system-node[data-visited='true']:not([aria-pressed='true']) {
+  border-color: var(--color-border-strong);
+}
+
+.knowledge-system-node > svg {
+  color: var(--color-accent);
+}
+
+.knowledge-system-node strong {
+  font-size: 0.95rem;
+}
+
+.knowledge-system-node small {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.knowledge-system-node__visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.knowledge-system-node__visited[hidden] {
+  display: none;
+}
+
+.knowledge-system-detail {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.7fr) minmax(0, 1.25fr);
+  gap: 1.5rem 2rem;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.sl-markdown-content .knowledge-system-detail h3 {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1;
+}
+
+.knowledge-system-detail > p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.knowledge-system-detail__link {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: fit-content;
+  min-height: 2.8rem;
+  padding-inline: 1.1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-on-accent) !important;
+  font-weight: 750;
+  text-decoration: none !important;
+}
+
+.knowledge-system-detail__link:hover {
+  background: var(--color-accent-strong);
+}
+
+.knowledge-system-detail__link:focus-visible {
+  outline: 0.2rem solid var(--color-focus);
+  outline-offset: 0.2rem;
+}
+
+.knowledge-system-progress {
+  display: grid;
+  grid-template-columns: auto minmax(7rem, 1fr);
+  align-items: center;
+  gap: 0.6rem 1rem;
+}
+
+.knowledge-system-progress > div {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.knowledge-system-progress output {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+}
+
+.knowledge-system-progress progress {
+  width: 100%;
+  accent-color: var(--color-accent);
+}
+
+.knowledge-system-progress small {
+  grid-column: 1 / -1;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 65rem) {
+  .knowledge-system-map__nodes {
+    grid-template-columns: repeat(3, minmax(7.4rem, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  .knowledge-system-map__header,
+  .knowledge-system-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .knowledge-system-map__nodes {
+    grid-template-columns: 1fr;
+  }
+
+  .knowledge-system-node {
+    min-height: 0;
+  }
+
+  .knowledge-system-progress {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knowledge-system-node {
+    transition: none;
+  }
+}

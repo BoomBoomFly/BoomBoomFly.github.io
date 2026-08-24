@@ -11,6 +11,7 @@ const assetsRoot = path.resolve(websiteRoot, policy.generatedAssetsRoot);
 const allowedPlaceholders = new Set(policy.allowedGeneratedPlaceholders ?? []);
 const toPosix = (value) => value.split(path.sep).join('/');
 const digest = (value) => createHash('sha256').update(value).digest('hex');
+const digestText = (value) => digest(value.toString().replace(/\r\n?/g, '\n'));
 
 function assertInside(child, parent, label) {
   const relative = path.relative(parent, child);
@@ -39,10 +40,11 @@ const ownedTargets = new Set();
 for (const entry of entries) {
   if (!entry.target || !entry.sha256 || ownedTargets.has(entry.target)) throw new Error(`Invalid or duplicate generated target: ${entry.target}.`);
   const absolute = path.resolve(websiteRoot, entry.target);
-  const expectedRoot = manifest.content.includes(entry) ? contentRoot : assetsRoot;
+  const isContent = manifest.content.includes(entry);
+  const expectedRoot = isContent ? contentRoot : assetsRoot;
   assertInside(absolute, expectedRoot, entry.target);
   const bytes = await readFile(absolute);
-  if (digest(bytes) !== entry.sha256) throw new Error(`Generated file hash mismatch: ${entry.target}.`);
+  if ((isContent ? digestText(bytes) : digest(bytes)) !== entry.sha256) throw new Error(`Generated file hash mismatch: ${entry.target}.`);
   ownedTargets.add(entry.target);
 }
 

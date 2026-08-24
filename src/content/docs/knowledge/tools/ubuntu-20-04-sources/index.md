@@ -1,8 +1,12 @@
 ---
-title: "Ubuntu 20.04 换源记录"
-description: "Ubuntu 20.04 软件源备份与替换步骤。"
+title: "Ubuntu 20.04 换源记录（历史环境）"
+description: "已结束标准支持的 Ubuntu 20.04 软件源备份与替换记录。"
 editUrl: false
 ---
+
+:::caution[历史资料]
+本页来自旧站，仅用于既有设备或环境复现。内容未按当前软硬件版本全面复核，操作前请先核对官方文档与实验环境。
+:::
 
 > Author: CGC
 
