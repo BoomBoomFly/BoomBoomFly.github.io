@@ -29,7 +29,7 @@ editUrl: false
 
 #### 软件
 
-- Git 官方发行版
+- Windows 可从 [Git 官网](https://git-scm.com/) 获取安装包。Ubuntu 可通过 `sudo apt install git` 安装。
 - 一个纯文本编辑器
 - Windows PowerShell、Git Bash 或团队统一的终端
 
@@ -267,10 +267,6 @@ git push -u origin <功能分支>
 ### 与技术路线的衔接
 
 Git 路线负责版本管理能力；C++、Linux、ROS 2、PX4 以及选读的 FPGA 路线只规定工程产物，不再重复讲解 Git 命令。完成四个阶段后，通常可以继续 [C++ 机器人开发学习路线](/knowledge/tools/learning-paths/cpp/)，也可以按项目需要从 [学习路线总览](/knowledge/tools/learning-paths/) 选择其他路线。
-
-### 相关公开资料
-
-- [Git 的安装、配置与学习入口](/knowledge/tools/git/)：用于补充 Git 安装、身份配置和入门练习入口。
 
 ### 参考资料
 

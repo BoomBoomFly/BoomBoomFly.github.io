@@ -1,54 +1,88 @@
 ---
-import PageIntro from '../../components/PageIntro.astro';
-import TeamTimeline from '../../components/TeamTimeline.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../config/site';
 import LabIntroduction from '../../content/docs/knowledge/history/lab-introduction/index.md';
+import TeamRoster, { getHeadings } from '../../content/docs/knowledge/history/team/index.md';
+
+const classes = (await getHeadings()).flatMap(({ text, slug }) => {
+  const year = text.match(/^(\d{4})\s*级学生$/)?.[1];
+  return year ? [{ year, slug }] : [];
+});
 ---
 
-<BaseLayout title="关于实验室" description="Drone Innovation Lab。">
-  <PageIntro eyebrow="ABOUT / 关于" title="关于实验室" />
-  <section class="facts" aria-label="实验室基本信息">
-    <article><span>EST.</span><strong>{site.established}</strong><p>始建年份</p></article>
-    <article><span>LOCATION</span><strong>106–107</strong><p>集美大学克立楼</p></article>
-    <article><span>FOCUS</span><strong>UAV · ROBOTICS</strong><p>无人机、机器人与智能感知</p></article>
+<BaseLayout title="关于实验室" description={`${site.chineseName}（${site.name}）的研究方向、团队名录和实验室沿革。`}>
+  <nav class="button-row about-links" aria-label="本页目录">
+    <a class="text-link" href="#lab-introduction">实验室资料</a>
+    <a class="text-link" href="#team-roster">团队名录</a>
+  </nav>
+  <section class="subpage-section stack-lg" id="lab-introduction" aria-labelledby="lab-introduction-title">
+    <h2 id="lab-introduction-title">实验室资料</h2>
+    <div class="prose"><LabIntroduction /></div>
   </section>
-  <section class="about-links" aria-label="实验室相关资料">
-    <div class="button-row">
-      <a class="button" href="/knowledge/">知识库</a>
-      <a class="button secondary" href="#team-roster">团队名录</a>
-      <a class="button secondary" href="#lab-introduction">实验室资料</a>
-      <a class="button secondary" href="/join/">加入我们</a>
+  <section class="subpage-section stack-lg" id="team-roster" aria-labelledby="team-roster-title">
+    <h2 id="team-roster-title">团队名录</h2>
+    <div class="prose" id="team-members">
+      <div class="year-tabs" role="tablist" aria-label="选择团队年份" hidden>
+        {classes.map(({ year, slug }) => (
+          <button id={`team-year-tab-${year}`} role="tab" type="button" aria-controls={`team-year-panel-${year}`} data-heading={slug}>{year}</button>
+        ))}
+      </div>
+      <TeamRoster />
     </div>
   </section>
-
-  <section class="about-content" id="team-roster" aria-labelledby="team-roster-title">
-    <h2 id="team-roster-title">团队名录</h2>
-    <TeamTimeline />
-  </section>
-
-  <section class="about-content" id="lab-introduction" aria-labelledby="lab-introduction-title">
-    <h2 id="lab-introduction-title">实验室资料</h2>
-    <div class="about-content__body"><LabIntroduction /></div>
-  </section>
-
 </BaseLayout>
 
+<script>
+  const roster = document.getElementById('team-members');
+  const tablist = roster?.querySelector<HTMLElement>('[role="tablist"]');
+  if (roster && tablist) {
+    const groups = Array.from(tablist.querySelectorAll('button')).flatMap((tab) => {
+      const heading = document.getElementById(tab.dataset.heading!);
+      const title = heading?.closest('.sl-heading-wrapper') ?? heading;
+      const list = title?.nextElementSibling;
+      return title && roster.contains(title) && list instanceof HTMLUListElement ? [{ tab, title, list }] : [];
+    });
+    if (groups.length && groups.length === tablist.children.length) {
+      groups[0].title.before(tablist);
+      const panels = groups.map(({ tab, title, list }) => {
+        const panel = document.createElement('section');
+        panel.id = tab.getAttribute('aria-controls')!;
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('aria-labelledby', tab.id);
+        const count = document.createElement('p');
+        count.textContent = `${list.children.length} 位公开成员`;
+        title.before(panel);
+        panel.append(title, count, list);
+        return panel;
+      });
+
+      function selectYear(index: number) {
+        groups.forEach(({ tab }, i) => {
+          const active = i === index;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          panels[i].hidden = !active;
+        });
+      }
+      groups.forEach(({ tab }, i) => {
+        tab.addEventListener('click', () => selectYear(i));
+        tab.addEventListener('keydown', (event) => {
+          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+          event.preventDefault();
+          const next = (i + (event.key === 'ArrowRight' ? 1 : -1) + groups.length) % groups.length;
+          selectYear(next);
+          groups[next].tab.focus();
+        });
+      });
+      selectYear(groups.length - 1);
+      tablist.hidden = false;
+    }
+  }
+</script>
+
 <style>
-  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--color-border-strong); }
-  .facts article { display: grid; gap: var(--space-3); padding: clamp(1.5rem, 4vw, 3.5rem); }
-  .facts article + article { border-left: 1px solid var(--color-border); }
-  .facts span { color: var(--color-accent); font: 750 .7rem/1 var(--font-mono); letter-spacing: .1em; }
-  .facts strong { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.5rem); letter-spacing: -.04em; }
-  .facts p { color: var(--color-text-muted); }
-  .about-links { padding-block: var(--space-section); }
-  .about-content { scroll-margin-top: var(--space-6); border-top: 1px solid var(--color-border-strong); padding-block: var(--space-section); }
-  .about-content > h2 { margin-bottom: var(--space-8); font-size: clamp(2.4rem, 5vw, 5rem); }
-  .about-content__body { max-width: 78ch; }
-  .about-content__body :global(h3) { margin-block: var(--space-8) var(--space-4); font-size: clamp(1.35rem, 2.5vw, 2rem); }
-  .about-content__body :global(p), .about-content__body :global(li) { color: var(--color-text-muted); line-height: 1.85; }
-  .about-content__body :global(ul) { display: grid; gap: var(--space-2); padding-left: 1.4rem; }
-  .about-content__body :global(img) { width: 100%; border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
-  .about-content__body :global(.sl-anchor-link) { display: none; }
-  @media (max-width: 42rem) { .facts { grid-template-columns: 1fr; } .facts article + article { border-top: 1px solid var(--color-border); border-left: 0; } }
+  .about-links { padding-block: var(--space-4); }
+  .year-tabs { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block: var(--space-6); }
+  .year-tabs button { min-height: 2.75rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-pill); padding-inline: 1.25rem; background: transparent; cursor: pointer; }
+  .year-tabs button[aria-selected='true'] { border-color: var(--color-accent); background: var(--color-accent); color: var(--color-on-accent); }
 </style>

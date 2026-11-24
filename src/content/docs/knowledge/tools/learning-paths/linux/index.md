@@ -207,6 +207,14 @@ ps -p $$ -o pid,ppid,comm,args
 - 不在未说明原因时添加第三方软件源；
 - 能区分包未安装、PATH 错误、架构错误和运行时依赖错误。
 
+#### Python 项目的 Conda 环境
+
+`conda create -n lab python` 创建名为 `lab` 的环境。用 `conda activate lab` 进入，再用 `conda install numpy` 安装项目所需的包。用 `conda list` 查看当前环境的软件包，`conda deactivate` 退出，`conda env list` 列出所有环境。[Conda 环境管理文档](https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-environments.html)
+
+#### Ubuntu 20.04 的软件源备份与恢复
+
+在使用 `/etc/apt/sources.list` 的 Ubuntu 20.04 主机上，编辑前运行 `sudo cp -p /etc/apt/sources.list /etc/apt/sources.list.bak` 保存原配置。修改后运行 `sudo apt update` 刷新包索引。需要撤销时，将备份复制回原路径，再次刷新索引。旧稿中的镜像列表针对 `focal`，其他 Ubuntu 版本请核对自己的发行代号和配置文件位置。[Ubuntu 软件包管理文档](https://ubuntu.com/server/docs/how-to/software/package-management/) · [实验室旧版工具记录](https://github.com/BoomBoomFly/BoomBoomFly.github.io/tree/6b0998609bcf215b3115710b9afe9bfc46b5c7d2/01常用开发工具)
+
 ### 阶段 5：进程、信号、资源、systemd 和日志
 
 #### 要掌握的内容
@@ -370,11 +378,6 @@ Linux 主线未通过时，不建议直接把 ROS、PX4 或驱动安装失败归
 修改：只改变了哪个变量？怎样恢复？
 验证：原问题是否解决，正常路径和失败路径是否仍符合预期？
 ```
-
-### 相关公开资料
-
-- [Ubuntu 20.04 换源记录](/knowledge/tools/ubuntu-20-04-sources/)：需要维护旧版 Ubuntu 20.04 环境时参考。
-- [Conda 环境管理及常用指令](/knowledge/tools/conda/)：用于管理相互隔离的 Python 环境和软件包。
 
 ### 参考资料
 

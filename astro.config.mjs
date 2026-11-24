@@ -1,35 +1,50 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { readFileSync } from 'node:fs';
+import { site } from './src/config/site.ts';
 
 const generatedManifest = JSON.parse(
   readFileSync(new URL('./generated-content-manifest.json', import.meta.url), 'utf8'),
 );
-const redirects = Object.fromEntries([
-  ...Object.entries(generatedManifest.redirects),
-  ['/tag/', '/knowledge/'],
-  ['/team/', '/about/#team-roster'],
-].filter(([source]) => !source.endsWith('/index.html')));
+const fixedRedirects = {
+  '/knowledge/legacy/gitbook/drone-docs/': '/knowledge/research/flight-control/',
+  '/02无人机相关/': '/knowledge/research/flight-control/',
+  '/knowledge/legacy/gitbook/developer-tools/': '/knowledge/tools/learning-paths/',
+  '/01常用开发工具/': '/knowledge/tools/learning-paths/',
+  '/knowledge/tools/': '/knowledge/tools/learning-paths/',
+  '/knowledge/research/robotics-intelligence/': '/knowledge/#robotics',
+  '/research/': '/#research-heading',
+  '/tag/': '/knowledge/',
+  '/team/': '/about/#team-roster',
+};
+const redirects = {};
+for (const [source, target] of [...Object.entries(generatedManifest.redirects), ...Object.entries(fixedRedirects)]) {
+  // GitHub Pages serves a directory and its index.html from the same file.
+  const route = source.replace(/\/index\.html$/, '/');
+  if (redirects[route] && redirects[route] !== target) throw new Error(`Conflicting redirects for ${route}`);
+  redirects[route] = target;
+}
 
 export default defineConfig({
-  site: 'https://boomboomfly.github.io',
+  site: site.url,
+  scopedStyleStrategy: 'where',
   redirects,
   integrations: [
     starlight({
-      title: 'Drone Innovation Lab',
+      title: site.name,
       description: '集美大学无人机科创实验室的公开技术知识库。',
       locales: {
         root: { label: '简体中文', lang: 'zh-CN' },
       },
       logo: {
-        src: './public/brand/drone-lab-logo.svg',
+        src: `./public${site.logo}`,
         alt: '无人机实验室 Logo',
       },
-      favicon: '/brand/drone-lab-logo.svg',
+      favicon: site.logo,
       customCss: ['./src/styles/starlight.css'],
       head: [
         { tag: 'meta', attrs: { property: 'og:locale', content: 'zh_CN' } },
-        { tag: 'meta', attrs: { property: 'og:site_name', content: 'Drone Innovation Lab' } },
+        { tag: 'meta', attrs: { property: 'og:site_name', content: site.name } },
         { tag: 'meta', attrs: { property: 'og:type', content: 'website' } },
         { tag: 'meta', attrs: { 'data-pagefind-meta': 'type', content: '知识库' } },
         {
@@ -38,7 +53,7 @@ export default defineConfig({
         },
       ],
       social: [
-        { icon: 'github', label: 'BoomBoomFly on GitHub', href: 'https://github.com/BoomBoomFly' },
+        { icon: 'github', label: 'BoomBoomFly on GitHub', href: site.github },
       ],
       sidebar: [
         { label: '返回实验室主页', link: '/' },
@@ -62,19 +77,10 @@ export default defineConfig({
                 { label: 'UWB', slug: 'knowledge/research/perception-localization/uwb', badge: { text: '历史', variant: 'caution' } },
               ],
             },
-            { label: '机器人与智能系统', slug: 'knowledge/research/robotics-intelligence' },
+            { label: '机器人与智能系统', link: '/knowledge/#robotics' },
           ],
         },
-        {
-          label: '工程工具',
-          items: [
-            { label: '工具目录', slug: 'knowledge/tools' },
-            { label: 'Git', slug: 'knowledge/tools/git', badge: { text: '历史', variant: 'caution' } },
-            { label: 'Conda', slug: 'knowledge/tools/conda', badge: { text: '历史', variant: 'caution' } },
-            { label: 'Ubuntu 20.04（历史）', slug: 'knowledge/tools/ubuntu-20-04-sources' },
-            { label: 'GitBook 旧站（历史）', slug: 'knowledge/tools/developer-guide' },
-          ],
-        },
+        { label: '公开代码仓库', slug: 'knowledge/tools/public-projects' },
         {
           label: '学习路线',
           items: [

@@ -1,29 +1,17 @@
 ---
-import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
-import { site } from '../config/site';
-import '../styles/global.css';
+import { navigation, site } from '../config/site';
+import '../styles/tokens.css';
 
 interface Props {
   title: string;
   description: string;
-  contentType?: string;
-  socialType?: 'website' | 'article';
-  image?: string;
-  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  jsonLd?: Record<string, unknown>;
 }
 
-const {
-  title,
-  description,
-  contentType = '页面',
-  socialType = 'website',
-  image,
-  jsonLd,
-} = Astro.props;
+const { title, description, jsonLd } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url);
 const pageTitle = title === site.name ? title : `${title} · ${site.name}`;
-const socialImage = image ? new URL(image, Astro.site ?? site.url) : undefined;
 ---
 
 <!doctype html>
@@ -33,20 +21,18 @@ const socialImage = image ? new URL(image, Astro.site ?? site.url) : undefined;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta data-pagefind-meta="type" content={contentType} />
+    <meta data-pagefind-meta="type" content="页面" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={site.logo} />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:type" content={socialType} />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    {socialImage && <meta property="og:image" content={socialImage} />}
-    <meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    {socialImage && <meta name="twitter:image" content={socialImage} />}
     {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <title>{pageTitle}</title>
     <script is:inline>
@@ -55,8 +41,9 @@ const socialImage = image ? new URL(image, Astro.site ?? site.url) : undefined;
         try {
           saved = localStorage.getItem('starlight-theme') ?? localStorage.getItem('boomboomfly-theme');
         } catch {}
-        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       })();
     </script>
   </head>
@@ -64,8 +51,159 @@ const socialImage = image ? new URL(image, Astro.site ?? site.url) : undefined;
     <a class="skip-link" href="#main-content">跳到主要内容</a>
     <SiteHeader />
     <main id="main-content" class="page-shell page-main">
+      {Astro.url.pathname !== '/' && <h1 class="page-intro">{title}</h1>}
       <slot />
     </main>
-    <SiteFooter />
+    <footer class="site-footer">
+      <div class="page-shell site-footer__inner">
+        <p>© {new Date().getFullYear()} {site.name} · {site.chineseName}</p>
+        <nav aria-label="页脚导航">
+          {navigation.map(({ href, label }) => <a href={href}>{label}</a>)}
+          <a href={site.github}>GitHub</a>
+        </nav>
+      </div>
+    </footer>
   </body>
 </html>
+
+<style>
+  .page-intro { padding-block: var(--space-section) var(--space-7); border-bottom: 1px solid var(--color-border-strong); }
+  .site-footer { border-top: 1px solid var(--color-border); background: var(--color-surface-strong); }
+  .site-footer__inner { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-6); }
+  .site-footer p { color: var(--color-text-muted); font-size: .85rem; }
+  .site-footer nav { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  .site-footer a { font-weight: 700; text-decoration-color: var(--color-border-strong); }
+</style>
+
+<style is:global>
+*, *::before, *::after { box-sizing: border-box; }
+
+html { min-width: 20rem; background: var(--color-bg); scroll-behavior: smooth; }
+img { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+button { color: inherit; }
+[hidden] { display: none !important; }
+
+:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+::selection { background: var(--color-accent-soft); }
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-weight: 720;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+h1 { font-size: clamp(2.8rem, 7.2vw, 7.25rem); }
+h2 { font-size: clamp(2rem, 4.3vw, 4.4rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.65rem); }
+h4 { font-size: 1.05rem; letter-spacing: -0.015em; }
+
+p { margin: 0; }
+a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.2em; }
+code, pre { font-family: var(--font-mono); }
+
+.page-shell {
+  width: min(calc(100% - (2 * var(--space-page))), var(--page-width));
+  margin-inline: auto;
+}
+
+.page-main {
+  min-height: calc(100vh - var(--header-height) - 9rem);
+  padding-bottom: var(--space-9);
+}
+
+.stack-lg { display: grid; gap: var(--space-8); }
+
+@media (max-width: 64rem) {
+  .page-main { padding-bottom: var(--space-8); }
+}
+
+.eyebrow {
+  color: var(--color-text-muted);
+  font: 750 0.7rem/1.35 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.button-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+
+.button {
+  display: inline-flex;
+  min-height: 3.1rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  padding: 0.7rem 1.35rem;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 760;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.button:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.button:active { transform: translateY(0) scale(0.98); }
+.button.secondary { border-color: var(--color-border-strong); background: transparent; color: var(--color-text); }
+.button.secondary:hover { border-color: var(--color-accent); background: var(--color-surface); }
+
+.text-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  color: var(--color-text);
+  font-weight: 720;
+  text-decoration-color: var(--color-accent);
+}
+
+.subpage-section { border-bottom: 1px solid var(--color-border-strong); padding-block: var(--space-section); }
+
+.prose { max-width: 76ch; }
+.prose h3 { margin-block: var(--space-6) var(--space-3); }
+.prose p { margin-block: var(--space-4); }
+.prose ul { display: grid; gap: var(--space-2); padding-left: 1.5rem; }
+.prose img { border-radius: var(--radius-lg); }
+.prose a { text-decoration-color: var(--color-accent); }
+.prose .sl-anchor-link { display: none; }
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: var(--space-3);
+  left: var(--space-3);
+  transform: translateY(-180%);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1rem;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 750;
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>

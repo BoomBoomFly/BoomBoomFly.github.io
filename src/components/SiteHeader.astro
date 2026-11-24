@@ -1,9 +1,6 @@
 ---
 import { Icon } from '@astrojs/starlight/components';
 import { navigation, site } from '../config/site';
-
-const pathname = Astro.url.pathname;
-const isActive = (href: string) => pathname.startsWith(href);
 ---
 
 <header class="site-header" data-site-header>
@@ -12,7 +9,7 @@ const isActive = (href: string) => pathname.startsWith(href);
       <img src={site.logo} width="200" height="200" alt="" />
       <span class="brand__copy">
         <strong>{site.name}</strong>
-        <small>Jimei University · Engineering Notes</small>
+        <small>{site.chineseName}</small>
       </span>
     </a>
 
@@ -21,7 +18,7 @@ const isActive = (href: string) => pathname.startsWith(href);
       <nav id="site-navigation" aria-label="主导航">
         <ul>
           {navigation.map((item) => (
-            <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
+            <li><a href={item.href} aria-current={Astro.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.label}</a></li>
           ))}
         </ul>
       </nav>
@@ -43,13 +40,11 @@ const isActive = (href: string) => pathname.startsWith(href);
   const closeMenu = (restoreFocus = false) => {
     if (menu?.getAttribute('aria-expanded') !== 'true') return;
     menu.setAttribute('aria-expanded', 'false');
-    nav?.removeAttribute('data-open');
     if (restoreFocus) menu.focus();
   };
 
   const openMenu = () => {
     menu?.setAttribute('aria-expanded', 'true');
-    nav?.setAttribute('data-open', '');
     nav?.querySelector<HTMLElement>('a')?.focus();
   };
 
@@ -73,7 +68,6 @@ const isActive = (href: string) => pathname.startsWith(href);
   const syncTheme = (theme: string) => {
     const dark = theme === 'dark';
     toggle?.setAttribute('aria-pressed', String(dark));
-    toggle?.setAttribute('data-theme-state', theme);
     const action = dark ? '切换到浅色主题' : '切换到深色主题';
     toggle?.setAttribute('aria-label', action);
     toggle?.setAttribute('title', action);
@@ -84,7 +78,6 @@ const isActive = (href: string) => pathname.startsWith(href);
     const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try {
-      localStorage.setItem('boomboomfly-theme', next);
       localStorage.setItem('starlight-theme', next);
     } catch {}
     syncTheme(next);
@@ -118,14 +111,14 @@ const isActive = (href: string) => pathname.startsWith(href);
   .theme-toggle { position: fixed; z-index: 45; right: 1rem; bottom: 2.5rem; display: grid; width: 3rem; min-height: 3rem; place-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0; background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow-soft); cursor: pointer; transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast); }
   .theme-toggle:hover { transform: translateY(-.2rem); border-color: var(--color-border-strong); background: var(--color-accent-soft); }
   .theme-toggle__icon { display: grid; grid-area: 1 / 1; place-items: center; line-height: 0; transition: opacity var(--transition-fast), transform var(--transition-fast); }
-  .theme-toggle__icon--sun, .theme-toggle[data-theme-state='dark'] .theme-toggle__icon--moon { opacity: 0; transform: scale(.75) rotate(-18deg); }
-  .theme-toggle__icon--moon, .theme-toggle[data-theme-state='dark'] .theme-toggle__icon--sun { opacity: 1; transform: scale(1) rotate(0); }
+  .theme-toggle__icon--sun, .theme-toggle[aria-pressed='true'] .theme-toggle__icon--moon { opacity: 0; transform: scale(.75) rotate(-18deg); }
+  .theme-toggle__icon--moon, .theme-toggle[aria-pressed='true'] .theme-toggle__icon--sun { opacity: 1; transform: scale(1) rotate(0); }
 
   @media (max-width: 64rem) {
     .site-header__inner { padding-right: calc(var(--space-page) + 3.5rem); }
     .menu-toggle { display: block; }
     nav { position: absolute; top: calc(100% + .5rem); right: var(--space-page); left: var(--space-page); display: none; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-3); background: var(--color-surface); box-shadow: var(--shadow-float); }
-    nav[data-open] { display: block; }
+    .menu-toggle[aria-expanded='true'] + nav { display: block; }
     nav ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2) var(--space-4); }
     nav a { min-height: 2.75rem; text-align: center; }
   }

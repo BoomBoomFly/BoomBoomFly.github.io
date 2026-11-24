@@ -47,4 +47,4 @@ banner:
 - [万志成](https://wanone111.github.io/)
 - 葛予
 - 王润泽
-- 乔立君
+- 乔丽君

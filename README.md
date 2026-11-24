@@ -1,44 +1,20 @@
-# BoomBoomFly 网站
+# JMU AIR LAB · 集美大学无人机科创实验室
 
-本目录是无人机科创实验室的公开网站仓库。用户已经批准本仓库中的新站替换旧版 GitBook 与 Hexo 站点，并继续使用 `BoomBoomFly/BoomBoomFly.github.io` 作为公开远程仓库。第一阶段实现包含 Astro 首页、Starlight 知识层、已经批准的航空冷银视觉体系，以及研究方向、项目、团队、加入我们和实验室背景等稳定的公开路由。
+这是集美大学无人机科创实验室的网站。Astro 提供实验室介绍与公开项目目录，Starlight 承载工程知识库。[网站首页](https://boomboomfly.github.io/) · [公开项目](https://boomboomfly.github.io/projects/) · [BoomBoomFly GitHub 组织](https://github.com/BoomBoomFly)
 
 ## 本地开发
 
-```bash
-npm install
+使用 Node.js LTS（最低 22.23.4）。在本目录运行以下命令。
+
+```sh
+npm install --no-package-lock
 npm run dev
-npm run check
-npm run build
 ```
 
-浏览器质量检查位于 `tests/browser/`，覆盖公开路由、导航与主题行为、Starlight 控件、响应式状态、自动化无障碍检查和截图证据。
+`npm run build` 生成 `dist/`，`npm run preview` 预览构建。GitHub Pages 在推送 `main` 后从本仓库构建和部署。[部署配置](.github/workflows/deploy-pages.yml)
 
-## 内容边界
+## 更新知识库
 
-私有的 `knowledge-base/` 是唯一的编辑来源。受信任的本地导出器只读取 `knowledge-base/40_发布/`，并且只导出包含以下元数据的笔记：
+在相邻私有仓库 `knowledge-base/40_发布/` 中编辑公开源稿，在该仓库运行 `npm run publish`。导出器将合格的正文和引用图片写入本站，再记录文件哈希与旧网址。手写知识库入口与生成正文共用 `src/content/docs/knowledge/`，图片位于 `public/images/generated/`。
 
-- `visibility: public`
-- `status: ready` or `status: published`
-
-合格笔记还必须通过元数据、附件、链接、路由和敏感信息检查。公开副本只能单向进入本仓库，绝不能反向写回知识库。
-
-## 公开 CI 边界
-
-公开 CI 必须：
-
-1. 只检出 `website` 仓库。
-2. 不得接收访问私有知识库的凭据，也不得克隆、获取、挂载或读取私有知识库。
-3. 只验证已经提交到本仓库的公开内容、生成文件所有权、链接、路由、构建输出和其他产物。
-4. 遇到无效或缺失的公开产物时必须失败，不得静默跳过。
-
-因此，私有源内容的筛选和导出只能在受信任的本地工作区完成；公开产物经过审核后才能提交到本仓库。
-
-## 发布生成路径
-
-- `src/content/docs/knowledge/{research,tools,history}/`：由 Starlight 加载、按当前信息架构组织的公开文本生成内容。
-- `public/images/generated/`：生成的公开附件副本。
-- `generated-content-manifest.json`：记录所有权、哈希、路由和重定向的清单。
-- `tools/content-policy.json`：机器可读的发布约定。
-- `tools/validate-generated.mjs`：只在网站仓库内验证已提交公开产物的工具。
-
-已经审核的公开内容按当前信息架构生成发布，已登记的旧 URL 由显式重定向保持兼容。页面、附件和重定向数量以 `generated-content-manifest.json` 为准；在本仓库运行 `npm run validate:content`，即可在不读取私有知识库或旧版仓库的情况下验证已提交的公开副本。
+站点固定跳转维护在 [Astro 配置](astro.config.mjs)。
