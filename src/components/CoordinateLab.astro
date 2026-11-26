@@ -1,9 +1,7 @@
 <section class="coordinate-lab" aria-labelledby="coordinate-lab-title" data-coordinate-lab>
   <div class="coordinate-lab__controls">
     <div>
-      <p class="coordinate-lab__eyebrow">INTERACTIVE CONTROL</p>
       <h3 id="coordinate-lab-title">坐标系与航向角</h3>
-      <p>先选择坐标约定，再拖动航向角，观察机体朝向和各轴含义的变化。</p>
     </div>
 
     <div class="coordinate-lab__modes" aria-label="坐标系选择">
@@ -139,9 +137,10 @@
 
   .coordinate-lab__controls,
   .coordinate-lab__stage {
-    border: 1px solid var(--color-border-strong);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
   }
 
   .coordinate-lab__controls {
@@ -179,13 +178,14 @@
   }
 
   .coordinate-lab__modes button {
-    min-height: 2.75rem;
+    min-height: 2.65rem;
     border: 1px solid var(--color-border-strong);
     border-radius: 999px;
-    background: transparent;
+    background: var(--color-surface);
     color: var(--color-text);
-    font: 750 .9rem/1 var(--font-sans);
+    font: 700 .88rem/1 var(--font-sans);
     cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
   }
 
   .coordinate-lab__modes button:is(:hover, :focus-visible) {
@@ -221,7 +221,8 @@
   }
 
   .coordinate-lab__explanation {
-    padding: 1rem;
+    padding: 0.95rem 1.05rem;
+    border-radius: var(--radius-md);
     border-inline-start: .25rem solid var(--color-accent);
     background: var(--color-accent-soft);
     line-height: 1.7;

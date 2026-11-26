@@ -4,30 +4,36 @@ import { site } from '../../config/site';
 import LabIntroduction from '../../content/docs/knowledge/history/lab-introduction/index.md';
 import TeamRoster, { getHeadings } from '../../content/docs/knowledge/history/team/index.md';
 
-const classes = (await getHeadings()).flatMap(({ text, slug }) => {
+const classes = getHeadings().flatMap(({ text, slug }) => {
   const year = text.match(/^(\d{4})\s*级学生$/)?.[1];
   return year ? [{ year, slug }] : [];
 });
 ---
 
 <BaseLayout title="关于实验室" description={`${site.chineseName}（${site.name}）的研究方向、团队名录和实验室沿革。`}>
-  <nav class="button-row about-links" aria-label="本页目录">
-    <a class="text-link" href="#lab-introduction">实验室资料</a>
-    <a class="text-link" href="#team-roster">团队名录</a>
+  <nav class="about-links" aria-label="本页目录">
+    <a class="pill-badge about-chip" href="#lab-introduction">实验室资料</a>
+    <a class="pill-badge about-chip" href="#team-roster">团队名录</a>
   </nav>
+
   <section class="subpage-section stack-lg" id="lab-introduction" aria-labelledby="lab-introduction-title">
     <h2 id="lab-introduction-title">实验室资料</h2>
-    <div class="prose"><LabIntroduction /></div>
+    <div class="surface-card about-card">
+      <div class="prose"><LabIntroduction /></div>
+    </div>
   </section>
+
   <section class="subpage-section stack-lg" id="team-roster" aria-labelledby="team-roster-title">
     <h2 id="team-roster-title">团队名录</h2>
-    <div class="prose" id="team-members">
-      <div class="year-tabs" role="tablist" aria-label="选择团队年份" hidden>
-        {classes.map(({ year, slug }) => (
-          <button id={`team-year-tab-${year}`} role="tab" type="button" aria-controls={`team-year-panel-${year}`} data-heading={slug}>{year}</button>
-        ))}
+    <div class="surface-card about-card">
+      <div class="prose team-prose" id="team-members">
+        <div class="year-tabs" role="tablist" aria-label="选择团队年份" hidden>
+          {classes.map(({ year, slug }) => (
+            <button id={`team-year-tab-${year}`} role="tab" type="button" aria-controls={`team-year-panel-${year}`} data-heading={slug}>{year} 级</button>
+          ))}
+        </div>
+        <TeamRoster />
       </div>
-      <TeamRoster />
     </div>
   </section>
 </BaseLayout>
@@ -49,7 +55,9 @@ const classes = (await getHeadings()).flatMap(({ text, slug }) => {
         panel.id = tab.getAttribute('aria-controls')!;
         panel.setAttribute('role', 'tabpanel');
         panel.setAttribute('aria-labelledby', tab.id);
+        panel.className = 'team-panel';
         const count = document.createElement('p');
+        count.className = 'team-count';
         count.textContent = `${list.children.length} 位公开成员`;
         title.before(panel);
         panel.append(title, count, list);
@@ -81,8 +89,83 @@ const classes = (await getHeadings()).flatMap(({ text, slug }) => {
 </script>
 
 <style>
-  .about-links { padding-block: var(--space-4); }
-  .year-tabs { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block: var(--space-6); }
-  .year-tabs button { min-height: 2.75rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-pill); padding-inline: 1.25rem; background: transparent; cursor: pointer; }
-  .year-tabs button[aria-selected='true'] { border-color: var(--color-accent); background: var(--color-accent); color: var(--color-on-accent); }
+  .about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding-top: var(--space-5);
+  }
+  .about-chip {
+    text-decoration: none;
+    transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+  }
+  .about-chip:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+  }
+  .about-card {
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  }
+  .team-prose {
+    max-width: none;
+  }
+  .year-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block: var(--space-5) var(--space-4);
+    padding: 0.4rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-strong);
+    width: fit-content;
+  }
+  .year-tabs button {
+    min-height: 2.35rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    padding-inline: 1.05rem;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    font-weight: 660;
+    cursor: pointer;
+    transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .year-tabs button:hover {
+    color: var(--color-text);
+  }
+  .year-tabs button[aria-selected='true'] {
+    background: var(--color-surface);
+    color: var(--color-accent-strong);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-xs);
+  }
+  .team-prose :global(.team-count) {
+    margin-block: 0.35rem 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.86rem;
+  }
+  .team-prose :global(ul) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding-left: 0;
+    list-style: none;
+  }
+  .team-prose :global(li) {
+    padding: 0.5rem 0.95rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--color-surface-strong) 55%, var(--color-surface));
+    color: var(--color-text);
+    font-size: 0.92rem;
+    font-weight: 560;
+  }
+  .team-prose :global(li a) {
+    text-decoration: none;
+  }
+  .team-prose :global(li a:hover) {
+    text-decoration: underline;
+  }
 </style>

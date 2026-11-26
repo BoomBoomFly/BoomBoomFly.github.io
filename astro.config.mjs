@@ -19,7 +19,6 @@ const fixedRedirects = {
 };
 const redirects = {};
 for (const [source, target] of [...Object.entries(generatedManifest.redirects), ...Object.entries(fixedRedirects)]) {
-  // GitHub Pages serves a directory and its index.html from the same file.
   const route = source.replace(/\/index\.html$/, '/');
   if (redirects[route] && redirects[route] !== target) throw new Error(`Conflicting redirects for ${route}`);
   redirects[route] = target;
