@@ -13,4 +13,3 @@ editUrl: false
 ### 上游派生仓库
 
 - [OpenVINS](https://github.com/BoomBoomFly/open_vins)：视觉惯性状态估计，上游为 [rpng/open_vins](https://github.com/rpng/open_vins)。
-- [serial_driver_ros](https://github.com/BoomBoomFly/serial_driver_ros)：上下位机串口通信驱动及帧格式说明，上游为 [CGC12123/serial_driver_ros](https://github.com/CGC12123/serial_driver_ros)。

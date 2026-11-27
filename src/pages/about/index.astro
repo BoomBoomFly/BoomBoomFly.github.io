@@ -2,20 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../config/site';
 import LabIntroduction from '../../content/docs/knowledge/history/lab-introduction/index.md';
-import TeamRoster, { getHeadings } from '../../content/docs/knowledge/history/team/index.md';
-
-const classes = getHeadings().flatMap(({ text, slug }) => {
-  const year = text.match(/^(\d{4})\s*级学生$/)?.[1];
-  return year ? [{ year, slug }] : [];
-});
+import TeamRoster from '../../content/docs/knowledge/history/team/index.md';
 ---
 
-<BaseLayout title="关于实验室" description={`${site.chineseName}（${site.name}）的研究方向、团队名录和实验室沿革。`}>
-  <nav class="about-links" aria-label="本页目录">
-    <a class="pill-badge about-chip" href="#lab-introduction">实验室资料</a>
-    <a class="pill-badge about-chip" href="#team-roster">团队名录</a>
-  </nav>
-
+<BaseLayout title="关于实验室" description={`${site.chineseName}（${site.name}）的研究方向、团队名录与联系方式。`}>
   <section class="subpage-section stack-lg" id="lab-introduction" aria-labelledby="lab-introduction-title">
     <h2 id="lab-introduction-title">实验室资料</h2>
     <div class="surface-card about-card">
@@ -26,125 +16,53 @@ const classes = getHeadings().flatMap(({ text, slug }) => {
   <section class="subpage-section stack-lg" id="team-roster" aria-labelledby="team-roster-title">
     <h2 id="team-roster-title">团队名录</h2>
     <div class="surface-card about-card">
-      <div class="prose team-prose" id="team-members">
-        <div class="year-tabs" role="tablist" aria-label="选择团队年份" hidden>
-          {classes.map(({ year, slug }) => (
-            <button id={`team-year-tab-${year}`} role="tab" type="button" aria-controls={`team-year-panel-${year}`} data-heading={slug}>{year} 级</button>
-          ))}
-        </div>
+      <div class="prose team-prose">
         <TeamRoster />
       </div>
     </div>
   </section>
+
+  <section class="subpage-section stack-lg" id="join" aria-labelledby="contact-title">
+    <h2 id="contact-title">联系与加入</h2>
+    <div class="join-grid">
+      <article class="surface-card join-card">
+        <p class="join-card__desc">
+          项目交流或申请加入可以直接发邮件，也可以到克立楼找我们。来信前建议先看一遍<a href="/#research-heading">研究方向</a>和<a href="/#projects">公开项目</a>，附上专业与感兴趣的方向即可。
+        </p>
+        <div class="button-row">
+          <a class="button" href={`mailto:${site.email}`}>发送邮件</a>
+          <a class="button secondary" href="/knowledge/tools/learning-paths/">看学习路线</a>
+        </div>
+      </article>
+
+      <aside class="surface-card contact-card" aria-label="联系方式与地点">
+        <address class="contact-list">
+          <div class="contact-item">
+            <span class="contact-item__label">邮箱</span>
+            <a class="contact-item__value" href={`mailto:${site.email}`}>{site.email}</a>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-item__label">地点</span>
+            <p class="contact-item__value">{site.location}</p>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-item__label">GitHub</span>
+            <a class="contact-item__value" href={site.github} rel="noopener noreferrer">github.com/BoomBoomFly ↗</a>
+          </div>
+        </address>
+      </aside>
+    </div>
+  </section>
 </BaseLayout>
 
-<script>
-  const roster = document.getElementById('team-members');
-  const tablist = roster?.querySelector<HTMLElement>('[role="tablist"]');
-  if (roster && tablist) {
-    const groups = Array.from(tablist.querySelectorAll('button')).flatMap((tab) => {
-      const heading = document.getElementById(tab.dataset.heading!);
-      const title = heading?.closest('.sl-heading-wrapper') ?? heading;
-      const list = title?.nextElementSibling;
-      return title && roster.contains(title) && list instanceof HTMLUListElement ? [{ tab, title, list }] : [];
-    });
-    if (groups.length && groups.length === tablist.children.length) {
-      groups[0].title.before(tablist);
-      const panels = groups.map(({ tab, title, list }) => {
-        const panel = document.createElement('section');
-        panel.id = tab.getAttribute('aria-controls')!;
-        panel.setAttribute('role', 'tabpanel');
-        panel.setAttribute('aria-labelledby', tab.id);
-        panel.className = 'team-panel';
-        const count = document.createElement('p');
-        count.className = 'team-count';
-        count.textContent = `${list.children.length} 位公开成员`;
-        title.before(panel);
-        panel.append(title, count, list);
-        return panel;
-      });
-
-      function selectYear(index: number) {
-        groups.forEach(({ tab }, i) => {
-          const active = i === index;
-          tab.setAttribute('aria-selected', String(active));
-          tab.tabIndex = active ? 0 : -1;
-          panels[i].hidden = !active;
-        });
-      }
-      groups.forEach(({ tab }, i) => {
-        tab.addEventListener('click', () => selectYear(i));
-        tab.addEventListener('keydown', (event) => {
-          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-          event.preventDefault();
-          const next = (i + (event.key === 'ArrowRight' ? 1 : -1) + groups.length) % groups.length;
-          selectYear(next);
-          groups[next].tab.focus();
-        });
-      });
-      selectYear(groups.length - 1);
-      tablist.hidden = false;
-    }
-  }
-</script>
-
 <style>
-  .about-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    padding-top: var(--space-5);
-  }
-  .about-chip {
-    text-decoration: none;
-    transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
-  }
-  .about-chip:hover {
-    border-color: var(--color-accent);
-    background: var(--color-accent-soft);
-    color: var(--color-accent-strong);
-  }
   .about-card {
     padding: clamp(1.5rem, 3.5vw, 2.5rem);
   }
   .team-prose {
     max-width: none;
-  }
-  .year-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-block: var(--space-5) var(--space-4);
-    padding: 0.4rem;
-    border-radius: var(--radius-lg);
-    background: var(--color-surface-strong);
-    width: fit-content;
-  }
-  .year-tabs button {
-    min-height: 2.35rem;
-    border: 1px solid transparent;
-    border-radius: var(--radius-pill);
-    padding-inline: 1.05rem;
-    background: transparent;
-    color: var(--color-text-muted);
-    font-size: 0.88rem;
-    font-weight: 660;
-    cursor: pointer;
-    transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
-  }
-  .year-tabs button:hover {
-    color: var(--color-text);
-  }
-  .year-tabs button[aria-selected='true'] {
-    background: var(--color-surface);
-    color: var(--color-accent-strong);
-    border-color: var(--color-border);
-    box-shadow: var(--shadow-xs);
-  }
-  .team-prose :global(.team-count) {
-    margin-block: 0.35rem 1rem;
-    color: var(--color-text-muted);
-    font-size: 0.86rem;
   }
   .team-prose :global(ul) {
     display: flex;
@@ -167,5 +85,65 @@ const classes = getHeadings().flatMap(({ text, slug }) => {
   }
   .team-prose :global(li a:hover) {
     text-decoration: underline;
+  }
+
+  .join-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .join-card,
+  .contact-card {
+    display: grid;
+    gap: var(--space-4);
+    padding: clamp(1.5rem, 3.2vw, 2.25rem);
+  }
+  .contact-card {
+    background: linear-gradient(160deg, var(--color-surface), var(--color-accent-soft));
+  }
+  .join-card__desc {
+    color: var(--color-text-muted);
+    font-size: 0.96rem;
+    line-height: 1.8;
+  }
+  .join-card__desc a {
+    color: var(--color-accent);
+    font-weight: 640;
+  }
+  .contact-list {
+    display: grid;
+    gap: 0.85rem;
+    font-style: normal;
+  }
+  .contact-item {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  }
+  .contact-item__label {
+    color: var(--color-text-muted);
+    font-size: 0.78rem;
+    font-weight: 640;
+  }
+  .contact-item__value {
+    color: var(--color-text);
+    font-size: 0.98rem;
+    font-weight: 680;
+    text-decoration: none;
+    word-break: break-word;
+  }
+  a.contact-item__value:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 54rem) {
+    .join-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

@@ -1,5 +1,5 @@
 ---
-import SiteHeader from '../components/SiteHeader.astro';
+import { Icon } from '@astrojs/starlight/components';
 import { navigation, site } from '../config/site';
 import '../styles/tokens.css';
 
@@ -50,7 +50,50 @@ const isHome = Astro.url.pathname === '/';
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要内容</a>
-    <SiteHeader />
+    <header class="site-header" data-site-header>
+      <div class="page-shell site-header__inner">
+        <a class="brand" href="/" aria-label={`${site.name} 首页`}>
+          <span class="brand__mark">
+            <img src={site.logo} width="200" height="200" alt="" />
+          </span>
+          <span class="brand__copy">
+            <strong>{site.name}</strong>
+            <small>{site.chineseName}</small>
+          </span>
+        </a>
+
+        <div class="site-header__actions">
+          <nav id="site-navigation" aria-label="主导航">
+            <ul>
+              {navigation.map((item) => {
+                const isJoin = item.href === '/about/#join';
+                const isCurrent = !item.href.includes('#') && Astro.url.pathname.startsWith(item.href);
+                return (
+                  <li>
+                    <a
+                      href={item.href}
+                      class={isJoin ? 'nav-pill' : undefined}
+                      aria-current={isCurrent ? 'page' : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <button class="theme-toggle" type="button" aria-label="切换到深色主题" title="切换到深色主题" data-theme-toggle>
+            <span class="theme-toggle__icon theme-toggle__icon--moon"><Icon name="moon" size="1.1rem" /></span>
+            <span class="theme-toggle__icon theme-toggle__icon--sun"><Icon name="sun" size="1.1rem" /></span>
+          </button>
+
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="打开导航菜单">
+            菜单
+          </button>
+        </div>
+      </div>
+    </header>
     <main id="main-content" class="page-shell page-main">
       {!isHome && (
         <header class="page-intro">
@@ -77,18 +120,235 @@ const isHome = Astro.url.pathname === '/';
   </body>
 </html>
 
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const menu = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = header?.querySelector<HTMLElement>('#site-navigation');
+  const mobileQuery = window.matchMedia('(max-width: 56rem)');
+
+  const closeMenu = (restoreFocus = false) => {
+    if (menu?.getAttribute('aria-expanded') !== 'true') return;
+    menu.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) menu.focus();
+  };
+
+  const openMenu = () => {
+    menu?.setAttribute('aria-expanded', 'true');
+    nav?.querySelector<HTMLElement>('a')?.focus();
+  };
+
+  menu?.addEventListener('click', () => {
+    menu.getAttribute('aria-expanded') === 'true' ? closeMenu(true) : openMenu();
+  });
+  nav?.querySelectorAll('a').forEach((item) => item.addEventListener('click', () => closeMenu(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') {
+      event.preventDefault();
+      closeMenu(true);
+    }
+  });
+  document.addEventListener('pointerdown', (event) => {
+    if (menu?.getAttribute('aria-expanded') !== 'true') return;
+    if (event.target instanceof Node && !nav?.contains(event.target) && !menu.contains(event.target)) closeMenu(false);
+  });
+  mobileQuery.addEventListener('change', () => closeMenu(false));
+
+  const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const syncTheme = (theme: string) => {
+    const dark = theme === 'dark';
+    toggle?.setAttribute('aria-pressed', String(dark));
+    const action = dark ? '切换到浅色主题' : '切换到深色主题';
+    toggle?.setAttribute('aria-label', action);
+    toggle?.setAttribute('title', action);
+  };
+
+  syncTheme(document.documentElement.dataset.theme ?? 'light');
+  toggle?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem('starlight-theme', next);
+    } catch {}
+    syncTheme(next);
+  });
+</script>
+
+<noscript>
+  <style is:global>
+    @media (max-width: 56rem) {
+      .menu-toggle { display: none !important; }
+      #site-navigation { position: static !important; display: block !important; border: 0 !important; padding: 0 !important; background: transparent !important; box-shadow: none !important; }
+      #site-navigation ul { display: flex !important; max-width: calc(100vw - (2 * var(--space-page))); overflow-x: auto; }
+      #site-navigation a { white-space: nowrap; }
+    }
+  </style>
+</noscript>
+
 <style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 35;
+    border-bottom: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-bg) 84%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .site-header__inner {
+    display: flex;
+    min-height: var(--header-height);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+  }
+  .brand {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.78rem;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .brand__mark {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-xs);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+  .brand:hover .brand__mark {
+    transform: rotate(-4deg) scale(1.03);
+    border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+  }
+  .brand img {
+    width: 2.15rem;
+    height: 2.15rem;
+    object-fit: contain;
+    filter: var(--logo-filter);
+  }
+  .brand__copy {
+    display: grid;
+    gap: 0.22rem;
+    line-height: 1;
+  }
+  .brand strong {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 820;
+    letter-spacing: -0.02em;
+  }
+  .brand small {
+    color: var(--color-text-muted);
+    font-size: 0.72rem;
+    font-weight: 560;
+    letter-spacing: 0.02em;
+  }
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .site-header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .site-header nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.4rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-pill);
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    font-weight: 640;
+    text-decoration: none;
+    transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+  }
+  .site-header nav a:hover {
+    background: var(--color-surface-strong);
+    color: var(--color-text);
+  }
+  .site-header nav a[aria-current='page'] {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+  }
+  .site-header nav a.nav-pill {
+    margin-left: 0.25rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+  }
+  .site-header nav a.nav-pill:hover,
+  .site-header nav a.nav-pill[aria-current='page'] {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+  .theme-toggle {
+    display: grid;
+    width: 2.45rem;
+    height: 2.45rem;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: 0;
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    box-shadow: var(--shadow-xs);
+    cursor: pointer;
+    transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+  .theme-toggle:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+  }
+  .theme-toggle__icon {
+    display: grid;
+    grid-area: 1 / 1;
+    place-items: center;
+    line-height: 0;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+  .theme-toggle__icon--sun,
+  .theme-toggle[aria-pressed='true'] .theme-toggle__icon--moon {
+    opacity: 0;
+    transform: scale(0.75) rotate(-18deg);
+  }
+  .theme-toggle__icon--moon,
+  .theme-toggle[aria-pressed='true'] .theme-toggle__icon--sun {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+  .menu-toggle {
+    display: none;
+    min-width: 3.3rem;
+    min-height: 2.45rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding-inline: 0.9rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 680;
+    box-shadow: var(--shadow-xs);
+    cursor: pointer;
+  }
+
   .page-intro {
     display: grid;
     gap: var(--space-3);
     padding-block: clamp(2.5rem, 5.5vw, 4.25rem) var(--space-6);
     border-bottom: 1px solid var(--color-border);
-  }
-  .page-intro__lead {
-    max-width: 58ch;
-    color: var(--color-text-muted);
-    font-size: clamp(1rem, 1.4vw, 1.12rem);
-    line-height: 1.75;
   }
   .site-footer {
     margin-top: var(--space-7);
@@ -139,6 +399,39 @@ const isHome = Astro.url.pathname === '/';
   .site-footer__bottom p {
     color: var(--color-text-muted);
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 56rem) {
+    .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    .site-header nav {
+      position: absolute;
+      top: calc(100% + 0.55rem);
+      right: var(--space-page);
+      left: var(--space-page);
+      display: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-float);
+    }
+    .site-header__actions:has(.menu-toggle[aria-expanded='true']) nav { display: block; }
+    .site-header nav ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-2);
+    }
+    .site-header nav a {
+      justify-content: center;
+      min-height: 2.75rem;
+    }
+    .site-header nav a.nav-pill { margin-left: 0; }
+  }
+
+  @media (max-width: 34rem) {
+    .brand__mark { width: 2.35rem; height: 2.35rem; }
+    .brand img { width: 1.85rem; height: 1.85rem; }
+    .brand small { display: none; }
   }
 </style>
 
@@ -209,19 +502,7 @@ code, pre { font-family: var(--font-mono); }
   padding-bottom: var(--space-8);
 }
 
-.stack-md { display: grid; gap: var(--space-5); }
 .stack-lg { display: grid; gap: var(--space-6); }
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: fit-content;
-  color: var(--color-accent);
-  font: 700 0.74rem/1.3 var(--font-mono);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
 
 .pill-badge {
   display: inline-flex;
@@ -323,15 +604,6 @@ code, pre { font-family: var(--font-mono); }
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-4);
-}
-.section-header__copy {
-  display: grid;
-  gap: 0.45rem;
-}
-.section-header__copy p:not(.eyebrow) {
-  max-width: 56ch;
-  color: var(--color-text-muted);
-  font-size: 0.98rem;
 }
 
 .prose { max-width: 72ch; color: var(--color-text); }

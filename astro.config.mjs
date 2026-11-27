@@ -7,15 +7,19 @@ const generatedManifest = JSON.parse(
   readFileSync(new URL('./generated-content-manifest.json', import.meta.url), 'utf8'),
 );
 const fixedRedirects = {
-  '/knowledge/legacy/gitbook/drone-docs/': '/knowledge/research/flight-control/',
-  '/02无人机相关/': '/knowledge/research/flight-control/',
+  '/projects/': '/#projects',
+  '/join/': '/about/#join',
+  '/research/': '/#research-heading',
+  '/team/': '/about/#team-roster',
+  '/tag/': '/knowledge/',
+  '/knowledge/research/flight-control/': '/knowledge/#flight-control',
+  '/knowledge/research/perception-localization/': '/knowledge/#perception-localization',
+  '/knowledge/research/robotics-intelligence/': '/knowledge/#robotics',
+  '/knowledge/legacy/gitbook/drone-docs/': '/knowledge/#flight-control',
+  '/02无人机相关/': '/knowledge/#flight-control',
   '/knowledge/legacy/gitbook/developer-tools/': '/knowledge/tools/learning-paths/',
   '/01常用开发工具/': '/knowledge/tools/learning-paths/',
   '/knowledge/tools/': '/knowledge/tools/learning-paths/',
-  '/knowledge/research/robotics-intelligence/': '/knowledge/#robotics',
-  '/research/': '/#research-heading',
-  '/tag/': '/knowledge/',
-  '/team/': '/about/#team-roster',
 };
 const redirects = {};
 for (const [source, target] of [...Object.entries(generatedManifest.redirects), ...Object.entries(fixedRedirects)]) {
@@ -58,28 +62,20 @@ export default defineConfig({
         { label: '返回实验室主页', link: '/' },
         { label: '知识库首页', slug: 'knowledge' },
         {
-          label: '研究与实践',
+          label: '飞行控制与 ROS',
           items: [
-            {
-              label: '飞行控制与 ROS',
-              items: [
-                { label: '方向介绍', slug: 'knowledge/research/flight-control' },
-                { label: 'ACFly-Mavros', slug: 'knowledge/research/flight-control/acfly-mavros', badge: { text: '历史', variant: 'caution' } },
-              ],
-            },
-            {
-              label: '感知、定位与通信',
-              items: [
-                { label: '方向介绍', slug: 'knowledge/research/perception-localization' },
-                { label: 'T265（已停产）', slug: 'knowledge/research/perception-localization/t265' },
-                { label: 'D435', slug: 'knowledge/research/perception-localization/d435', badge: { text: '历史', variant: 'caution' } },
-                { label: 'UWB', slug: 'knowledge/research/perception-localization/uwb', badge: { text: '历史', variant: 'caution' } },
-              ],
-            },
-            { label: '机器人与智能系统', link: '/knowledge/#robotics' },
+            { label: 'PX4 + Gazebo 仿真', slug: 'knowledge/research/flight-control/px4-gazebo-simulation-setup' },
+            { label: 'ACFly-Mavros', slug: 'knowledge/research/flight-control/acfly-mavros', badge: { text: '历史', variant: 'caution' } },
           ],
         },
-        { label: '公开代码仓库', slug: 'knowledge/tools/public-projects' },
+        {
+          label: '感知、定位与通信',
+          items: [
+            { label: 'T265（已停产）', slug: 'knowledge/research/perception-localization/t265' },
+            { label: 'D435', slug: 'knowledge/research/perception-localization/d435', badge: { text: '历史', variant: 'caution' } },
+            { label: 'UWB', slug: 'knowledge/research/perception-localization/uwb', badge: { text: '历史', variant: 'caution' } },
+          ],
+        },
         {
           label: '学习路线',
           items: [
@@ -93,7 +89,8 @@ export default defineConfig({
             { label: 'FPGA（选读）', slug: 'knowledge/tools/learning-paths/fpga' },
           ],
         },
-        { label: '加入我们', link: '/join/' },
+        { label: '公开代码仓库', slug: 'knowledge/tools/public-projects' },
+        { label: '关于与加入', link: '/about/#join' },
       ],
       lastUpdated: true,
       pagination: true,

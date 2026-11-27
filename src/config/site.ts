@@ -12,10 +12,10 @@ export const site = {
 } as const;
 
 export const navigation = [
-  { href: '/projects/', label: '公开项目' },
+  { href: '/#projects', label: '公开项目' },
   { href: '/knowledge/', label: '知识库' },
-  { href: '/about/', label: '实验室介绍' },
-  { href: '/join/', label: '加入我们' },
+  { href: '/about/', label: '关于实验室' },
+  { href: '/about/#join', label: '加入我们' },
 ] as const;
 
 export const researchDirections = [
@@ -24,14 +24,14 @@ export const researchDirections = [
     title: '无人飞行与控制',
     summary: 'PX4 仿真、MAVROS 通信与多旋翼飞行控制。',
     guideTitle: '飞行控制与 ROS',
-    href: '/knowledge/research/flight-control/',
+    href: '/knowledge/#flight-control',
   },
   {
     id: 'perception',
     title: '感知、定位与通信',
     summary: '视觉惯性里程计、深度相机感知与 UWB 测距。',
     guideTitle: '感知与定位资料',
-    href: '/knowledge/research/perception-localization/',
+    href: '/knowledge/#perception-localization',
   },
   {
     id: 'robotics',

@@ -1,18 +1,37 @@
 ---
 title: 知识库
-description: JMU AIR LAB 的公开工程知识库，收录研究资料和开发工具指南。
+description: JMU AIR LAB 的公开工程知识库，收录飞行控制、感知定位与学习路线资料。
 ---
 
-import KnowledgeSystemMap from '../../../components/KnowledgeSystemMap.astro';
+<h2 id="flight-control">飞行控制与 ROS</h2>
 
-<KnowledgeSystemMap />
+覆盖飞控与上位机通信链路、ROS / MAVROS 联调以及仿真环境搭建。
 
-## 分类
+- [PX4 + Gazebo 仿真环境搭建](/knowledge/research/flight-control/px4-gazebo-simulation-setup/)
+- [在上位机安装 ACFly-Mavros（历史）](/knowledge/research/flight-control/acfly-mavros/)
 
-- [飞行控制与 ROS](/knowledge/research/flight-control/)
-- [感知、定位与通信](/knowledge/research/perception-localization/)
-- [学习路线](/knowledge/tools/learning-paths/)
+常用坐标系约定：
+
+| 坐标系 | X+ | Y+ | Z+ | 常见场景 |
+| --- | --- | --- | --- | --- |
+| **ENU** | 东 | 北 | 上 | ROS 局部世界坐标 |
+| **NED** | 北 | 东 | 下 | PX4 / 飞控导航坐标 |
+| **FLU** | 前（机头） | 左 | 上 | ROS 机体坐标 |
+
+<h2 id="perception-localization">感知、定位与通信</h2>
+
+覆盖深度相机、视觉惯性里程计、坐标对齐与 UWB 测距模块接入。
+
+- [RealSense T265（已停产）](/knowledge/research/perception-localization/t265/)
+- [RealSense D435（历史）](/knowledge/research/perception-localization/d435/)
+- [UWB（历史）](/knowledge/research/perception-localization/uwb/)
+
+<h2 id="learning-paths">学习路线</h2>
+
+面向新成员的工程基础顺序：`嵌入式 → Git → C++ → Linux → ROS 2 → PX4`（选读 `FPGA`）。
+
+- [学习路线总览](/knowledge/tools/learning-paths/)
 
 <h2 id="robotics">机器人与智能系统</h2>
 
-包含移动机器人工作区、运动控制与视觉定位代码，仓库索引见[公开项目](/projects/)。
+包含移动机器人工作区、运动控制与视觉定位代码，仓库索引见[公开项目](/#projects)或[公开代码仓库](/knowledge/tools/public-projects/)。

@@ -18,7 +18,7 @@
     "src/content/docs/knowledge/tools/learning-paths/linux/index.md": "fddb06f47ac8c3a466d1b46b63ad07a5edcb108932e1d14fb4066c5d88fcef39",
     "src/content/docs/knowledge/tools/learning-paths/px4/index.md": "e53bee757350ee50a955e25b5782840a89c779a7255261227ac5613be36c5d99",
     "src/content/docs/knowledge/tools/learning-paths/ros2/index.md": "db78198ca5ea518836862bdadf64d529e711ec31c8d5624d1ec98e71dae48b83",
-    "src/content/docs/knowledge/tools/public-projects/index.md": "5f0e4723bd2061fbeadc59ac957418e64a8900d885b44cc4cc2bb5c5716c3312"
+    "src/content/docs/knowledge/tools/public-projects/index.md": "4f3aa8509209b588ed634e89433ae02c6b1701f2c39fe4ac3f14e8021c1ec2dd"
   },
   "redirects": {
     "/00开发者使用手册/": "/knowledge/tools/public-projects/",
