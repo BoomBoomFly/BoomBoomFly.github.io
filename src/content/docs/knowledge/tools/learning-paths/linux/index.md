@@ -46,6 +46,21 @@ sudo cp -p /etc/apt/sources.list /etc/apt/sources.list.bak
 
 改完运行 `sudo apt update`。不同 Ubuntu 版本发行代号不同（如 20.04 为 `focal`，22.04 为 `jammy`），核对后再替换。[Ubuntu 软件包文档](https://ubuntu.com/server/docs/how-to/software/package-management/) · [旧版工具记录](https://github.com/BoomBoomFly/BoomBoomFly.github.io/tree/6b0998609bcf215b3115710b9afe9bfc46b5c7d2/01常用开发工具)
 
+#### WSL2 与多 Python 环境隔离
+
+- **禁止 Windows PATH 注入 WSL2**：在 `/etc/wsl.conf` 的 `[interop]` 段设置 `appendWindowsPath=false` 并执行 `wsl --shutdown` 重启，防止主机 Anaconda 等目录污染 Linux 编译时的 `protoc` / Protobuf 头文件查找（详见 [PX4 + Gazebo 仿真安装指南](/knowledge/research/flight-control/px4-gazebo-simulation-setup/)）。
+- **隔离 ROS 2 与 Conda Python**：ROS 2 Humble 默认依赖系统 Python 3.10；在独立 Conda 环境运行深度学习/YOLO 推理前先执行 `unset PYTHONPATH`，避免混入 `/opt/ros/humble` 包导致依赖冲突。
+
+#### 机载端远程排障常用命令
+
+- **持久会话与网络排查**：SSH 登录机载计算单元（如 Jetson）后使用 `tmux` 保持长时节点运行；用 `ss -tulnp` 核对 UDP/TCP 端口占用，避免录包工具与在线网桥争抢同一端口；用 `ps aux | grep -E 'px4|gz'` 排查残留仿真进程。
+
+### 通关自检清单
+
+- 能通过 `ip`、`ss`、`systemctl`、`journalctl` 与串口权限检查（`dialout` 组）定位网络与硬件连接问题；
+- 能在 WSL2 / Ubuntu 下独立配置干净的编译与 Conda 隔离环境，不污染系统全局依赖；
+- 可顺利进入 [ROS 2 机器人开发学习路线](/knowledge/tools/learning-paths/ros2/) 与 [嵌入式与机器人通信协议指南](/knowledge/research/perception-localization/embedded-and-robot-communication/)。
+
 ### 参考资料
 
 - [Ubuntu：Linux command line for beginners](https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/)

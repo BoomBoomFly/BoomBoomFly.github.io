@@ -1,5 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { readFileSync } from 'node:fs';
 import { site } from './src/config/site.ts';
 
@@ -32,6 +34,10 @@ export default defineConfig({
   site: site.url,
   scopedStyleStrategy: 'where',
   redirects,
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
   integrations: [
     starlight({
       title: site.name,
@@ -44,7 +50,7 @@ export default defineConfig({
         alt: '无人机实验室 Logo',
       },
       favicon: site.logo,
-      customCss: ['./src/styles/starlight.css'],
+      customCss: ['katex/dist/katex.min.css', './src/styles/starlight.css'],
       head: [
         { tag: 'meta', attrs: { property: 'og:locale', content: 'zh_CN' } },
         { tag: 'meta', attrs: { property: 'og:site_name', content: site.name } },
@@ -65,15 +71,30 @@ export default defineConfig({
           label: '飞行控制与 ROS',
           items: [
             { label: 'PX4 + Gazebo 仿真', slug: 'knowledge/research/flight-control/px4-gazebo-simulation-setup' },
+            { label: '无人机平台与自主导航', slug: 'knowledge/research/flight-control/uav-platform-and-autonomy-architecture' },
+            { label: 'Offboard 与 External Mode', slug: 'knowledge/research/flight-control/px4-ros2-offboard-architecture' },
+            { label: '四旋翼动力学与控制', slug: 'knowledge/research/flight-control/quadrotor-dynamics-and-control' },
+            { label: '路径规划与轨迹优化', slug: 'knowledge/research/flight-control/path-planning-and-trajectory-optimization' },
             { label: 'ACFly-Mavros', slug: 'knowledge/research/flight-control/acfly-mavros', badge: { text: '历史', variant: 'caution' } },
           ],
         },
         {
           label: '感知、定位与通信',
           items: [
+            { label: '视觉里程计接入 PX4', slug: 'knowledge/research/perception-localization/vio-px4-integration' },
+            { label: '视觉感知与点云建图', slug: 'knowledge/research/perception-localization/vision-pointcloud-and-mapping' },
+            { label: '状态估计与 SLAM 融合', slug: 'knowledge/research/perception-localization/state-estimation-and-slam' },
+            { label: '嵌入式与机器人通信', slug: 'knowledge/research/perception-localization/embedded-and-robot-communication' },
             { label: 'T265（已停产）', slug: 'knowledge/research/perception-localization/t265' },
             { label: 'D435', slug: 'knowledge/research/perception-localization/d435', badge: { text: '历史', variant: 'caution' } },
             { label: 'UWB', slug: 'knowledge/research/perception-localization/uwb', badge: { text: '历史', variant: 'caution' } },
+          ],
+        },
+        {
+          label: '机器人与智能系统',
+          items: [
+            { label: 'FPGA 软硬件协同与时序', slug: 'knowledge/research/robotics-intelligence/fpga-hw-sw-codesign' },
+            { label: '具身 AI Agent 与 ROS 2', slug: 'knowledge/research/robotics-intelligence/embodied-agent-ros2-integration' },
           ],
         },
         {
@@ -87,6 +108,9 @@ export default defineConfig({
             { label: 'ROS 2', slug: 'knowledge/tools/learning-paths/ros2' },
             { label: 'PX4', slug: 'knowledge/tools/learning-paths/px4' },
             { label: 'FPGA（选读）', slug: 'knowledge/tools/learning-paths/fpga' },
+            { label: '机器人算法', slug: 'knowledge/tools/learning-paths/robotics-algorithms' },
+            { label: 'AI Agent 开发', slug: 'knowledge/tools/learning-paths/agent' },
+            { label: '具身全栈实战', slug: 'knowledge/tools/learning-paths/embodied-robotics' },
           ],
         },
         { label: '公开代码仓库', slug: 'knowledge/tools/public-projects' },

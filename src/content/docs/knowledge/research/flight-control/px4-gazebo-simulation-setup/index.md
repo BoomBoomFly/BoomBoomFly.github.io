@@ -27,6 +27,8 @@ ROS 2 基础概念、工作空间、环境加载和 CLI 用法见下方学习路
 
 - [ROS 2 机器人开发学习路线](/knowledge/tools/learning-paths/ros2/)：先掌握工作空间、节点、通信、QoS、TF2、launch 和 rosbag2。
 - [PX4 无人机学习路线](/knowledge/tools/learning-paths/px4/)：了解仿真、PX4 架构、ROS 2 集成、Offboard 和真机安全的完整顺序。
+- [PX4 + ROS 2 Offboard 与 External Mode 架构指南](/knowledge/research/flight-control/px4-ros2-offboard-architecture/)：仿真跑通后进一步设计控制层级、单 Writer 约束与离线单元测试。
+- [视觉里程计接入 PX4 指南](/knowledge/research/perception-localization/vio-px4-integration/)：在仿真或实机中将 VIO 通过 uXRCE-DDS 接入 PX4 EKF2。
 
 ------------------------------------------------------------------------
 

@@ -5,9 +5,13 @@ description: JMU AIR LAB 的公开工程知识库，收录飞行控制、感知�
 
 <h2 id="flight-control">飞行控制与 ROS</h2>
 
-覆盖飞控与上位机通信链路、ROS / MAVROS 联调以及仿真环境搭建。
+覆盖飞控仿真、无人机平台设计、ROS 2 / PX4 控制架构、四旋翼动力学控制以及路径与轨迹规划。
 
 - [PX4 + Gazebo 仿真环境搭建](/knowledge/research/flight-control/px4-gazebo-simulation-setup/)
+- [无人机平台设计与自主导航架构](/knowledge/research/flight-control/uav-platform-and-autonomy-architecture/)
+- [PX4 + ROS 2 Offboard 与 External Mode 架构指南](/knowledge/research/flight-control/px4-ros2-offboard-architecture/)
+- [四旋翼动力学与轨迹跟踪控制](/knowledge/research/flight-control/quadrotor-dynamics-and-control/)
+- [路径规划与轨迹优化指南](/knowledge/research/flight-control/path-planning-and-trajectory-optimization/)
 - [在上位机安装 ACFly-Mavros（历史）](/knowledge/research/flight-control/acfly-mavros/)
 
 常用坐标系约定：
@@ -20,18 +24,29 @@ description: JMU AIR LAB 的公开工程知识库，收录飞行控制、感知�
 
 <h2 id="perception-localization">感知、定位与通信</h2>
 
-覆盖深度相机、视觉惯性里程计、坐标对齐与 UWB 测距模块接入。
+覆盖视觉感知与点云建图、多传感器状态估计（VIO / SLAM）、PX4 接入与嵌入式通信协议。
 
+- [视觉里程计接入 PX4 指南](/knowledge/research/perception-localization/vio-px4-integration/)
+- [视觉感知与点云建图指南](/knowledge/research/perception-localization/vision-pointcloud-and-mapping/)
+- [状态估计与 SLAM 融合架构](/knowledge/research/perception-localization/state-estimation-and-slam/)
+- [嵌入式与机器人通信协议指南](/knowledge/research/perception-localization/embedded-and-robot-communication/)
 - [RealSense T265（已停产）](/knowledge/research/perception-localization/t265/)
 - [RealSense D435（历史）](/knowledge/research/perception-localization/d435/)
 - [UWB（历史）](/knowledge/research/perception-localization/uwb/)
 
 <h2 id="learning-paths">学习路线</h2>
 
-面向新成员的工程基础顺序：`嵌入式 → Git → C++ → Linux → ROS 2 → PX4`（选读 `FPGA`）。
+面向新成员的工程基础主线：`嵌入式 → Git → C++ → Linux → ROS 2 → PX4`（选读/进阶：`FPGA`、`机器人算法`、`AI Agent`、`具身全栈实战`）。
 
 - [学习路线总览](/knowledge/tools/learning-paths/)
+- [机器人算法学习路线](/knowledge/tools/learning-paths/robotics-algorithms/)
+- [AI Agent 开发学习路线](/knowledge/tools/learning-paths/agent/)
+- [具身机器人全栈实战路线](/knowledge/tools/learning-paths/embodied-robotics/)
 
 <h2 id="robotics">机器人与智能系统</h2>
 
-包含移动机器人工作区、运动控制与视觉定位代码，仓库索引见[公开项目](/#projects)或[公开代码仓库](/knowledge/tools/public-projects/)。
+包含 FPGA 软硬件协同、具身 AI Agent 安全集成以及实验室公开代码仓库索引。
+
+- [FPGA 软硬件协同与时序设计指南](/knowledge/research/robotics-intelligence/fpga-hw-sw-codesign/)
+- [具身 AI Agent 与 ROS 2 安全集成指南](/knowledge/research/robotics-intelligence/embodied-agent-ros2-integration/)
+- [公开项目](/#projects) · [公开代码仓库](/knowledge/tools/public-projects/)

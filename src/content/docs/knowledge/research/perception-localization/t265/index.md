@@ -23,13 +23,13 @@ editUrl: false
 mkdir ~/releases-2.50.0
 cd ~/releases-2.50.0
 
-## 克隆仓库并进入分支
+# 克隆仓库并进入分支
 git clone https://github.com/realsenseai/realsense-ros.git
 cd realsense-ros/
 git checkout `git tag | sort -V | grep -P "^2.\d+\.\d+" | tail -1`
-## 也可以直接进入仓库下载源码
+# 也可以直接进入仓库下载源码
 
-## 编译
+# 编译
 mkdir build
 cd build
 cmake ..

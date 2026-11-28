@@ -25,6 +25,19 @@ editUrl: false
 
 视频里如果用了标准库，看懂外设原理后在 CubeIDE 里用 HAL 重写一遍，不要把两套工程文件混在一起。
 
+### 通信与串口协议工程要点
+
+- **UART / SPI / I²C 选型**：UART 异步点对点（调试串口、GPS、激光雷达）；SPI 同步全双工高速（收发同源，读从机需发哑字节提供时钟）；I²C 同步半双工开漏总线（`SCL = 1` 时 `SDA` 必须稳定，第 9 周期读 ACK/NACK）。
+- **串口中断状态机解包**：在 `HAL_UART_RxCpltCallback()` 中采用“单字节中断 + 帧头/长度/校验和状态机 + 完整包标志位”与主循环解耦，避免在中断里阻塞处理长逻辑。
+- **无线串口联网（ESP8266）**：调试前用 `AT+GMR` 确认固件版本；区分 STA（连路由器）与 AP（热点直连）模式，透传模式下退出需发送不带换行的 `+++`；切勿将真实 Wi-Fi SSID 与密码写入仓库或笔记。
+- **进阶专题**：[嵌入式与机器人通信协议指南](/knowledge/research/perception-localization/embedded-and-robot-communication/)（含 Linux TCP Socket 与多跳 UDP 事务契约）。
+
+### 通关自检清单
+
+- 能使用 STM32CubeIDE + HAL 独立配置定时器输出 PWM，并解释预分频与自动重装载参数关系；
+- 能编写单字节中断接收 + 帧头/长度/校验和状态机，在主循环安全解包上下位机数据帧；
+- 能通过逻辑分析仪或串口调试助手验证至少一种 I²C / SPI 外设读写时序与异常应答处理。
+
 ### 参考资料
 
 - [STM32CubeIDE 快速入门手册](https://www.st.com/resource/en/user_manual/um2553-stm32cubeide-quick-start-guide-stmicroelectronics.pdf)

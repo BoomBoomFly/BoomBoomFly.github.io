@@ -30,36 +30,36 @@ sudo apt-get install ros-$ROS_DISTRO-realsense2-camera
 ### 安装mavros
 ```
 sudo apt-get install python-catkin-tools python-rosinstall-generator -y
-## 如果用的ROS版本是Noetic则使用
-## sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y
+# 如果用的ROS版本是Noetic则使用
+# sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y
 
-## 需要替换你的ROS版本，且以下指令需要在同一个终端执行
+# 需要替换你的ROS版本，且以下指令需要在同一个终端执行
 source /opt/ros/${你的ROS版本}/setup.bash
 
-## 因为acfly增加了自定义mavlink信息，若之前有通过二进制安装过mavros则需要卸载，没有则跳过
+# 因为acfly增加了自定义mavlink信息，若之前有通过二进制安装过mavros则需要卸载，没有则跳过
 sudo apt purge ros-${ROS_DISTRO}-mavlink ros-${ROS_DISTRO}-mavros
 
-## 构建ROS工作空间，可以自行修改路径
+# 构建ROS工作空间，可以自行修改路径
 mkdir -p ~/acfly_ws/src && cd ~/acfly_ws
 catkin init
 
-## 下载mavlink和acfly-mavros
+# 下载mavlink和acfly-mavros
 cd src
 git clone -b release/${ROS_DISTRO}/mavlink/2022.1.5-1 https://gitee.com/LauZanMo/mavlink
 git clone -b acfly-develop https://gitee.com/LauZanMo/acfly-mavros
 
-## 安装依赖，如果rosdep update没执行则需要执行成功才能继续
+# 安装依赖，如果rosdep update没执行则需要执行成功才能继续
 cd .. && rosdep install --from-paths src --ignore-src -y
 
-## 安装GeographicLib:
+# 安装GeographicLib:
 ./src/acfly-mavros/mavros/scripts/install_geographiclib_datasets.sh
-## 注意此处可能会报需要root权限（不会标error）出现后在前方加sudo即可
+# 注意此处可能会报需要root权限（不会标error）出现后在前方加sudo即可
 
-## 第一次编译请执行acfly提供的脚本
+# 第一次编译请执行acfly提供的脚本
 ./src/acfly-mavros/update_custom_msg.sh
-## 后续更改mavros源码只需要执行catkin build
+# 后续更改mavros源码只需要执行catkin build
 
-## 每一次开启终端都需要设置环境变量
+# 每一次开启终端都需要设置环境变量
 source devel/setup.bash
 ```
 
@@ -73,17 +73,17 @@ cd ~/acfly_ws && catkin build
 
 ### 使用
 ```
-## 第一个终端
-## 打开t265
+# 第一个终端
+# 打开t265
 roslaunch realsense2_camera rs_t265.launch
 
-## 第二个终端
-## 添加权限
+# 第二个终端
+# 添加权限
 sudo chmod 777 /dev/ttyUSB0
 roslaunch mavros acfly.launch fcu_url:=/dev/ttyUSB0:57600
 
-## 第三个终端
-## 此处需要先source前一步安装mavros工作空间中的setup.bash
+# 第三个终端
+# 此处需要先source前一步安装mavros工作空间中的setup.bash
 source devel/setup.bash
 roslaunch vision_to_mavros t265_tf_to_mavros.launch
 ```
